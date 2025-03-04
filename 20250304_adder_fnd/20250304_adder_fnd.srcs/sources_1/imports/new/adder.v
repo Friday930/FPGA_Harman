@@ -104,16 +104,18 @@ module adder_8 (
 endmodule
 
 module calculator (
-    input [7:0] a, b,
-    input [1:0] btn,
-    output [7:0] seg,
-    output [3:0] seg_comm
+    input [7:0] a, b, // adder
+    input clk, reset, // counter_4
+    output [7:0] seg, // 7-seg
+    output [3:0] seg_comm // 7-seg
 );
     wire w_carry;
     wire [7:0] w_sum; 
+
     fnd_controller U_fnd_ctrl(
         .bcd({w_carry, w_sum}), // 9bit {carry 1bit(MSB), sum 8bit(LSB)} {} : 비트 묶기
-        .seg_sel(btn),
+        .clk(clk),
+        .reset(reset),
         .seg(seg),
         .seg_comm(seg_comm)
     );

@@ -1,15 +1,23 @@
 `timescale 1ns / 1ps
 
 module fnd_controller(
+    input clk, reset,
     input [8:0] bcd,
-    input [1:0] seg_sel,
     output [7:0] seg,
     output [3:0] seg_comm
 );
 
     wire [3:0] w_digit_1, w_digit_10, w_digit_100, w_digit_1000, w_bcd;
+    wire [1:0] w_seg_sel;
+
+    counter_4 U_counter_4(
+        .clk(clk),
+        .reset(reset),
+        .o_sel(w_seg_sel)
+    );
+
     decoder_2x4 U_decoder_2x4(
-        .seg_sel(seg_sel),
+        .seg_sel(w_seg_sel),
         .seg_comm(seg_comm)
     );
 
@@ -22,7 +30,7 @@ module fnd_controller(
     );
 
     mux_4x1 U_MUX_4x1(
-        .sel(seg_sel),
+        .sel(w_seg_sel),
         .digit_1(w_digit_1),
         .digit_10(w_digit_10),
         .digit_100(w_digit_100),
@@ -96,6 +104,24 @@ module mux_4x1 (
         endcase
     end
 
+endmodule
+
+module counter_4 (
+    input clk, reset,
+    output [1:0] o_sel
+);
+    reg [1:0] r_counter;
+    assign o_sel = r_counter;
+
+    always @(posedge clk, posedge reset) begin
+        if (reset) begin
+            r_counter <= 0;
+        end      
+        else begin
+            r_counter <= r_counter + 1;
+        end  
+    end
+    
 endmodule
 
 module decoder_2x4 (
