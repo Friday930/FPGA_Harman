@@ -1,0 +1,8 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+C:/FPGA_Harman/20250304_HW/20250304_HW.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,,,,,,,
+C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sim_1/new/tb_cnt.v,1741072261,verilog,,,,tb_cnt,,,,,,,,
+C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v,1741071739,verilog,,,,bcdtoseg;clk_divider;counter_4;decoder_2x4;digit_splitter;fnd_controller;mux_4x1,,,,,,,,
+C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v,1741072047,verilog,,C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v,,counter,,,,,,,,

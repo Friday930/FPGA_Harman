@@ -1,26 +1,13 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 2025/03/04 15:41:19
-// Design Name: 
-// Module Name: counter
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module counter(
-
+    input clk, rst,
+    output reg[19:0] cnt
     );
+
+    always @(posedge clk, posedge rst) begin
+        if (rst) begin
+            cnt <= 0;
+        end else begin cnt <= cnt + 1; end
+    end
 endmodule

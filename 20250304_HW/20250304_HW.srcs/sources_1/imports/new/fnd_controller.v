@@ -2,7 +2,6 @@
 
 module fnd_controller(
     input clk, reset,
-    input [8:0] bcd,
     output [7:0] seg,
     output [3:0] seg_comm
 );
@@ -10,6 +9,13 @@ module fnd_controller(
     wire [3:0] w_digit_1, w_digit_10, w_digit_100, w_digit_1000, w_bcd;
     wire [1:0] w_seg_sel;
     wire w_clk_100Hz;
+    wire [19:0] cnt;
+
+    counter U_Counter_10000(
+        .clk(clk),
+        .rst(reset),
+        .cnt(cnt[19:0])
+    );
 
     clk_divider U_Clk_Divider(
         .clk(clk),
@@ -29,7 +35,7 @@ module fnd_controller(
     );
 
     digit_splitter U_Digit_Splitter(
-        .bcd(bcd),
+        .bcd(cnt[19:0]),
         .digit_1(w_digit_1),
         .digit_10(w_digit_10),
         .digit_100(w_digit_100),
@@ -117,7 +123,7 @@ module clk_divider(
     input clk, reset,
     output o_clk
 );
-    parameter FCOUNT = 500_000;
+    parameter FCOUNT = 100_000;
     reg [$clog2(FCOUNT)-1:0] r_counter; // $clog2 : 숫자를 나타내는데 필요한 비트 수 계산
     reg r_clk;
 
