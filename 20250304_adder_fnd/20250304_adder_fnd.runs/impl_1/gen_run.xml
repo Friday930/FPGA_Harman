@@ -1,62 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1741057139">
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1741058113">
+  <File Type="BITSTR-BMM" Name="calculator_bd.bmm"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="calculator_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="calculator_timing_summary_init.rpt"/>
   <File Type="ROUTE-PWR" Name="calculator_power_routed.rpt"/>
   <File Type="PA-TCL" Name="calculator.tcl"/>
+  <File Type="OPT-TIMING" Name="calculator_timing_summary_opted.rpt"/>
+  <File Type="OPT-DCP" Name="calculator_opt.dcp"/>
   <File Type="ROUTE-PWR-SUM" Name="calculator_power_summary_routed.pb"/>
   <File Type="REPORTS-TCL" Name="calculator_reports.tcl"/>
-  <File Type="BITSTR-MSK" Name="calculator.msk"/>
-  <File Type="ROUTE-CLK" Name="calculator_clock_utilization_routed.rpt"/>
-  <File Type="RDI-RDI" Name="calculator.vdi"/>
-  <File Type="BG-BIT" Name="calculator.bit"/>
-  <File Type="BG-DRC" Name="calculator.drc"/>
-  <File Type="BG-BGN" Name="calculator.bgn"/>
-  <File Type="BG-BIN" Name="calculator.bin"/>
-  <File Type="BITSTR-RBT" Name="calculator.rbt"/>
-  <File Type="BITSTR-NKY" Name="calculator.nky"/>
-  <File Type="BITSTR-BMM" Name="calculator_bd.bmm"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="calculator_methodology_drc_routed.rpt"/>
-  <File Type="BITSTR-MMI" Name="calculator.mmi"/>
-  <File Type="BITSTR-SYSDEF" Name="calculator.sysdef"/>
-  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
-  <File Type="BITSTR-LTX" Name="calculator.ltx"/>
-  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <File Type="OPT-DRC" Name="calculator_drc_opted.rpt"/>
   <File Type="OPT-HWDEF" Name="calculator.hwdef"/>
+  <File Type="PWROPT-DCP" Name="calculator_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="calculator_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="calculator_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="calculator_placed.dcp"/>
   <File Type="PLACE-IO" Name="calculator_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="calculator_clock_utilization_placed.rpt"/>
   <File Type="PLACE-UTIL" Name="calculator_utilization_placed.rpt"/>
   <File Type="PLACE-UTIL-PB" Name="calculator_utilization_placed.pb"/>
   <File Type="PLACE-CTRL" Name="calculator_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="calculator_incremental_reuse_placed.rpt"/>
   <File Type="PLACE-PRE-SIMILARITY" Name="calculator_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-TIMING" Name="calculator_timing_summary_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="calculator_postplace_pwropt.dcp"/>
+  <File Type="BG-BIN" Name="calculator.bin"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="calculator_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="calculator_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="calculator_drc_physopted.rpt"/>
+  <File Type="BITSTR-MSK" Name="calculator.msk"/>
+  <File Type="PHYSOPT-TIMING" Name="calculator_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="calculator_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="calculator_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="calculator_routed_bb.dcp"/>
   <File Type="ROUTE-DRC" Name="calculator_drc_routed.rpt"/>
   <File Type="ROUTE-DRC-PB" Name="calculator_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="calculator_drc_routed.rpx"/>
+  <File Type="BITSTR-MMI" Name="calculator.mmi"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="calculator_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="calculator_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="calculator_methodology_drc_routed.pb"/>
   <File Type="ROUTE-PWR-RPX" Name="calculator_power_routed.rpx"/>
   <File Type="ROUTE-STATUS" Name="calculator_route_status.rpt"/>
   <File Type="ROUTE-STATUS-PB" Name="calculator_route_status.pb"/>
-  <File Type="ROUTE-DCP" Name="calculator_routed.dcp"/>
-  <File Type="ROUTE-ERROR-DCP" Name="calculator_routed_error.dcp"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="calculator_routed_bb.dcp"/>
   <File Type="ROUTE-TIMINGSUMMARY" Name="calculator_timing_summary_routed.rpt"/>
   <File Type="ROUTE-TIMING-PB" Name="calculator_timing_summary_routed.pb"/>
   <File Type="ROUTE-TIMING-RPX" Name="calculator_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="calculator_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="calculator_clock_utilization_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW" Name="calculator_bus_skew_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW-PB" Name="calculator_bus_skew_routed.pb"/>
   <File Type="ROUTE-BUS-SKEW-RPX" Name="calculator_bus_skew_routed.rpx"/>
-  <File Type="OPT-DCP" Name="calculator_opt.dcp"/>
-  <File Type="PLACE-DCP" Name="calculator_placed.dcp"/>
-  <File Type="PWROPT-DCP" Name="calculator_pwropt.dcp"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="calculator_postplace_pwropt.dcp"/>
-  <File Type="PHYSOPT-DCP" Name="calculator_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="calculator_postroute_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="calculator_postroute_physopt_bb.dcp"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="calculator_methodology_drc_routed.pb"/>
-  <File Type="ROUTE-DRC-RPX" Name="calculator_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="calculator_methodology_drc_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="calculator_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="calculator_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="calculator_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="calculator_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="calculator_bus_skew_postroute_physopted.pb"/>
+  <File Type="BG-BIT" Name="calculator.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="calculator_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BITSTR-RBT" Name="calculator.rbt"/>
+  <File Type="BITSTR-NKY" Name="calculator.nky"/>
   <File Type="PDI-FILE" Name="calculator.pdi"/>
   <File Type="RCFI_FILE" Name="calculator.rcfi"/>
   <File Type="CFI_FILE" Name="calculator.cfi"/>
   <File Type="RNPI_FILE" Name="calculator.rnpi"/>
   <File Type="NPI_FILE" Name="calculator.npi"/>
   <File Type="RBD_FILE" Name="calculator.rbd"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="calculator.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="calculator.sysdef"/>
+  <File Type="BG-BGN" Name="calculator.bgn"/>
+  <File Type="BG-DRC" Name="calculator.drc"/>
+  <File Type="RDI-RDI" Name="calculator.vdi"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/imports/new/fnd_controller.v">

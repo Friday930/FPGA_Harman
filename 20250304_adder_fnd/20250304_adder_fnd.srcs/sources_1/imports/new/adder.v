@@ -52,7 +52,7 @@ module fa_4 (
     full_adder U_fa0(
         .a(a[0]),
         .b(b[0]),
-        .cin(1'b0),
+        .cin(cin),
         .sum(s[0]),
         .c(w_c[0])
     );
