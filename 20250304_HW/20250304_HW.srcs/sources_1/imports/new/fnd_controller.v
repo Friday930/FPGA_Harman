@@ -14,7 +14,7 @@ module fnd_controller(
 
     counter U_Counter_10000(
         .clk(clk),
-        .rst(reset),
+        .reset(reset),
         .cnt(w_cnt[13:0])
     );
 

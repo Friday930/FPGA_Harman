@@ -17,24 +17,268 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 22892
+INFO: [Synth 8-7075] Helper process launched with PID 24836
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1106.152 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1017.746 ; gain = 0.000
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'fnd_controller' [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:3]
-INFO: [Synth 8-6157] synthesizing module 'counter' [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'counter' (1#1) [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:23]
-ERROR: [Synth 8-448] named port connection 'rst' does not exist for instance 'U_Counter_10000' of module 'counter' [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:17]
-INFO: [Synth 8-6157] synthesizing module 'clk_divider' [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:123]
+INFO: [Synth 8-6157] synthesizing module 'fnd_controller' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:3]
+INFO: [Synth 8-6157] synthesizing module 'counter' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'counter' (1#1) [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:23]
+INFO: [Synth 8-6157] synthesizing module 'clk_divider' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:123]
 	Parameter FCOUNT bound to: 10000000 - type: integer 
-ERROR: [Synth 8-6156] failed synthesizing module 'clk_divider' [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:123]
-ERROR: [Synth 8-6156] failed synthesizing module 'fnd_controller' [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'clk_divider' (2#1) [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:123]
+INFO: [Synth 8-6157] synthesizing module 'counter_4' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:150]
+INFO: [Synth 8-6155] done synthesizing module 'counter_4' (3#1) [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:150]
+INFO: [Synth 8-6157] synthesizing module 'decoder_2x4' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:168]
+INFO: [Synth 8-226] default block is never used [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:175]
+INFO: [Synth 8-6155] done synthesizing module 'decoder_2x4' (4#1) [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:168]
+INFO: [Synth 8-6157] synthesizing module 'digit_splitter' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:90]
+INFO: [Synth 8-6155] done synthesizing module 'digit_splitter' (5#1) [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:90]
+INFO: [Synth 8-6157] synthesizing module 'mux_4x1' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:102]
+INFO: [Synth 8-226] default block is never used [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:112]
+INFO: [Synth 8-6155] done synthesizing module 'mux_4x1' (6#1) [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:102]
+WARNING: [Synth 8-689] width (14) of port connection 'bcd' does not match port width (4) of module 'mux_4x1' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:52]
+INFO: [Synth 8-6157] synthesizing module 'bcdtoseg' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:61]
+INFO: [Synth 8-6155] done synthesizing module 'bcdtoseg' (7#1) [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:61]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 with 1st driver pin 'fnd_controller:/U_Counter_10000/cnt[4]' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 with 2nd driver pin 'GND' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 with 1st driver pin 'fnd_controller:/U_Counter_10000/cnt[5]' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 with 2nd driver pin 'GND' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 with 1st driver pin 'fnd_controller:/U_Counter_10000/cnt[6]' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 with 2nd driver pin 'GND' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 with 1st driver pin 'fnd_controller:/U_Counter_10000/cnt[7]' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 with 2nd driver pin 'GND' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 with 1st driver pin 'fnd_controller:/U_Counter_10000/cnt[8]' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 with 2nd driver pin 'GND' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 with 1st driver pin 'fnd_controller:/U_Counter_10000/cnt[9]' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 with 2nd driver pin 'GND' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 with 1st driver pin 'fnd_controller:/U_Counter_10000/cnt[10]' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 with 2nd driver pin 'GND' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 with 1st driver pin 'fnd_controller:/U_Counter_10000/cnt[11]' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 with 2nd driver pin 'GND' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 with 1st driver pin 'fnd_controller:/U_Counter_10000/cnt[12]' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 with 2nd driver pin 'GND' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 with 1st driver pin 'fnd_controller:/U_Counter_10000/cnt[13]' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 with 2nd driver pin 'GND' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v-38.19 is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'fnd_controller' (8#1) [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:3]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1106.152 ; gain = 0.000
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1017.746 ; gain = 0.000
 ---------------------------------------------------------------------------------
-RTL Elaboration failed
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1017.746 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1017.746 ; gain = 0.000
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1017.746 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc]
+Finished Parsing XDC File [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/fnd_controller_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/fnd_controller_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1042.875 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1042.875 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1042.875 ; gain = 25.129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1042.875 ; gain = 25.129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1042.875 ; gain = 25.129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1042.875 ; gain = 25.129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input    2 Bit       Adders := 1     
++---Registers : 
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input    8 Bit        Muxes := 1     
+	   4 Input    4 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cnt[13] with 1st driver pin 'i_0/out[13]' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cnt[13] with 2nd driver pin 'GND' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net cnt[13] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cnt[12] with 1st driver pin 'i_0/out[12]' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cnt[12] with 2nd driver pin 'GND' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net cnt[12] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cnt[11] with 1st driver pin 'i_0/out[11]' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cnt[11] with 2nd driver pin 'GND' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net cnt[11] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cnt[10] with 1st driver pin 'i_0/out[10]' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cnt[10] with 2nd driver pin 'GND' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net cnt[10] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cnt[9] with 1st driver pin 'i_0/out[9]' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cnt[9] with 2nd driver pin 'GND' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net cnt[9] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cnt[8] with 1st driver pin 'i_0/out[8]' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cnt[8] with 2nd driver pin 'GND' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net cnt[8] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cnt[7] with 1st driver pin 'i_0/out[7]' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cnt[7] with 2nd driver pin 'GND' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net cnt[7] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cnt[6] with 1st driver pin 'i_0/out[6]' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cnt[6] with 2nd driver pin 'GND' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net cnt[6] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cnt[5] with 1st driver pin 'i_0/out[5]' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cnt[5] with 2nd driver pin 'GND' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net cnt[5] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cnt[4] with 1st driver pin 'i_0/out[4]' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin cnt[4] with 2nd driver pin 'GND' [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net cnt[4] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:28]
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1042.875 ; gain = 25.129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 1042.875 ; gain = 25.129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 1042.875 ; gain = 25.129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 1042.875 ; gain = 25.129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1042.875 ; gain = 25.129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1042.875 ; gain = 25.129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1042.875 ; gain = 25.129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1042.875 ; gain = 25.129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1042.875 ; gain = 25.129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1042.875 ; gain = 25.129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----+------+
+|      |Cell |Count |
++------+-----+------+
+|1     |OBUF |    12|
++------+-----+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1042.875 ; gain = 25.129
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 30 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:09 ; elapsed = 00:00:15 . Memory (MB): peak = 1042.875 ; gain = 0.000
+Synthesis Optimization Complete : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1042.875 ; gain = 25.129
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1052.109 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1056.379 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
 INFO: [Common 17-83] Releasing license: Synthesis
-10 Infos, 0 Warnings, 0 Critical Warnings and 4 Errors encountered.
-synth_design failed
-ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
-INFO: [Common 17-206] Exiting Vivado at Tue Mar  4 17:16:17 2025...
+31 Infos, 1 Warnings, 60 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:18 ; elapsed = 00:00:22 . Memory (MB): peak = 1056.379 ; gain = 38.633
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+INFO: [Common 17-1381] The checkpoint 'C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.runs/synth_1/fnd_controller.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file fnd_controller_utilization_synth.rpt -pb fnd_controller_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Tue Mar  4 22:48:16 2025...
