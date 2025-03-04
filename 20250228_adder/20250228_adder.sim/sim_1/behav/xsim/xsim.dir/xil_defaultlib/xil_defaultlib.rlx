@@ -1,0 +1,7 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+C:/FPGA_Harman/20250228_adder/20250228_adder.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,,,,,,,
+C:/FPGA_Harman/20250228_adder/20250228_adder.srcs/sim_1/new/tb_adder.v,1740714173,verilog,,,,tb_adder,,,,,,,,
+C:/FPGA_Harman/20250228_adder/20250228_adder.srcs/sources_1/new/adder.v,1740713029,verilog,,C:/FPGA_Harman/20250228_adder/20250228_adder.srcs/sim_1/new/tb_adder.v,,fa_4;full_adder;half_adder,,,,,,,,

@@ -1,0 +1,18 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Fri Feb 28 09:02:01 2025
+# Process ID: 12728
+# Current directory: C:/FPGA_Harman/4bit_fa
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent20936 C:\FPGA_Harman\4bit_fa\4bit_fa.xpr
+# Log file: C:/FPGA_Harman/4bit_fa/vivado.log
+# Journal file: C:/FPGA_Harman/4bit_fa\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/FPGA_Harman/4bit_fa/4bit_fa.xpr
+update_compile_order -fileset sources_1
+close_project
+open_project C:/FPGA_Harman/4bit_fa/4bit_fa.xpr
+update_compile_order -fileset sources_1
+close_project

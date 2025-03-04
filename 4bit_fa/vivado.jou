@@ -1,0 +1,198 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Fri Feb 28 10:00:52 2025
+# Process ID: 16156
+# Current directory: C:/FPGA_Harman/4bit_fa
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent14584 C:\FPGA_Harman\4bit_fa\4bit_fa.xpr
+# Log file: C:/FPGA_Harman/4bit_fa/vivado.log
+# Journal file: C:/FPGA_Harman/4bit_fa\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/FPGA_Harman/4bit_fa/4bit_fa.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source tb_4bit_adder.tcl
+close_sim
+close_project
+create_project 20250228_adder C:/FPGA_Harman/20250228_adder -part xc7a35tcpg236-1
+set_property board_part digilentinc.com:basys3:part0:1.1 [current_project]
+file mkdir C:/FPGA_Harman/20250228_adder/20250228_adder.srcs/sources_1/new
+close [ open C:/FPGA_Harman/20250228_adder/20250228_adder.srcs/sources_1/new/adder.v w ]
+add_files C:/FPGA_Harman/20250228_adder/20250228_adder.srcs/sources_1/new/adder.v
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+launch_simulation
+source fa_4.tcl
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+add_files -fileset constrs_1 -norecurse C:/FPGA_Harman/Basys-3-Master.xdc
+import_files -fileset constrs_1 C:/FPGA_Harman/Basys-3-Master.xdc
+refresh_design
+refresh_design
+refresh_design
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+reset_run synth_1
+refresh_design
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+close_design
+open_run impl_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+close_design
+open_run impl_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {C:/FPGA_Harman/20250228_adder/20250228_adder.runs/impl_1/fa_4.bit} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/FPGA_Harman/20250228_adder/20250228_adder.runs/impl_1/fa_4.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+refresh_design
+refresh_design
+refresh_design
+refresh_design
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+reset_run impl_1 -prev_step 
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/FPGA_Harman/20250228_adder/20250228_adder.runs/impl_1/fa_4.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+file mkdir C:/FPGA_Harman/20250228_adder/20250228_adder.srcs/sim_1/new
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open C:/FPGA_Harman/20250228_adder/20250228_adder.srcs/sim_1/new/tb_adder.v w ]
+add_files -fileset sim_1 C:/FPGA_Harman/20250228_adder/20250228_adder.srcs/sim_1/new/tb_adder.v
+update_compile_order -fileset sim_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top tb_adder [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+launch_simulation
+close_sim
+launch_simulation
+source tb_adder.tcl
+close_sim
+launch_simulation
+source tb_adder.tcl
+close_sim
+launch_simulation
+source tb_adder.tcl
+close_sim
+launch_simulation
+source tb_adder.tcl
+close [ open C:/FPGA_Harman/20250228_adder/20250228_adder.srcs/sources_1/new/fnd_controller.v w ]
+add_files C:/FPGA_Harman/20250228_adder/20250228_adder.srcs/sources_1/new/fnd_controller.v
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+refresh_design
+refresh_design
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+refresh_design
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg[7]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg[6]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg[5]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg[4]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg[3]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg[2]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg[1]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg_comm[3]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg_comm[2]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg_comm[1]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg_comm[0]}]]
+refresh_design
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg[1]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg[2]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg[3]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg[4]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg[5]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg[6]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg[7]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg_comm[3]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg_comm[2]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg_comm[1]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {seg_comm[0]}]]
+place_ports {seg[7]} V7
+place_ports {seg[6]} U7
+place_ports {seg[5]} V5
+place_ports {seg[4]} U5
+place_ports {seg[3]} V8
+place_ports {seg[2]} U8
+place_ports {seg[1]} W6
+place_ports {seg[0]} W7
+place_ports {seg_comm[3]} W4
+place_ports {seg_comm[2]} V4
+place_ports {seg_comm[1]} U4
+place_ports {seg_comm[0]} U2
+set_property target_constrs_file C:/FPGA_Harman/20250228_adder/20250228_adder.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc [current_fileset -constrset]
+save_constraints -force
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+close_hw_manager
+open_hw_manager
+close_hw_manager
+reset_run impl_1 -prev_step 
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {C:/FPGA_Harman/20250228_adder/20250228_adder.runs/impl_1/calculator.bit} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/FPGA_Harman/20250228_adder/20250228_adder.runs/impl_1/calculator.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+refresh_design
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/FPGA_Harman/20250228_adder/20250228_adder.runs/impl_1/calculator.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+refresh_design
+close_sim
+close_project
+create_project 8bit_adder C:/FPGA_Harman/8bit_adder -part xc7a35tcpg236-1
+set_property board_part digilentinc.com:basys3:part0:1.1 [current_project]
+file mkdir C:/FPGA_Harman/8bit_adder/8bit_adder.srcs/sources_1/new
+close [ open C:/FPGA_Harman/8bit_adder/8bit_adder.srcs/sources_1/new/8bit_adder.v w ]
+add_files C:/FPGA_Harman/8bit_adder/8bit_adder.srcs/sources_1/new/8bit_adder.v
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files C:/FPGA_Harman/8bit_adder/8bit_adder.srcs/sources_1/new/8bit_adder.v] -no_script -reset -force -quiet
+remove_files  C:/FPGA_Harman/8bit_adder/8bit_adder.srcs/sources_1/new/8bit_adder.v
+close [ open C:/FPGA_Harman/8bit_adder/8bit_adder.srcs/sources_1/new/adder_8bit.v w ]
+add_files C:/FPGA_Harman/8bit_adder/8bit_adder.srcs/sources_1/new/adder_8bit.v
+launch_simulation
+close [ open C:/FPGA_Harman/8bit_adder/8bit_adder.srcs/sources_1/new/fnd_ctrl_8bit.v w ]
+add_files C:/FPGA_Harman/8bit_adder/8bit_adder.srcs/sources_1/new/fnd_ctrl_8bit.v
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1

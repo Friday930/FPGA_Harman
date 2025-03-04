@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Thu Feb 27 17:54:35 2025
+# Process ID: 9132
+# Current directory: C:/FPGA_Harman/4bit_fa/4bit_fa.sim/sim_1/behav/xsim
+# Command line: wbtcv.exe -mode batch -source C:/FPGA_Harman/4bit_fa/4bit_fa.sim/sim_1/behav/xsim/xsim.dir/tb_4bit_adder_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: C:/FPGA_Harman/4bit_fa/4bit_fa.sim/sim_1/behav/xsim/webtalk.log
+# Journal file: C:/FPGA_Harman/4bit_fa/4bit_fa.sim/sim_1/behav/xsim\webtalk.jou
+#-----------------------------------------------------------
+source C:/FPGA_Harman/4bit_fa/4bit_fa.sim/sim_1/behav/xsim/xsim.dir/tb_4bit_adder_behav/webtalk/xsim_webtalk.tcl -notrace

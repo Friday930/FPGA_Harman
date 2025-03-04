@@ -1,0 +1,8 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+C:/FPGA_Harman/8bit_adder/8bit_adder.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,,,,,,,
+C:/FPGA_Harman/8bit_adder/8bit_adder.srcs/sim_1/new/tb_adder_8bit.v,1740731106,verilog,,,,tb_adder_8bit,,,,,,,,
+C:/FPGA_Harman/8bit_adder/8bit_adder.srcs/sources_1/new/adder_8bit.v,1740730299,verilog,,C:/FPGA_Harman/8bit_adder/8bit_adder.srcs/sim_1/new/tb_adder_8bit.v,,calculator;fa_8;full_adder;half_adder,,,,,,,,
+C:/FPGA_Harman/8bit_adder/8bit_adder.srcs/sources_1/new/fnd_ctrl_8bit.v,1740730496,verilog,,C:/FPGA_Harman/8bit_adder/8bit_adder.srcs/sources_1/new/adder_8bit.v,,bcdtoseg;decoder_2x4;fnd_controller,,,,,,,,
