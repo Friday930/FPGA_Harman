@@ -2,8 +2,8 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Tue Mar  4 16:15:39 2025
-# Process ID: 5872
+# Start of session at: Tue Mar  4 17:16:06 2025
+# Process ID: 1372
 # Current directory: C:/FPGA_Harman/20250304_HW/20250304_HW.runs/synth_1
 # Command line: vivado.exe -log fnd_controller.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source fnd_controller.tcl
 # Log file: C:/FPGA_Harman/20250304_HW/20250304_HW.runs/synth_1/fnd_controller.vds
@@ -17,271 +17,24 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 4784
+INFO: [Synth 8-7075] Helper process launched with PID 22892
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1104.039 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1106.152 ; gain = 0.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'fnd_controller' [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:3]
-INFO: [Synth 8-6157] synthesizing module 'counter' [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'counter' (1#1) [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:3]
-INFO: [Synth 8-6157] synthesizing module 'clk_divider' [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:122]
-	Parameter FCOUNT bound to: 100000 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'clk_divider' (2#1) [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:122]
-INFO: [Synth 8-6157] synthesizing module 'counter_4' [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:149]
-INFO: [Synth 8-6155] done synthesizing module 'counter_4' (3#1) [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:149]
-INFO: [Synth 8-6157] synthesizing module 'decoder_2x4' [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:167]
-INFO: [Synth 8-226] default block is never used [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:174]
-INFO: [Synth 8-6155] done synthesizing module 'decoder_2x4' (4#1) [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:167]
-INFO: [Synth 8-6157] synthesizing module 'digit_splitter' [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:89]
-INFO: [Synth 8-6155] done synthesizing module 'digit_splitter' (5#1) [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:89]
-WARNING: [Synth 8-689] width (20) of port connection 'bcd' does not match port width (9) of module 'digit_splitter' [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:38]
-INFO: [Synth 8-6157] synthesizing module 'mux_4x1' [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:101]
-INFO: [Synth 8-226] default block is never used [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:111]
-INFO: [Synth 8-6155] done synthesizing module 'mux_4x1' (6#1) [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:101]
-INFO: [Synth 8-6157] synthesizing module 'bcdtoseg' [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:60]
-INFO: [Synth 8-226] default block is never used [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:67]
-INFO: [Synth 8-6155] done synthesizing module 'bcdtoseg' (7#1) [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:60]
-INFO: [Synth 8-6155] done synthesizing module 'fnd_controller' (8#1) [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:3]
----------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1104.039 ; gain = 0.000
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Handling Custom Attributes
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1104.039 ; gain = 0.000
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1104.039 ; gain = 0.000
----------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1104.039 ; gain = 0.000
-INFO: [Project 1-570] Preparing netlist for logic optimization
-
-Processing XDC Constraints
-Initializing timing engine
-Parsing XDC File [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc]
-WARNING: [Vivado 12-584] No ports matched 'a[0]'. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:12]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:12]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'a[1]'. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:13]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:13]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'a[2]'. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:14]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:14]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'a[3]'. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:15]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:15]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'a[4]'. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:16]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:16]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'a[5]'. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:17]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:17]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'a[6]'. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:18]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:18]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'a[7]'. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:19]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:19]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'b[0]'. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:20]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:20]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'b[1]'. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:21]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:21]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'b[2]'. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:22]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:22]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'b[3]'. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:23]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:23]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'b[4]'. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:24]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:24]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'b[5]'. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:25]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:25]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'b[6]'. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:26]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:26]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'b[7]'. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:27]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc:27]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-Finished Parsing XDC File [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/fnd_controller_propImpl.xdc].
-Resolution: To avoid this warning, move constraints listed in [.Xil/fnd_controller_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Completed Processing XDC Constraints
-
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1146.977 ; gain = 0.000
-INFO: [Project 1-111] Unisim Transformation Summary:
-No Unisim elements were transformed.
-
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1146.977 ; gain = 0.000
----------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1146.977 ; gain = 42.938
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Loading Part and Timing Information
----------------------------------------------------------------------------------
-Loading part: xc7a35tcpg236-1
----------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1146.977 ; gain = 42.938
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Applying 'set_property' XDC Constraints
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1146.977 ; gain = 42.938
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1146.977 ; gain = 42.938
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start RTL Component Statistics 
----------------------------------------------------------------------------------
-Detailed RTL Component Info : 
-+---Adders : 
-	   2 Input   17 Bit       Adders := 1     
-	   2 Input    2 Bit       Adders := 1     
-+---Registers : 
-	               17 Bit    Registers := 1     
-	                2 Bit    Registers := 1     
-	                1 Bit    Registers := 1     
-+---Muxes : 
-	   2 Input   17 Bit        Muxes := 1     
-	   4 Input    4 Bit        Muxes := 2     
----------------------------------------------------------------------------------
-Finished RTL Component Statistics 
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Part Resource Summary
----------------------------------------------------------------------------------
-Part Resources:
-DSPs: 90 (col length:60)
-BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
----------------------------------------------------------------------------------
-Finished Part Resource Summary
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Cross Boundary and Area Optimization
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1146.977 ; gain = 42.938
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Applying XDC Timing Constraints
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1151.801 ; gain = 47.762
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Timing Optimization
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1171.230 ; gain = 67.191
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Technology Mapping
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1172.590 ; gain = 68.551
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start IO Insertion
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Flattening Before IO Insertion
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Flattening Before IO Insertion
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Final Netlist Cleanup
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Final Netlist Cleanup
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1187.410 ; gain = 83.371
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Renaming Generated Instances
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1187.410 ; gain = 83.371
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Rebuilding User Hierarchy
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1187.410 ; gain = 83.371
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Renaming Generated Ports
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1187.410 ; gain = 83.371
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Handling Custom Attributes
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1187.410 ; gain = 83.371
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Renaming Generated Nets
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1187.410 ; gain = 83.371
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Writing Synthesis Report
----------------------------------------------------------------------------------
-
-Report BlackBoxes: 
-+-+--------------+----------+
-| |BlackBox name |Instances |
-+-+--------------+----------+
-+-+--------------+----------+
-
-Report Cell Usage: 
-+------+-------+------+
-|      |Cell   |Count |
-+------+-------+------+
-|1     |BUFG   |     1|
-|2     |CARRY4 |    12|
-|3     |LUT1   |     4|
-|4     |LUT2   |    33|
-|5     |LUT3   |     2|
-|6     |LUT4   |    16|
-|7     |LUT5   |    11|
-|8     |LUT6   |    13|
-|9     |FDCE   |    29|
-|10    |IBUF   |     2|
-|11    |OBUF   |    12|
-+------+-------+------+
----------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1187.410 ; gain = 83.371
----------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:16 ; elapsed = 00:00:21 . Memory (MB): peak = 1187.410 ; gain = 40.434
-Synthesis Optimization Complete : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1187.410 ; gain = 83.371
-INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1199.414 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 12 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
-INFO: [Project 1-570] Preparing netlist for logic optimization
-INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1199.414 ; gain = 0.000
-INFO: [Project 1-111] Unisim Transformation Summary:
-No Unisim elements were transformed.
-
+INFO: [Synth 8-6157] synthesizing module 'counter' [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'counter' (1#1) [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v:23]
+ERROR: [Synth 8-448] named port connection 'rst' does not exist for instance 'U_Counter_10000' of module 'counter' [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:17]
+INFO: [Synth 8-6157] synthesizing module 'clk_divider' [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:123]
+	Parameter FCOUNT bound to: 10000000 - type: integer 
+ERROR: [Synth 8-6156] failed synthesizing module 'clk_divider' [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:123]
+ERROR: [Synth 8-6156] failed synthesizing module 'fnd_controller' [C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v:3]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1106.152 ; gain = 0.000
+---------------------------------------------------------------------------------
+RTL Elaboration failed
 INFO: [Common 17-83] Releasing license: Synthesis
-34 Infos, 17 Warnings, 16 Critical Warnings and 0 Errors encountered.
-synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 1199.414 ; gain = 95.375
-INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
-INFO: [Common 17-1381] The checkpoint 'C:/FPGA_Harman/20250304_HW/20250304_HW.runs/synth_1/fnd_controller.dcp' has been generated.
-INFO: [runtcl-4] Executing : report_utilization -file fnd_controller_utilization_synth.rpt -pb fnd_controller_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue Mar  4 16:16:09 2025...
+10 Infos, 0 Warnings, 0 Critical Warnings and 4 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
+INFO: [Common 17-206] Exiting Vivado at Tue Mar  4 17:16:17 2025...

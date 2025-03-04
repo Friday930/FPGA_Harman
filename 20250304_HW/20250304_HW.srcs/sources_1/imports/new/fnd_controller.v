@@ -2,6 +2,7 @@
 
 module fnd_controller(
     input clk, reset,
+    input [13:0] bcd,
     output [7:0] seg,
     output [3:0] seg_comm
 );
@@ -9,12 +10,12 @@ module fnd_controller(
     wire [3:0] w_digit_1, w_digit_10, w_digit_100, w_digit_1000, w_bcd;
     wire [1:0] w_seg_sel;
     wire w_clk_100Hz;
-    wire [19:0] cnt;
+    wire [13:0] w_cnt; // 10000을 $clog2로 필요한 비트 수 계산된 결과 값
 
     counter U_Counter_10000(
         .clk(clk),
         .rst(reset),
-        .cnt(cnt[19:0])
+        .cnt(w_cnt[13:0])
     );
 
     clk_divider U_Clk_Divider(
@@ -35,7 +36,7 @@ module fnd_controller(
     );
 
     digit_splitter U_Digit_Splitter(
-        .bcd(cnt[19:0]),
+        .bcd(w_cnt[13:0]),
         .digit_1(w_digit_1),
         .digit_10(w_digit_10),
         .digit_100(w_digit_100),
@@ -48,7 +49,7 @@ module fnd_controller(
         .digit_10(w_digit_10),
         .digit_100(w_digit_100),
         .digit_1000(w_digit_1000),
-        .bcd(w_bcd)
+        .bcd(w_cnt[13:0])
     );
 
     bcdtoseg U_bcdtoseg(
@@ -58,7 +59,7 @@ module fnd_controller(
 endmodule
 
 module bcdtoseg (
-    input [3:0] bcd, // [3:0] sum 값
+    input [13:0] bcd, // [3:0] sum 값
     output reg [7:0] seg
 );
     // always 구문 출력으로 reg type를 가져야 한다
@@ -87,7 +88,7 @@ module bcdtoseg (
 endmodule
 
 module digit_splitter (
-    input [8:0] bcd,
+    input [13:0] bcd,
     output [3:0] digit_1, digit_10, digit_100, digit_1000
 );
     
@@ -123,8 +124,8 @@ module clk_divider(
     input clk, reset,
     output o_clk
 );
-    parameter FCOUNT = 100_000;
-    reg [$clog2(FCOUNT)-1:0] r_counter; // $clog2 : 숫자를 나타내는데 필요한 비트 수 계산
+    parameter FCOUNT = 10_000_000;
+    reg [13:0] r_counter; // $clog2 : 숫자를 나타내는데 필요한 비트 수 계산
     reg r_clk;
 
     assign o_clk = r_clk;
