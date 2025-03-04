@@ -41,7 +41,7 @@ endmodule
 module fa_4 (
     input [3:0] a, // 4bit vector
     input [3:0] b,
-    // input cin,
+    input cin,
     output [3:0] s,
     output c
 );
@@ -79,6 +79,7 @@ module fa_4 (
     );
 endmodule
 
+// adder core
 module adder_8 (
     input [7:0] a, b,
     output [7:0] sum,
@@ -103,24 +104,24 @@ module adder_8 (
 endmodule
 
 module calculator (
-    input [3:0] a, b,
+    input [7:0] a, b,
     input [1:0] btn,
     output [7:0] seg,
-    output [3:0] seg_comm,
-    output c_led
+    output [3:0] seg_comm
 );
-    wire [3:0] w_sum;
+    wire w_carry;
+    wire [7:0] w_sum; 
     fnd_controller U_fnd_ctrl(
-        .bcd(w_sum),
+        .bcd({w_carry, w_sum}), // 9bit {carry 1bit(MSB), sum 8bit(LSB)} {} : 비트 묶기
         .seg_sel(btn),
         .seg(seg),
         .seg_comm(seg_comm)
     );
-    fa_4 U_fa4(
+    adder_8 U_fa8(
         .a(a),
         .b(b),
-        .s(w_sum),
-        .c(c_led)
+        .sum(w_sum),
+        .carry(w_carry)
     );
     
 endmodule
