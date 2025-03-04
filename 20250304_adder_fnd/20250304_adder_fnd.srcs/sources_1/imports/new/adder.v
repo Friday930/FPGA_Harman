@@ -79,6 +79,29 @@ module fa_4 (
     );
 endmodule
 
+module adder_8 (
+    input [7:0] a, b,
+    output [7:0] sum,
+    output carry
+);
+    wire w_c;
+    fa_4 U_fa_4_lower(
+        .a(a[3:0]),
+        .b(b[3:0]),
+        .cin(1'b0),
+        .s(sum[3:0]),
+        .c(w_c)
+    );
+    fa_4 U_fa_4_upper(
+        .a(a[7:4]),
+        .b(b[7:4]),
+        .cin(w_c),
+        .s(sum[7:4]),
+        .c(carry)
+    );
+    
+endmodule
+
 module calculator (
     input [3:0] a, b,
     input [1:0] btn,
