@@ -11,6 +11,12 @@ module fnd_controller(
     wire [1:0] w_seg_sel;
     wire w_clk_100Hz;
 
+    counter U_Counter_10000(
+        .clk(clk),
+        .rst(reset),
+        .cnt(bcd)
+    );
+
     clk_divider U_Clk_Divider(
         .clk(clk),
         .reset(reset),

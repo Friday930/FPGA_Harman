@@ -2,7 +2,7 @@
 
 module fnd_controller(
     input clk, reset,
-    // input [13:0] bcd,
+    input [13:0] bcd,
     output [7:0] seg,
     output [3:0] seg_comm
 );
@@ -13,7 +13,7 @@ module fnd_controller(
     wire [13:0] w_cnt; // 10000을 $clog2로 필요한 비트 수 계산된 결과 값
 
     counter U_Counter_10000(
-        .clk(w_clk_100Hz),
+        .clk(clk),
         .rst(reset),
         .cnt(w_cnt[13:0])
     );
