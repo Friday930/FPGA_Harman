@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Wed Mar  5 11:17:11 2025
+| Date         : Wed Mar  5 11:35:44 2025
 | Host         : DESKTOP-7CFQ9ND running 64-bit major release  (build 9200)
 | Command      : report_methodology -file fnd_controller_methodology_drc_routed.rpt -pb fnd_controller_methodology_drc_routed.pb -rpx fnd_controller_methodology_drc_routed.rpx
 | Design       : fnd_controller
@@ -23,16 +23,23 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 17
+             Violations found: 21
 +-----------+------------------+-------------------------------+------------+
 | Rule      | Severity         | Description                   | Violations |
 +-----------+------------------+-------------------------------+------------+
+| TIMING-14 | Critical Warning | LUT on the clock tree         | 1          |
 | TIMING-17 | Critical Warning | Non-clocked sequential cell   | 16         |
-| TIMING-18 | Warning          | Missing input or output delay | 1          |
+| LUTAR-1   | Warning          | LUT drives async reset alert  | 1          |
+| TIMING-18 | Warning          | Missing input or output delay | 3          |
 +-----------+------------------+-------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
+TIMING-14#1 Critical Warning
+LUT on the clock tree  
+The LUT U_clk_div_10hz/r_counter[23]_i_2 has been found on the clock tree. Run opt_design to optimize the clock trees, then re-run report_methodology. If LUT(s) are still present in the clock trees, modify the RTL or the synthesis options accordingly to move the clock gating logic to dedicated clock enable resources. Keep in mind that post-opt_design database cannot be used for pin-planning tasks
+Related violations: <none>
+
 TIMING-17#1 Critical Warning
 Non-clocked sequential cell  
 The clock pin U_Counter_10000/count_reg[0]/C is not reached by a timing clock
@@ -113,9 +120,31 @@ Non-clocked sequential cell
 The clock pin U_counter_4/r_counter_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
+LUTAR-1#1 Warning
+LUT drives async reset alert  
+LUT cell U_clk_div_10hz/r_counter[23]_i_3, with 2 or more inputs, drives asynchronous preset/clear pin(s) U_clk_div_10hz/r_counter_reg[0]/CLR, U_clk_div_10hz/r_counter_reg[10]/CLR,
+U_clk_div_10hz/r_counter_reg[11]/CLR, U_clk_div_10hz/r_counter_reg[12]/CLR,
+U_clk_div_10hz/r_counter_reg[13]/CLR, U_clk_div_10hz/r_counter_reg[14]/CLR,
+U_clk_div_10hz/r_counter_reg[15]/CLR, U_clk_div_10hz/r_counter_reg[16]/CLR,
+U_clk_div_10hz/r_counter_reg[17]/CLR, U_clk_div_10hz/r_counter_reg[18]/CLR,
+U_clk_div_10hz/r_counter_reg[19]/CLR, U_clk_div_10hz/r_counter_reg[1]/CLR,
+U_clk_div_10hz/r_counter_reg[20]/CLR, U_clk_div_10hz/r_counter_reg[21]/CLR,
+U_clk_div_10hz/r_counter_reg[22]/CLR (the first 15 of 24 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
 TIMING-18#1 Warning
 Missing input or output delay  
 An input delay is missing on reset relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#2 Warning
+Missing input or output delay  
+An input delay is missing on sw[0] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#3 Warning
+Missing input or output delay  
+An input delay is missing on sw[1] relative to clock(s) sys_clk_pin
 Related violations: <none>
 
 
