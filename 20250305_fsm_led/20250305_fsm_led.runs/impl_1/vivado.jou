@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Wed Mar  5 16:04:35 2025
+# Process ID: 21684
+# Current directory: C:/FPGA_Harman/20250305_fsm_led/20250305_fsm_led.runs/impl_1
+# Command line: vivado.exe -log fsm_led.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source fsm_led.tcl -notrace
+# Log file: C:/FPGA_Harman/20250305_fsm_led/20250305_fsm_led.runs/impl_1/fsm_led.vdi
+# Journal file: C:/FPGA_Harman/20250305_fsm_led/20250305_fsm_led.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source fsm_led.tcl -notrace
