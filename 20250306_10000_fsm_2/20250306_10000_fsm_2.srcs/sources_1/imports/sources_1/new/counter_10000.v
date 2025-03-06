@@ -12,57 +12,64 @@ module Top_Upcounter (
     // assign      w_clear = reset | sw[1];
 
     clk_div_10hz U_clk_div_10hz(
-        .clk(clk),
-        .reset(reset),
-        .run_stop(w_run_stop),
-        .o_clk_10hz(w_clk_10)
+        .clk        (clk),
+        .reset      (reset),
+        .run_stop   (w_run_stop),
+        .o_clk_10hz (w_clk_10)
     );
 
     counter_10000 U_Counter_10000(
-        .clk(w_clk_10),
-        .reset(reset),
-        .clear(w_clear),
-        .count(w_count)
+        .clk        (w_clk_10),
+        .reset      (reset),
+        .clear      (w_clear),
+        .count      (w_count)
     );
 
     fnd_controller U_fnd_cntl(
-        .clk(clk),
-        .reset(reset),
-        // .bcd(w_count),
-        .seg(seg),
-        .seg_comm(seg_comm)
+        .clk        (clk),
+        .reset      (reset),
+        // .bcd        (w_count),
+        .seg        (seg),
+        .seg_comm   (seg_comm)
     );
 
     control_unit U_Control_Unit(
-        .clk(clk),
-        .reset(reset),
-        .i_run_stop(sw[0]),
-        .i_clear(sw[1]),
-        .o_run_stop(w_run_stop),
-        .o_clear(w_clear)
+        .clk        (clk),
+        .reset      (reset),
+        .i_run_stop (sw[0]),
+        .i_clear    (sw[1]),
+        .o_run_stop (w_run_stop),
+        .o_clear    (w_clear)
     );
+
+    // clk_100Hz_tick U_CLK_Div_100Hz(
+    //     .clk        (clk),
+    //     .reset      (reset),
+    //     .run_stop   (w_run_stop),
+    //     .o_clk_10hz (w_clk_10)
+    // );
 endmodule
 
-module clk_div_10hz (
+module clk_div_100hz (
     input       clk, reset, run_stop,
-    output      o_clk_10hz
+    output      o_tick
 );
 
-    reg         [$clog2(10_000_000) - 1:0] r_counter;
-    reg         r_clk_10hz;
+    reg         [$clog2(1_000_000) - 1:0] r_counter;
+    reg         r_clk_100hz;
 
-    assign      o_clk_10hz = r_clk_10hz;
+    assign      o_tick = r_clk_100hz;
 
     always @(posedge clk, posedge reset) begin
-        if (reset) begin
+        if(reset) begin
             r_counter <= 0;
         end else begin
             if(run_stop == 1'b1) begin
-                if(r_counter == 10_000_000 - 1) begin
+                if(r_counter == 1_000_000 - 1) begin
                     r_counter <= 0;
-                    r_clk_10hz <= 1'b1;
-                end else if(r_counter == (10_000_000/2)-1)begin // duty ratio 50%
-                    r_clk_10hz <= 1'b0;
+                    r_clk_100hz <= 1'b1;
+                end else if(r_counter == (1_000_000/2)-1) begin // duty ratio 50%
+                    r_clk_100hz <= 1'b0;
                     r_counter <= r_counter + 1;
                 end else begin
                     r_counter <= r_counter + 1;
@@ -96,77 +103,69 @@ module counter_10000 (
     
 endmodule
 
-module control_unit (
-    input       clk, reset,
-    input       i_run_stop, i_clear,
-    output      reg o_run_stop, o_clear
-);
+// module control_unit (
+//     input       clk, reset,
+//     input       i_run_stop, i_clear,
+//     output      reg o_run_stop, o_clear
+// );
 
-    parameter   STOP = 3'b000, RUN = 3'b001, CLEAR = 3'b010;
+//     parameter   STOP = 3'b000, RUN = 3'b001, CLEAR = 3'b010;
 
-    // state 관리
-    reg         [2:0] state, next;
+//     // state 관리
+//     reg         [2:0] state, next;
 
-    // state sequencial logic (<=)
-    always @(posedge clk, posedge reset) begin
-        if(reset) state <= STOP;
-        else state <= next;
-    end
+//     // state sequencial logic (<=)
+//     always @(posedge clk, posedge reset) begin
+//         if(reset) state <= STOP;
+//         else state <= next;
+//     end
 
-    // next combination logic (=)
-    always @(*) begin
-        next = state;
-        case (state)
-            STOP: begin
-                if (i_run_stop == 1'b1) begin
-                    next = RUN;
-                end else if (i_clear == 1'b1) begin
-                    next = CLEAR;
-                end else next = state;
-            end
+//     // next combination logic (=)
+//     always @(*) begin
+//         next = state;
+//         case (state)
+//             STOP: begin
+//                 if (i_run_stop == 1'b1) begin
+//                     next = RUN;
+//                 end else if (i_clear == 1'b1) begin
+//                     next = CLEAR;
+//                 end else next = state;
+//             end
 
-            RUN: begin
-                if (i_run_stop == 1'b0) begin
-                    next = STOP;
-                end else next = state;
-            end
+//             RUN: begin
+//                 if (i_run_stop == 1'b0) begin
+//                     next = STOP;
+//                 end else next = state;
+//             end
 
-            CLEAR: begin
-                if (i_clear == 1'b0) begin
-                    next = STOP;
-                end else next = state;
-            end
-            default: next = state;
-        endcase
-    end
+//             CLEAR: begin
+//                 if (i_clear == 1'b0) begin
+//                     next = STOP;
+//                 end else next = state;
+//             end
+//             default: next = state;
+//         endcase
+//     end
     
-    // combinational output logic
-    always @(*) begin
-        case (state)
-            STOP:   begin
-                o_run_stop = 1'b1;
-                o_clear = 1'b0;
-            end
-            RUN:    begin
-                o_run_stop = 1'b0;
-                o_clear = 1'b0;
-            end
-            CLEAR:  begin
-                o_run_stop = 1'b0;
-                o_clear = 1'b1;
-            end
-            default: begin
-                o_run_stop = 1'b0;
-                o_clear = 1'b0;
-            end
-        endcase
-    end
-endmodule
-
-module fsm (
-    input       clk, reset, run_stop,
-    output      o_clk
-);
-    
-    
-endmodule
+//     // combinational output logic
+//     always @(*) begin
+//         case (state)
+//             STOP:   begin
+//                 o_run_stop = 1'b1;
+//                 o_clear = 1'b0;
+//             end
+//             RUN:    begin
+//                 o_run_stop = 1'b0;
+//                 o_clear = 1'b0;
+//             end
+//             CLEAR:  begin
+//                 o_run_stop = 1'b0;
+//                 o_clear = 1'b1;
+//             end
+//             default: begin
+//                 o_run_stop = 1'b0;
+//                 o_clear = 1'b0;
+//             end
+//         endcase
+//     end
+// endmodule
