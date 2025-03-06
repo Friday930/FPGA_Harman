@@ -7,7 +7,7 @@ module fsm_exam(
     output      [2:0] led
     );
 
-    parameter   IDLE = 3'b000, ST1 = 3'b001, ST2 = 3'b010, ST3 = 3'b100, ST4 = 3'b111;
+    parameter   [2:0] IDLE = 3'b000, ST1 = 3'b001, ST2 = 3'b010, ST3 = 3'b100, ST4 = 3'b111;
 
     reg         [2:0] r_led;
     reg         [2:0] state;
