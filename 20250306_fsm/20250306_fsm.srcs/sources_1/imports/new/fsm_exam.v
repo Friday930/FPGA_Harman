@@ -93,6 +93,7 @@ module fsm_exam(
                     else if(sw == 3'b111) r_led = 3'b111;
                     else r_led = 3'b101;
                 end 
+                
                 ST4: begin
                     if(sw == 3'b100) r_led = 3'b100;
                     else r_led = 3'b111;
