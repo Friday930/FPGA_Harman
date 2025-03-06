@@ -33,10 +33,30 @@ module mealy(
                 end else next = state;
             end
             RD1_ONCE: begin
-                
+                if (din_bit == 1'b0) begin
+                    next = RD0_ONCE;
+                end else if (din_bit == 1'b1) begin
+                    next = RD1_TWICE;
+                end else next = state;
             end
-            default: 
+            RD0_TWICE: begin
+                if (din_bit == 1'b0) begin
+                    next = RD0_TWICE;
+                end else if (din_bit == 1'b1) begin
+                    next = RD1_ONCE;
+                end else next = state;
+            end
+            RD1_TWICE: begin
+                if (din_bit == 1'b0) begin
+                    next = RD0_ONCE;
+                end else if (din_bit == 1'b1) begin
+                    next = RD1_TWICE;
+                end else next = state;
+            end
+            default: next = state;
         endcase
     end
+
+    assign dout_bit =(((state == RD0_TWICE) && (din_bit == 0) || (state == RD1_TWICE) && (din_bit == 1))) ? 1 : 0;
 
 endmodule
