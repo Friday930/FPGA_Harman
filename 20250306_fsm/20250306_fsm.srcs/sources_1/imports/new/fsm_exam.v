@@ -26,34 +26,34 @@ module fsm_exam(
         next = state;
         case (state)
             IDLE: if(sw == 3'b010) begin
-                next <= ST2;
+                next = ST2;
             end else if(sw == 3'b001) begin
-                next <= ST1;
+                next = ST1;
             end else begin
-                next <= state;
+                next = state;
             end
 
             ST1: if(sw == 3'b010) begin
-                next <= ST2;
+                next = ST2;
             end else next <= state;
 
             ST2: if(sw == 3'b100) begin
-                next <= ST3;
-            end else next <= state;
+                next = ST3;
+            end else next = state;
 
             ST3: if(sw == 3'b000) begin
-                next <= IDLE;
+                next = IDLE;
             end else if(sw == 3'b001) begin
-                next <= ST1;
+                next = ST1;
             end else if(sw == 3'b111) begin
-                next <= ST4;
+                next = ST4;
             end else begin
-                next <= state;
+                next = state;
             end
 
             ST4: if(sw == 3'b100) begin
-                next <= ST3;
-            end
+                next = ST3;
+            end else next = state;
 
             default: next = state;
         endcase
