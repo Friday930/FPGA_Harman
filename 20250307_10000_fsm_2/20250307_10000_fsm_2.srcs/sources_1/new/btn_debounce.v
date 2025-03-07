@@ -7,7 +7,7 @@ module btn_debounce(
     );
 
     // state
-    reg         state, next;
+    //         state, next;
     reg         [7:0] q_reg, q_next; // shift register
     reg         edge_detect;
     wire        btn_debounce;
@@ -15,8 +15,8 @@ module btn_debounce(
     // state logic
     always @(posedge clk, posedge reset) begin
         if (reset) begin
-            state <= 0;
-        end else next <= state;
+            q_reg <= 0;
+        end else q_reg <= q_next;
     end
 
     // next logic
