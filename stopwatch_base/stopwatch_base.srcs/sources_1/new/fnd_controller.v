@@ -3,7 +3,8 @@
 module fnd_controller(
     input clk, reset,
     input [1:0] sw,
-    input [13:0] bcd,
+    input [13:0] sec,
+    input [13:0] msec,
     output [7:0] seg,
     output [3:0] seg_comm
 );
@@ -34,7 +35,8 @@ module fnd_controller(
     );
 
     digit_splitter U_Digit_Splitter(
-        .bcd(bcd),
+        .msec(msec),
+        .sec(sec),
         .digit_1(w_digit_1),
         .digit_10(w_digit_10),
         .digit_100(w_digit_100),
@@ -88,14 +90,15 @@ module bcdtoseg (
 endmodule
 
 module digit_splitter (
-    input [13:0] bcd,
+    input [13:0] sec,
+    input [13:0] msec,
     output [3:0] digit_1, digit_10, digit_100, digit_1000
 );
     
-    assign digit_1 = bcd % 10;
-    assign digit_10 = bcd / 10 % 10;
-    assign digit_100 = bcd / 100 % 10;
-    assign digit_1000 = bcd / 1000 % 10;
+    assign digit_1 = msec % 10;
+    assign digit_10 = msec / 10 % 10;
+    assign digit_100 = sec / 100 % 10;
+    assign digit_1000 = sec / 1000 % 10;
     
 endmodule
 

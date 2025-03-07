@@ -8,7 +8,7 @@ module counter_100(
     output      [3:0] seg_comm,
     output      [7:0] seg
 );
-    wire        [13:0] w_count_msec;
+    wire        [13:0] w_count;
     wire        w_clk_10, w_run_stop, w_clear;
     wire        w_tick_100Hz, o_btn_run_stop, o_btn_clear, w_tick_msec;
 
@@ -19,25 +19,13 @@ module counter_100(
         .o_tick_100Hz   (w_tick_100Hz)
     );
 
-    counter_tick U_Counter_Tick_msec(  // msec
+    counter_tick U_Counter_Tick(  // msec
         .clk            (clk),
         .reset          (reset),
         .clear          (w_clear),
         .tick           (w_tick_100Hz),
-        .counter        (w_count_msec),
+        .counter        (w_count),
         .o_tick         (w_tick_msec)
-    );
-
-    wire    w_count_sec;
-    counter_tick #(
-        .TICK_COUNT   (6_000)
-    ) U_Counter_Tick_sec(  // sec
-        .clk            (clk),
-        .reset          (reset),
-        .clear          (w_clear),
-        .tick           (w_tick_100Hz),
-        .counter        (w_count_sec),
-        .o_tick         ()
     );
 
     btn_debounce U_BTN_Debounce_RUNSTOP(
@@ -54,13 +42,22 @@ module counter_100(
         .o_btn          (o_btn_clear) // to control unit
     );
 
+    count_sec U_Cnt_sec(
+        .clk            (w_tick_100Hz),
+        .reset          (reset),
+        .cnt_60         (w_count[7:0])
+    );
 
+    count_msec U_Cnt_msec(
+        .clk            (clk),
+        .reset          (reset),
+        .cnt_100        (w_count[13:8])
+    );
 
     fnd_controller U_fnd_cntl(
         .clk            (clk),
         .reset          (reset),
-        .sec            (w_count_sec),
-        .msec           (w_count_msec),
+        .bcd            (w_count),
         .seg            (seg),
         .seg_comm       (seg_comm)
     );
@@ -107,7 +104,7 @@ endmodule
 
 module counter_tick #(parameter TICK_COUNT = 10_000)(
     input       clk, reset, tick, clear,
-    output      [$clog2(TICK_COUNT) - 1:0] counter,
+    output      [$clog2(10000) - 1:0] counter,
     output      o_tick
 );
 
