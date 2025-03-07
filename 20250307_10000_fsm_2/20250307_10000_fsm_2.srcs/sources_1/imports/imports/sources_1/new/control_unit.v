@@ -46,17 +46,20 @@ module control_unit (
     
     // combinational output logic
     always @(*) begin
+        o_run_stop = 1'b0;
+        o_clear = 1'b0;
+
         case (state)
             STOP:   begin
-                o_run_stop = 1'b1;
+                o_run_stop = 1'b0;
                 o_clear = 1'b0;
             end
             RUN:    begin
-                o_run_stop = 1'b0;
+                o_run_stop = 1'b1;
                 o_clear = 1'b0;
             end
             CLEAR:  begin
-                o_run_stop = 1'b0;
+                // o_run_stop = 1'b1;
                 o_clear = 1'b1;
             end
             default: begin
