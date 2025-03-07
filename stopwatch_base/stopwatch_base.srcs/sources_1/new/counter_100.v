@@ -19,7 +19,9 @@ module counter_100(
         .o_tick_100Hz   (w_tick_100Hz)
     );
 
-    counter_tick U_Counter_Tick_msec(  // msec
+    counter_tick #(
+        .TICK_COUNT()
+    )U_Counter_Tick_msec(  // msec
         .clk            (clk),
         .reset          (reset),
         .clear          (w_clear),
@@ -30,7 +32,7 @@ module counter_100(
 
     wire    w_count_sec;
     counter_tick #(
-        .TICK_COUNT   (6_000)
+        .TICK_COUNT   ()
     ) U_Counter_Tick_sec(  // sec
         .clk            (clk),
         .reset          (reset),
@@ -81,7 +83,7 @@ module tick_100hz (
     output      o_tick_100Hz
 );
 
-    reg         [$clog2(100_000_000) - 1:0] r_counter;
+    reg         [$clog2(1_000_000) - 1:0] r_counter;
     reg         r_tick_100Hz;
 
     assign      o_tick_100Hz = r_tick_100Hz;
@@ -92,7 +94,7 @@ module tick_100hz (
             r_tick_100Hz <= 0;
          end else begin
             if(run_stop == 1'b1) begin
-                if(r_counter == 100_000_000 - 1) begin
+                if(r_counter == 1_000_000 - 1) begin
                     r_counter <= 0;
                     r_tick_100Hz <= 1'b1;
                 end else begin
