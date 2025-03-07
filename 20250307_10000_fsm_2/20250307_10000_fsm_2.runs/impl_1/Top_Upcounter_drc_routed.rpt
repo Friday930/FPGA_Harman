@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Fri Mar  7 11:58:06 2025
+| Date         : Fri Mar  7 15:32:02 2025
 | Host         : DESKTOP-7CFQ9ND running 64-bit major release  (build 9200)
 | Command      : report_drc -file Top_Upcounter_drc_routed.rpt -pb Top_Upcounter_drc_routed.pb -rpx Top_Upcounter_drc_routed.rpx
 | Design       : Top_Upcounter

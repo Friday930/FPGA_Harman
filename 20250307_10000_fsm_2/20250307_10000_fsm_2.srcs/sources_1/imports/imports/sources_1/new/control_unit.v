@@ -59,7 +59,7 @@ module control_unit (
                 o_clear = 1'b0;
             end
             CLEAR:  begin
-                // o_run_stop = 1'b1;
+                o_run_stop = 1'b0;
                 o_clear = 1'b1;
             end
             default: begin

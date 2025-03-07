@@ -10,7 +10,7 @@ module Top_Upcounter (
 );
     wire        [13:0] w_count;
     wire        w_clk_10, w_run_stop, w_clear;
-    wire        w_tick_100Hz;
+    wire        w_tick_100Hz, o_btn_run_stop, o_btn_clear;
 
     tick_100hz U_Tick_100hz(
         .clk            (clk),
@@ -33,6 +33,20 @@ module Top_Upcounter (
         .counter        (w_count)
     );
 
+    btn_debounce U_BTN_Debounce_RUNSTOP(
+        .clk            (clk),
+        .reset          (reset),
+        .i_btn          (btn_run_stop), // from btn
+        .o_btn          (o_btn_run_stop) // to control unit
+    );
+
+    btn_debounce U_BTN_Debounce_CLEAR(
+        .clk            (clk),
+        .reset          (reset),
+        .i_btn          (btn_clear), // from btn
+        .o_btn          (o_btn_clear) // to control unit
+    );
+
     fnd_controller U_fnd_cntl(
         .clk            (clk),
         .reset          (reset),
@@ -44,8 +58,8 @@ module Top_Upcounter (
     control_unit U_Control_Unit(
         .clk            (clk),
         .reset          (reset),
-        .i_run_stop     (btn_run_stop),
-        .i_clear        (btn_clear),
+        .i_run_stop     (o_btn_run_stop),
+        .i_clear        (o_btn_clear),
         .o_run_stop     (w_run_stop),
         .o_clear        (w_clear)
     );
@@ -57,7 +71,7 @@ module tick_100hz (
     output      o_tick_100Hz
 );
 
-    reg         [$clog2(1_000_000) - 1:0] r_counter;
+    reg         [$clog2(100_000_000) - 1:0] r_counter;
     reg         r_tick_100Hz;
 
     assign      o_tick_100Hz = r_tick_100Hz;
@@ -67,7 +81,7 @@ module tick_100hz (
             r_counter <= 0;
         end else begin
             if(run_stop == 1'b1) begin
-                if(r_counter == 1_000_000 - 1) begin
+                if(r_counter == 100_000_000 - 1) begin
                     r_counter <= 0;
                     r_tick_100Hz <= 1'b1;
                 end else begin
