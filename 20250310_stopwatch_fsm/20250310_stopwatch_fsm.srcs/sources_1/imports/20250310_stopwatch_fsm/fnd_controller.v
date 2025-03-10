@@ -2,7 +2,8 @@
 
 module fnd_controller(
     input           clk, reset,
-    input           [6:0] msec, sec, minute, hour,
+    input           [6:0] msec, sec, minute, 
+    input           [4:0] hour,
     output          [7:0] fnd_font,
     output          [3:0] fnd_comm
 );

@@ -1,0 +1,7 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+C:/FPGA_Harman/20250310_stopwatch_fsm/20250310_stopwatch_fsm.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,,,,,,,
+C:/FPGA_Harman/20250310_stopwatch_fsm/20250310_stopwatch_fsm.srcs/sim_1/new/tb_stopwatch.v,1741589322,verilog,,,,tb_stopwatch,,,,,,,,
+C:/FPGA_Harman/20250310_stopwatch_fsm/20250310_stopwatch_fsm.srcs/sources_1/new/stopwatch_dp.v,1741592050,verilog,,C:/FPGA_Harman/20250310_stopwatch_fsm/20250310_stopwatch_fsm.srcs/sim_1/new/tb_stopwatch.v,,clk_div_100;stopwatch_dp;time_counter,,,,,,,,
