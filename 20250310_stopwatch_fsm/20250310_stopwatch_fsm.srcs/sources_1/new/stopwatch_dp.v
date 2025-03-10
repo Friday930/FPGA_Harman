@@ -50,11 +50,12 @@ endmodule
 
 
 
-module time_counter #(parameter TICK_COUNT = 100 /*BIT_WIDTH = 7*/)(
+module time_counter(
     input       clk, reset, tick,
     output      [6:0] o_time, 
     output      o_tick
 );
+    parameter   TICK_COUNT = 100;
     reg         [$clog2(TICK_COUNT) - 1:0] count_reg, count_next;
     reg         tick_reg, tick_next;
 
@@ -73,7 +74,8 @@ module time_counter #(parameter TICK_COUNT = 100 /*BIT_WIDTH = 7*/)(
     
     always @(*) begin
         count_next = count_reg;
-        tick_next = tick_reg;
+        // tick_next = tick_reg;
+        tick_next = 1'b0;
         if (tick == 1'b1) begin
             if (count_reg == TICK_COUNT - 1) begin
                 count_next = 1'b0;
