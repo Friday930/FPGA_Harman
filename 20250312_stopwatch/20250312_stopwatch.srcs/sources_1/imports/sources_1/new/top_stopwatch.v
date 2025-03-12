@@ -79,6 +79,18 @@ module top_stopwatch(
         .o_run          (run),
         .o_clear        (clear)
     );
+    
+    clock_cu U_Clock_CU(
+    .clk                (clk), 
+    .reset              (reset),
+    .c_sec              (w_btn_sec),
+    .c_minute           (w_btn_min),
+    .c_hour             (w_btn_hour),
+    .cs                 (sw[1]),
+    .o_c_sec            (),     // 비트 폭 수정 (6비트)
+    .o_c_minute         (),  // 비트 폭 수정 (6비트)
+    .o_c_hour           ()     // 비트 폭 수정 (5비트)
+    );
 
     led_indicator U_LED(
         .sw             (sw),
