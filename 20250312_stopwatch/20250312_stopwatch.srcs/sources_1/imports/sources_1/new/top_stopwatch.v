@@ -56,7 +56,6 @@ module top_stopwatch(
         .sec            (sec), 
         .minute         (minute), 
         .hour           (hour),
-        .dot            (dot),
         .fnd_font       (fnd_font),
         .fnd_comm       (fnd_comm)
     );
