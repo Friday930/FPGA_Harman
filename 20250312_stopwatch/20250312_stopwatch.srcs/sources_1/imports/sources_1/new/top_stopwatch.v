@@ -4,7 +4,8 @@ module top_stopwatch(
     input               clk, reset, btn_run, btn_clear, 
     input               [1:0] sw,
     output              [3:0] fnd_comm,
-    output              [7:0] fnd_font
+    output              [7:0] fnd_font,
+    output              [3:0] led
     );
 
     wire                w_clk_100Hz;
@@ -50,14 +51,11 @@ module top_stopwatch(
         .o_run          (run),
         .o_clear        (clear)
     );
-    assign led = (sw == 2'b00) ? 4'b1110 :
-                (sw == 2'b01) ? 4'b1101 :
-                (sw == 2'b10) ? 4'b1011 :
-                (sw == 2'b11) ? 4'b0111 : 4'b1111;
-    // led_indicator U_LED(
-    //     .sw             (sw),
-    //     .led            (led)
-    // );
+
+    led_indicator U_LED(
+        .sw             (sw),
+        .led            (led)
+    );
 
     fnd_controller U_Fnd_Ctrl(
         .clk            (clk), 
@@ -79,10 +77,10 @@ module led_indicator (
     
     always @(*) begin
         case (sw)
-            2'b00: led = 4'b1110;
-            2'b01: led = 4'b1101;
-            2'b10: led = 4'b1011;
-            2'b11: led = 4'b0111;
+            2'b00: led = 4'b0001;
+            2'b01: led = 4'b0010;
+            2'b10: led = 4'b0100;
+            2'b11: led = 4'b1000;
             default: led = 4'bx;
         endcase
     end
