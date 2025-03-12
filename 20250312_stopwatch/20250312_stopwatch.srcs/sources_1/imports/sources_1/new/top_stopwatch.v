@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 module top_stopwatch(
-    input               clk, reset, btn_run, btn_clear, 
+    input               clk, reset, btn_run, btn_clear, btn_hour, btn_min, btn_sec,
     input               [1:0] sw,
     output              [3:0] fnd_comm,
     output              [7:0] fnd_font,
@@ -11,6 +11,7 @@ module top_stopwatch(
     wire                w_clk_100Hz;
     wire                w_msec_tick, w_sec_tick, w_minute_tick;
     wire                w_run, w_clear, run, clear; // 반드시 선언
+    wire                w_btn_hour, w_btn_min, w_btn_sec;
 
     wire                [6:0] msec;
     wire                [5:0] sec;
@@ -57,6 +58,17 @@ module top_stopwatch(
         .reset          (reset),
         .i_btn          (btn_clear),
         .o_btn          (w_clear)
+    );
+
+    clock_module U_Btn_Clock_Module(
+        .clk            (clk), 
+        .reset          (reset),
+        .i_btn_hour     (btn_hour),     // 시간 설정 버튼 (아래 버튼)
+        .i_btn_min      (btn_min),      // 분 설정 버튼 (왼쪽 버튼)
+        .i_btn_sec      (btn_sec),      // 초 설정 버튼 (위 버튼)
+        .o_sec          (w_btn_sec),    // 초 (0-59)
+        .o_min          (w_btn_min),    // 분 (0-59)
+        .o_hour         (w_btn_hour)    // 시 (0-23)
     );
 
     stopwatch_cu U_Stopwatch_CU(
