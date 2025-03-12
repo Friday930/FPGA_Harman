@@ -1,0 +1,322 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Wed Mar 12 08:56:09 2025
+# Process ID: 11596
+# Current directory: C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.runs/synth_1
+# Command line: vivado.exe -log top_stopwatch.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_stopwatch.tcl
+# Log file: C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.runs/synth_1/top_stopwatch.vds
+# Journal file: C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source top_stopwatch.tcl -notrace
+Command: synth_design -top top_stopwatch -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 4960
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1105.336 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'top_stopwatch' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/new/top_stopwatch.v:3]
+INFO: [Synth 8-6157] synthesizing module 'stopwatch_dp' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/new/stopwatch_dp.v:3]
+INFO: [Synth 8-6157] synthesizing module 'time_counter' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/new/stopwatch_dp.v:68]
+	Parameter TICK_COUNT bound to: 100 - type: integer 
+	Parameter BIT_WIDTH bound to: 7 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'time_counter' (1#1) [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/new/stopwatch_dp.v:68]
+INFO: [Synth 8-6157] synthesizing module 'time_counter__parameterized0' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/new/stopwatch_dp.v:68]
+	Parameter TICK_COUNT bound to: 60 - type: integer 
+	Parameter BIT_WIDTH bound to: 6 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'time_counter__parameterized0' (1#1) [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/new/stopwatch_dp.v:68]
+INFO: [Synth 8-6157] synthesizing module 'time_counter__parameterized1' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/new/stopwatch_dp.v:68]
+	Parameter TICK_COUNT bound to: 24 - type: integer 
+	Parameter BIT_WIDTH bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'time_counter__parameterized1' (1#1) [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/new/stopwatch_dp.v:68]
+INFO: [Synth 8-6157] synthesizing module 'clk_div_100' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/new/stopwatch_dp.v:107]
+	Parameter FCOUNT bound to: 1000000 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'clk_div_100' (2#1) [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/new/stopwatch_dp.v:107]
+INFO: [Synth 8-6155] done synthesizing module 'stopwatch_dp' (3#1) [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/new/stopwatch_dp.v:3]
+INFO: [Synth 8-6157] synthesizing module 'btn_debounce' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/btn_debounce.v:4]
+WARNING: [Synth 8-567] referenced signal 'q_reg' should be on the sensitivity list [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/btn_debounce.v:55]
+INFO: [Synth 8-6155] done synthesizing module 'btn_debounce' (4#1) [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/btn_debounce.v:4]
+INFO: [Synth 8-6157] synthesizing module 'stopwatch_cu' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/new/stopwatch_cu.v:3]
+	Parameter STOP bound to: 2'b00 
+	Parameter RUN bound to: 2'b01 
+	Parameter CLEAR bound to: 2'b10 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/new/stopwatch_cu.v:23]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/new/stopwatch_cu.v:48]
+INFO: [Synth 8-6155] done synthesizing module 'stopwatch_cu' (5#1) [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/new/stopwatch_cu.v:3]
+INFO: [Synth 8-6157] synthesizing module 'fnd_controller' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:3]
+	Parameter VDD bound to: 4'b1111 
+	Parameter VSS bound to: 0 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'clk_divider' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:230]
+	Parameter FCOUNT bound to: 250000 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'clk_divider' (6#1) [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:230]
+INFO: [Synth 8-6157] synthesizing module 'clk_gen' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:255]
+	Parameter FCOUNT bound to: 100000000 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'clk_gen' (7#1) [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:255]
+INFO: [Synth 8-6157] synthesizing module 'counter_8' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:283]
+INFO: [Synth 8-6155] done synthesizing module 'counter_8' (8#1) [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:283]
+WARNING: [Synth 8-689] width (4) of port connection 'o_sel' does not match port width (3) of module 'counter_8' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:37]
+INFO: [Synth 8-6157] synthesizing module 'decoder_3x8' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:301]
+INFO: [Synth 8-226] default block is never used [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:308]
+INFO: [Synth 8-6155] done synthesizing module 'decoder_3x8' (9#1) [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:301]
+WARNING: [Synth 8-689] width (4) of port connection 'seg_sel' does not match port width (3) of module 'decoder_3x8' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:41]
+INFO: [Synth 8-6157] synthesizing module 'digit_splitter' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:166]
+	Parameter BIT_WIDTH bound to: 7 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'digit_splitter' (10#1) [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:166]
+INFO: [Synth 8-6157] synthesizing module 'digit_splitter__parameterized0' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:166]
+	Parameter BIT_WIDTH bound to: 6 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'digit_splitter__parameterized0' (10#1) [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:166]
+INFO: [Synth 8-6157] synthesizing module 'digit_splitter__parameterized1' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:166]
+	Parameter BIT_WIDTH bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'digit_splitter__parameterized1' (10#1) [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:166]
+INFO: [Synth 8-6157] synthesizing module 'mux_8x1' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:194]
+INFO: [Synth 8-226] default block is never used [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:200]
+INFO: [Synth 8-6155] done synthesizing module 'mux_8x1' (11#1) [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:194]
+WARNING: [Synth 8-689] width (4) of port connection 'sel' does not match port width (3) of module 'mux_8x1' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:70]
+WARNING: [Synth 8-689] width (4) of port connection 'sel' does not match port width (3) of module 'mux_8x1' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:88]
+INFO: [Synth 8-6157] synthesizing module 'mux_2x1' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:214]
+INFO: [Synth 8-226] default block is never used [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:221]
+INFO: [Synth 8-6155] done synthesizing module 'mux_2x1' (12#1) [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:214]
+INFO: [Synth 8-6157] synthesizing module 'bcdtoseg' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:135]
+INFO: [Synth 8-6155] done synthesizing module 'bcdtoseg' (13#1) [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:135]
+INFO: [Synth 8-6157] synthesizing module 'dot' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:121]
+INFO: [Synth 8-6155] done synthesizing module 'dot' (14#1) [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:121]
+WARNING: [Synth 8-689] width (4) of port connection 'seg_sel' does not match port width (3) of module 'dot' [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:114]
+INFO: [Synth 8-6155] done synthesizing module 'fnd_controller' (15#1) [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'top_stopwatch' (16#1) [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/new/top_stopwatch.v:3]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1105.336 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1105.336 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1105.336 ; gain = 0.000
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1105.336 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc]
+Finished Parsing XDC File [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_stopwatch_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/top_stopwatch_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1168.113 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1168.113 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1168.113 ; gain = 62.777
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1168.113 ; gain = 62.777
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1168.113 ; gain = 62.777
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'stopwatch_cu'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    STOP |                              001 |                               00
+                     RUN |                              010 |                               01
+                   CLEAR |                              100 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'stopwatch_cu'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1168.113 ; gain = 62.777
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   27 Bit       Adders := 1     
+	   2 Input   20 Bit       Adders := 1     
+	   2 Input   18 Bit       Adders := 1     
+	   2 Input   17 Bit       Adders := 2     
+	   2 Input    8 Bit       Adders := 1     
+	   2 Input    7 Bit       Adders := 1     
+	   2 Input    6 Bit       Adders := 2     
+	   2 Input    5 Bit       Adders := 1     
+	   2 Input    3 Bit       Adders := 1     
++---Registers : 
+	               27 Bit    Registers := 1     
+	               20 Bit    Registers := 1     
+	               18 Bit    Registers := 1     
+	               17 Bit    Registers := 2     
+	                8 Bit    Registers := 2     
+	                7 Bit    Registers := 1     
+	                6 Bit    Registers := 2     
+	                5 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 11    
++---Muxes : 
+	   3 Input   27 Bit        Muxes := 1     
+	   2 Input   20 Bit        Muxes := 2     
+	   2 Input   18 Bit        Muxes := 1     
+	   2 Input   17 Bit        Muxes := 2     
+	   3 Input    8 Bit        Muxes := 1     
+	   2 Input    7 Bit        Muxes := 1     
+	   2 Input    6 Bit        Muxes := 4     
+	   2 Input    5 Bit        Muxes := 2     
+	   8 Input    4 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 1     
+	   3 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 1     
+	   3 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 10    
+	   3 Input    1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1168.113 ; gain = 62.777
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1168.113 ; gain = 62.777
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1178.996 ; gain = 73.660
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1179.816 ; gain = 74.480
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1187.426 ; gain = 82.090
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1187.426 ; gain = 82.090
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1187.426 ; gain = 82.090
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1187.426 ; gain = 82.090
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1187.426 ; gain = 82.090
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1187.426 ; gain = 82.090
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    25|
+|3     |LUT1   |     8|
+|4     |LUT2   |    87|
+|5     |LUT3   |    11|
+|6     |LUT4   |    25|
+|7     |LUT5   |    51|
+|8     |LUT6   |    50|
+|9     |FDCE   |   154|
+|10    |FDPE   |     1|
+|11    |IBUF   |     5|
+|12    |OBUF   |    12|
++------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1187.426 ; gain = 82.090
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:11 ; elapsed = 00:00:16 . Memory (MB): peak = 1187.426 ; gain = 19.313
+Synthesis Optimization Complete : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1187.426 ; gain = 82.090
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1199.438 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 25 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1202.691 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+62 Infos, 6 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:20 ; elapsed = 00:00:27 . Memory (MB): peak = 1202.691 ; gain = 97.355
+INFO: [Common 17-1381] The checkpoint 'C:/FPGA_Harman/20250311_stopwatch_dot/20250311_stopwatch_dot.runs/synth_1/top_stopwatch.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file top_stopwatch_utilization_synth.rpt -pb top_stopwatch_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Mar 12 08:56:39 2025...

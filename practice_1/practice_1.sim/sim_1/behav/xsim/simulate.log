@@ -1,0 +1,3 @@
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+$finish called at time : 72 ns : File "C:/FPGA_Harman/practice_1/practice_1.srcs/sim_1/imports/FPGA_Harman/tb_fsm_moore_1010.v" Line 31
