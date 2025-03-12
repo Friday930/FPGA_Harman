@@ -1,7 +1,8 @@
 `timescale 1ns / 1ps
 
 module top_stopwatch(
-    input               clk, reset, btn_run, btn_clear, sw_mode,
+    input               clk, reset, btn_run, btn_clear, 
+    input               [1:0] sw,
     output              [3:0] fnd_comm,
     output              [7:0] fnd_font
     );
@@ -13,7 +14,9 @@ module top_stopwatch(
     wire                [5:0] sec, minute;
     wire                [4:0] hour;
 
-    //sfdg
+    wire [1:0] sw_debug = sw;
+
+
     stopwatch_dp U_StopWatch_DP(
         .clk            (clk),
         .reset          (reset),
@@ -47,11 +50,19 @@ module top_stopwatch(
         .o_run          (run),
         .o_clear        (clear)
     );
+    assign led = (sw == 2'b00) ? 4'b1110 :
+                (sw == 2'b01) ? 4'b1101 :
+                (sw == 2'b10) ? 4'b1011 :
+                (sw == 2'b11) ? 4'b0111 : 4'b1111;
+    // led_indicator U_LED(
+    //     .sw             (sw),
+    //     .led            (led)
+    // );
 
     fnd_controller U_Fnd_Ctrl(
         .clk            (clk), 
         .reset          (reset),
-        .sw_mode        (sw_mode),
+        .sw_mode        (sw[0]),
         .msec           (msec), 
         .sec            (sec), 
         .minute         (minute), 
@@ -59,4 +70,21 @@ module top_stopwatch(
         .fnd_font       (fnd_font),
         .fnd_comm       (fnd_comm)
     );
+endmodule
+
+module led_indicator (
+    input               [1:0] sw,
+    output              reg [3:0] led
+);
+    
+    always @(*) begin
+        case (sw)
+            2'b00: led = 4'b1110;
+            2'b01: led = 4'b1101;
+            2'b10: led = 4'b1011;
+            2'b11: led = 4'b0111;
+            default: led = 4'bx;
+        endcase
+    end
+
 endmodule

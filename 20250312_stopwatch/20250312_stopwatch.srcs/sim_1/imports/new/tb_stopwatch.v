@@ -34,15 +34,15 @@ module tb_stopwatch();
     // );
 
     fnd_controller DUT1(
-    .clk(clk), 
-    .reset(reset), 
-    .sw_mode(sw_mode),
-    .msec(msec), 
-    .sec(sec), 
-    .minute(minute), 
-    .hour(hour),
-    .fnd_font(fnd_font),
-    .fnd_comm(fnd_comm)
+        .clk(clk), 
+        .reset(reset), 
+        .sw_mode(sw_mode),
+        .msec(msec), 
+        .sec(sec), 
+        .minute(minute), 
+        .hour(hour),
+        .fnd_font(fnd_font),
+        .fnd_comm(fnd_comm)
     );
 
     always #5 clk = ~clk; // clk 생성
