@@ -1,12 +1,18 @@
 `timescale 1ns / 1ps
 
-module stopwatch_dp(
-    input       clk, reset, run, clear,
+module clock_dp(
+    input       clk, 
+    input       reset,
+    input       run, 
+    input       clear,
     output      [6:0] msec, 
-    output      [5:0] sec, minute, 
+    output      [5:0] sec, 
+    output      [5:0] minute, 
     output      [4:0] hour
     );
+
     wire    w_msec_tick, w_sec_tick, w_minute_tick;
+
     time_counter #(.TICK_COUNT(100), .BIT_WIDTH(7)) U_Time_mSec(
         .clk            (clk),
         .reset          (reset),

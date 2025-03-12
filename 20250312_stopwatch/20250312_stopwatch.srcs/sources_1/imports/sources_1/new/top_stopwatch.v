@@ -11,11 +11,16 @@ module top_stopwatch(
     wire                w_clk_100Hz;
     wire                w_msec_tick, w_sec_tick, w_minute_tick;
     wire                w_run, w_clear, run, clear; // 반드시 선언
+
     wire                [6:0] msec;
-    wire                [5:0] sec, minute;
+    wire                [5:0] sec;
+    wire                [5:0] minute;
     wire                [4:0] hour;
 
-    wire [1:0] sw_debug = sw;
+    wire                [6:0] c_msec;
+    wire                [5:0] c_sec; 
+    wire                [5:0] c_minute;
+    wire                [4:0] c_hour;
 
 
     stopwatch_dp U_StopWatch_DP(
@@ -27,6 +32,17 @@ module top_stopwatch(
         .sec            (sec),
         .minute         (minute),
         .hour           (hour)
+    );
+
+    clock_dp U_Clock_DP(
+        .clk            (clk), 
+        .reset          (reset),
+        .run            (run), 
+        .clear          (clear),
+        .msec           (c_msec), 
+        .sec            (c_sec), 
+        .minute         (c_minute), 
+        .hour           (c_hour)
     );
 
     btn_debounce U_Btn_DB_RUN(

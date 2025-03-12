@@ -1,12 +1,15 @@
 `timescale 1ns / 1ps
 
 module fnd_controller(
-    input           clk, reset, sw_mode,
+    input           clk,
+    input           reset, 
+    input           sw_mode,
     input           [6:0] msec, 
     input           [5:0] sec, minute, 
     input           [4:0] hour,
     output          [7:0] fnd_font,
-    output          [3:0] fnd_comm
+    output          [3:0] fnd_comm,
+    output          [3:0] led
 );
     wire            [3:0] w_bcd, w_digit_msec_1, w_digit_msec_10, w_digit_sec_1, w_digit_sec_10;
     wire            [3:0] w_digit_min_1, w_digit_min_10, w_digit_hour_1, w_digit_hour_10;

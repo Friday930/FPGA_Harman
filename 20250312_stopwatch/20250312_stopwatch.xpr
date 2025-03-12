@@ -84,6 +84,13 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PSRCDIR/sources_1/new/clock_dp.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../20250311_stopwatch_dot/20250311_stopwatch_dot.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v"/>
@@ -120,7 +127,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/clock_dp.v">
+      <File Path="$PSRCDIR/sources_1/new/btn_clock.v">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
