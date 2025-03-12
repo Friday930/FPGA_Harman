@@ -9,3 +9,4 @@
 # Log file: C:/FPGA_Harman/20250312_stopwatch/20250312_stopwatch.runs/synth_1/top_stopwatch.vds
 # Journal file: C:/FPGA_Harman/20250312_stopwatch/20250312_stopwatch.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
+source top_stopwatch.tcl -notrace
