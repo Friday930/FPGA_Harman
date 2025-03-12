@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/FPGA_Harman/stopwatch_base/stopwatch_base.runs/synth_1/counter_100.tcl"
+  variable script "D:/FPGA_Harman/stopwatch_base/stopwatch_base.runs/synth_1/counter_100.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,32 +70,27 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 4
-set_param synth.incrementalSynthesisCache C:/Users/kccistc/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-12028-DESKTOP-7CFQ9ND/incrSyn
-set_param xicom.use_bs_reader 1
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/FPGA_Harman/stopwatch_base/stopwatch_base.cache/wt [current_project]
-set_property parent.project_path C:/FPGA_Harman/stopwatch_base/stopwatch_base.xpr [current_project]
+set_property webtalk.parent_dir D:/FPGA_Harman/stopwatch_base/stopwatch_base.cache/wt [current_project]
+set_property parent.project_path D:/FPGA_Harman/stopwatch_base/stopwatch_base.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property board_part_repo_paths {C:/Users/kccistc/AppData/Roaming/Xilinx/Vivado/2020.2/xhub/board_store/xilinx_board_store} [current_project]
+set_property board_part_repo_paths {C:/Users/user/AppData/Roaming/Xilinx/Vivado/2020.2/xhub/board_store/xilinx_board_store} [current_project]
 set_property board_part digilentinc.com:basys3:part0:1.1 [current_project]
-set_property ip_output_repo c:/FPGA_Harman/stopwatch_base/stopwatch_base.cache/ip [current_project]
+set_property ip_output_repo d:/FPGA_Harman/stopwatch_base/stopwatch_base.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  C:/FPGA_Harman/stopwatch_base/stopwatch_base.srcs/sources_1/new/btn_debounce.v
-  C:/FPGA_Harman/stopwatch_base/stopwatch_base.srcs/sources_1/new/control_unit.v
-  C:/FPGA_Harman/stopwatch_base/stopwatch_base.srcs/sources_1/new/fnd_controller.v
-  C:/FPGA_Harman/stopwatch_base/stopwatch_base.srcs/sources_1/new/counter_100.v
+  D:/FPGA_Harman/stopwatch_base/stopwatch_base.srcs/sources_1/new/btn_debounce.v
+  D:/FPGA_Harman/stopwatch_base/stopwatch_base.srcs/sources_1/new/control_unit.v
+  D:/FPGA_Harman/stopwatch_base/stopwatch_base.srcs/sources_1/new/fnd_controller.v
+  D:/FPGA_Harman/stopwatch_base/stopwatch_base.srcs/sources_1/new/counter_100.v
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -106,8 +101,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/FPGA_Harman/stopwatch_base/stopwatch_base.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc
-set_property used_in_implementation false [get_files C:/FPGA_Harman/stopwatch_base/stopwatch_base.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc]
+read_xdc D:/FPGA_Harman/stopwatch_base/stopwatch_base.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc
+set_property used_in_implementation false [get_files D:/FPGA_Harman/stopwatch_base/stopwatch_base.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
