@@ -39,7 +39,7 @@ module tb_alu();
     initial begin
         $display("Starting ALU Test...");
         // $monitor 사용하여 실시간 값 추적 (입력 및 출력 상태를 확인)
-        $monitor("Time=%0t | a=%h | b=%h | op=%h | result=%h"); // 이벤트 발생 시
+        $monitor("Time=%0t | a=%h | b=%h | op=%h | result=%h", $time, a, b, op, result); // 이벤트 발생 시
 
         test_alu(4'h3, 4'h5, 2'b00, 4'h8); // ADD
         test_alu(4'h7, 4'h2, 2'b01, 4'h5); // SUB
