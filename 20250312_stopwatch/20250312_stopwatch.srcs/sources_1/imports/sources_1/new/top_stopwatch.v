@@ -36,17 +36,7 @@ module top_stopwatch(
         .hour           (hour)
     );
 
-    clock_dp U_Clock_DP(
-        .clk            (clk), 
-        .reset          (reset),
-        .run            (run), 
-        .clear          (clear),
-        .msec           (c_msec), 
-        .sec            (c_sec), 
-        .minute         (c_minute), 
-        .hour           (c_hour)
-    );
-
+    
     btn_debounce U_Btn_DB_RUN(
         .clk            (clk),
         .reset          (reset),
