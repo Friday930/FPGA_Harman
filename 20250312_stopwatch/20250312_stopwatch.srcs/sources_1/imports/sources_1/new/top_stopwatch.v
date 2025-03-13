@@ -12,6 +12,7 @@ module top_stopwatch(
     wire                w_msec_tick, w_sec_tick, w_minute_tick;
     wire                w_run, w_clear, run, clear; // 반드시 선언
     wire                w_btn_hour, w_btn_min, w_btn_sec;
+    wire                cs, cs_inv;
 
     wire                [6:0] msec;
     wire                [5:0] sec;
@@ -74,6 +75,7 @@ module top_stopwatch(
     stopwatch_cu U_Stopwatch_CU(
         .clk            (clk),
         .reset          (reset),
+        .cs             (cs_inv),
         .i_btn_run      (w_run),
         .i_btn_clear    (w_clear),
         .o_run          (run),
@@ -86,7 +88,7 @@ module top_stopwatch(
     .c_sec              (w_btn_sec),
     .c_minute           (w_btn_min),
     .c_hour             (w_btn_hour),
-    .cs                 (sw[1]),
+    .cs                 (cs),
     .o_c_sec            (),     // 비트 폭 수정 (6비트)
     .o_c_minute         (),  // 비트 폭 수정 (6비트)
     .o_c_hour           ()     // 비트 폭 수정 (5비트)
@@ -109,6 +111,7 @@ module top_stopwatch(
         .fnd_comm       (fnd_comm)
     );
 endmodule
+
 
 module led_indicator (
     input               [1:0] sw,
