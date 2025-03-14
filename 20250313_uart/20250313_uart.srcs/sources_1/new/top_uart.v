@@ -60,6 +60,7 @@ module uart_tx (
 
         case (state)
             IDLE: begin
+                tx_next = 1'b1; // high
                 if (start_trigger) begin
                     next = START;
                 end

@@ -4,7 +4,7 @@ module clock_module(
     input           clk, reset,
     input           i_btn_hour,     // 시간 설정 버튼 (아래 버튼)
     input           i_btn_min,      // 분 설정 버튼 (왼쪽 버튼)
-    // input           i_btn_sec,      // 초 설정 버튼 (위 버튼)
+    input           i_btn_sec,      // 초 설정 버튼 (위 버튼)
     output   reg    [5:0] o_sec,    // 초 (0-59)
     output   reg    [5:0] o_min,    // 분 (0-59)
     output   reg    [4:0] o_hour    // 시 (0-23)
@@ -50,12 +50,12 @@ module clock_module(
         .o_btn(w_btn_min)
     );
     
-    // btn_clock U_BTN_SEC(
-    //     .i_btn(i_btn_sec),
-    //     .clk(clk),
-    //     .reset(reset),
-    //     .o_btn(w_btn_sec)
-    // );
+    btn_clock U_BTN_SEC(
+        .i_btn(i_btn_sec),
+        .clk(clk),
+        .reset(reset),
+        .o_btn(w_btn_sec)
+    );
     
     // 시계 동작 로직
     always @(posedge clk, posedge reset) begin

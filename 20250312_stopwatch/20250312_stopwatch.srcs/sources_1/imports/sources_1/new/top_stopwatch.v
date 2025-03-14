@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 module top_stopwatch(
-    input               clk, reset, btn_run, btn_clear, btn_hour, btn_min, btn_sec,
+    input               clk, reset, btn_run, btn_clear, btn_hour, btn_min,
     input               [1:0] sw,
     output              [3:0] fnd_comm,
     output              [7:0] fnd_font,
@@ -68,7 +68,7 @@ module top_stopwatch(
         .reset          (reset),
         .i_btn_hour     (btn_hour),     // 시간 설정 버튼 (아래 버튼)
         .i_btn_min      (btn_min),      // 분 설정 버튼 (왼쪽 버튼)
-        // .i_btn_sec      (btn_sec),      // 초 설정 버튼 (위 버튼)
+        .i_btn_sec      (w_run),      // 초 설정 버튼 (위 버튼)
         .o_sec          (w_btn_sec),    // 초 (0-59)
         .o_min          (w_btn_min),    // 분 (0-59)
         .o_hour         (w_btn_hour)    // 시 (0-23)
@@ -96,10 +96,10 @@ module top_stopwatch(
     .o_c_hour           (ccu_hour)     // 비트 폭 수정 (5비트)
     );
 
-    // led_indicator U_LED(
-    //     .sw             (sw),
-    //     .led            (led)
-    // );
+    led_indicator U_LED(
+        .sw             (sw),
+        .led            (led)
+    );
 
     MUX_7 U_MUX_7(
     .st_hour            (sdp_hour),
@@ -130,22 +130,22 @@ module top_stopwatch(
 endmodule
 
 
-// module led_indicator (
-//     input               [1:0] sw,
-//     output              reg [3:0] led
-// );
+module led_indicator (
+    input               [1:0] sw,
+    output              reg [3:0] led
+);
     
-//     always @(*) begin
-//         case (sw)
-//             2'b00: led = 4'b0001;
-//             2'b01: led = 4'b0010;
-//             2'b10: led = 4'b0100;
-//             2'b11: led = 4'b1000;
-//             default: led = 4'bx;
-//         endcase
-//     end
+    always @(*) begin
+        case (sw)
+            2'b00: led = 4'b0001;
+            2'b01: led = 4'b0010;
+            2'b10: led = 4'b0100;
+            2'b11: led = 4'b1000;
+            default: led = 4'bx;
+        endcase
+    end
 
-// endmodule
+endmodule
 
 module MUX_7 (
     input               [4:0] st_hour,
