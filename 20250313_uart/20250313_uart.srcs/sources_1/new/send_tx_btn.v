@@ -41,8 +41,7 @@ module send_tx_btn(
         if (w_start == 1'b1) begin // from debounce
             if (send_tx_data_reg == "z") begin
                 send_tx_data_next = "0";
-            end
-            send_tx_data_next = send_tx_data_reg + 1; // ASCII code value increase 1 
+            end else send_tx_data_next = send_tx_data_reg + 1; // ASCII code value increase 1 
         end
     end
 

@@ -15,7 +15,7 @@ module top_uart(
         .rst            (rst),
         .tick           (w_tick),
         .start_trigger  (btn_start),
-        .data_in        (8'h30), // ASCII
+        .data_in        (tx_data_in), // ASCII
         .o_tx_done      (tx_done),
         .o_tx           (tx)
     );
