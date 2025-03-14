@@ -4,7 +4,8 @@ module top_uart(
     input               clk,
     input               rst,
     input               btn_start,
-    input               tx
+    output              tx,
+    output              tx_done
 );  
     wire                w_tick;
 
@@ -14,6 +15,7 @@ module top_uart(
         .tick           (w_tick),
         .start_trigger  (btn_start),
         .data_in        (8'h30), // ASCII
+        .o_tx_done      (tx_done),
         .o_tx           (tx)
     );
 
@@ -31,7 +33,8 @@ module uart_tx (
     input               tick,
     input               start_trigger,
     input               [7:0] data_in,
-    output              o_tx
+    output              o_tx,
+    output              o_tx_done
 );
 
     // fsm state
@@ -40,16 +43,22 @@ module uart_tx (
 
     reg                 [3:0] state, next;
     reg                 tx_reg, tx_next;
+    reg                 tx_done_reg;
+    reg                 tx_done_next;
 
     assign              o_tx = tx_reg;
+    assign              o_tx_done = tx_done_reg;
 
     always @(posedge clk, posedge rst) begin
         if (rst) begin
             state <= 0;
-            tx_reg <= 0;
+            tx_reg <= 1'b1; // UART tx line을 초기에 항상 1로 만들기 위함
+            tx_done_reg <= 0;
         end else begin
             state <= next;
-            tx_reg = tx_next;
+            tx_reg <= tx_next;
+            tx_done_reg <= tx_done_next;
+
         end
     end
 
@@ -57,17 +66,21 @@ module uart_tx (
     always @(*) begin
         next = state;
         tx_next = tx_reg;
+        tx_done_next = tx_done_reg;
 
         case (state)
             IDLE: begin
-                tx_next = 1'b1; // high
+                // tx_done_next = 1'b1; // high
+                tx_next = 1'b1;
                 if (start_trigger) begin
+                    // 1번 자리
                     next = START;
                 end
             end
 
             START: begin
                 if (tick == 1'b1) begin
+                    tx_done_next = 1'b1;// 2번 자리
                     tx_next = 1'b0; // 출력
                     next = D0;
                 end
@@ -131,6 +144,7 @@ module uart_tx (
 
             STOP: begin
                 if (tick == 1'b1) begin
+                    tx_done_next = 1'b0; // 3번 자리
                     tx_next = 1'b1;
                     next = IDLE;
                 end

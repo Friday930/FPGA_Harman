@@ -9,7 +9,7 @@ module tb_uart_tx();
     reg             [7:0] tx_din;
 
     wire            tx_dout;
-    // wire            tx_done;
+    wire            tx_done;
 
     // uart_tx UART_DUT(
     //     .clk(),
@@ -21,10 +21,11 @@ module tb_uart_tx();
     // );
 
     top_uart dut(
-        .clk(clk),
-        .rst(rst),
-        .btn_start(tx_start_trig),
-        .tx(tx_dout)
+        .clk        (clk),
+        .rst        (rst),
+        .btn_start  (tx_start_trig),
+        .tx_done    (tx_done),
+        .tx         (tx_dout)
     );  
 
     always #5 clk = ~clk;
