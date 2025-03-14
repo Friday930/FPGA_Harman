@@ -9,25 +9,25 @@ module send_tx_btn(
 
     wire                w_start, w_tx_done;
     wire                [7:0] w_tx_data;
+    // send tx ascii to PC
+    reg                 [7:0] send_tx_data_reg, send_tx_data_next;
 
     btn_debounce U_Start_btn(
-    .i_btn              (btn_start), 
-    .clk                (clk), 
-    .reset              (rset),
-    .o_btn              (w_start)
+        .i_btn          (btn_start), 
+        .clk            (clk), 
+        .reset          (rset),
+        .o_btn          (w_start)
     );
 
     top_uart U_UART(
-    .clk                (clk),
-    .rst                (rst),
-    .btn_start          (w_start),
-    .tx_data_in         (w_tx_data),
-    .tx                 (tx),
-    .tx_done            (w_tx_done)
+        .clk            (clk),
+        .rst            (rst),
+        .btn_start      (w_start),
+        .tx_data_in     (send_tx_data_reg),
+        .tx             (tx),
+        .tx_done        (w_tx_done)
     );  
 
-    // send tx ascii to PC
-    reg                 [7:0] send_tx_data_reg, send_tx_data_next;
     always @(posedge clk, posedge rst) begin
        if (rst) begin
             send_tx_data_reg <= 8'h30; // "0"; 둘다 가능
