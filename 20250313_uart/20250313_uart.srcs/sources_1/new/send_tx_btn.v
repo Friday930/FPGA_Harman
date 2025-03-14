@@ -8,6 +8,7 @@ module send_tx_btn(
     );
 
     wire                w_start, w_tx_done;
+    wire                [7:0] w_tx_data;
 
     btn_debounce U_Start_btn(
     .i_btn              (btn_start), 
@@ -20,10 +21,29 @@ module send_tx_btn(
     .clk                (clk),
     .rst                (rst),
     .btn_start          (w_start),
+    .tx_data_in         (w_tx_data),
     .tx                 (tx),
     .tx_done            (w_tx_done)
     );  
 
     // send tx ascii to PC
+    reg                 [7:0] send_tx_data_reg, send_tx_data_next;
+    always @(posedge clk, posedge rst) begin
+       if (rst) begin
+            send_tx_data_reg <= 8'h30; // "0"; 둘다 가능
+       end else begin
+            send_tx_data_reg <= send_tx_data_next;
+       end
+    end
+
+    always @(*) begin
+        send_tx_data_next = send_tx_data_reg;
+        if (w_start == 1'b1) begin // from debounce
+            if (send_tx_data_reg == "z") begin
+                send_tx_data_next = "0";
+            end
+            send_tx_data_next = send_tx_data_reg + 1; // ASCII code value increase 1 
+        end
+    end
 
 endmodule

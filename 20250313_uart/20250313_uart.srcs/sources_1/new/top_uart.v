@@ -4,8 +4,9 @@ module top_uart(
     input               clk,
     input               rst,
     input               btn_start,
-    output              tx,
-    output              tx_done
+    input               [7:0] tx_data_in,
+    output              tx_done,
+    output              tx
 );  
     wire                w_tick;
 

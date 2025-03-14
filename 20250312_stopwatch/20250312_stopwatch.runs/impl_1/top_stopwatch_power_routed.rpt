@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date             : Fri Mar 14 14:07:50 2025
+| Date             : Fri Mar 14 15:09:10 2025
 | Host             : DESKTOP-7CFQ9ND running 64-bit major release  (build 9200)
 | Command          : report_power -file top_stopwatch_power_routed.rpt -pb top_stopwatch_power_summary_routed.pb -rpx top_stopwatch_power_routed.rpx
 | Design           : top_stopwatch
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.104        |
+| Total On-Chip Power (W)  | 0.105        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.032        |
+| Dynamic (W)              | 0.033        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.5         |
@@ -53,16 +53,16 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.002 |        3 |       --- |             --- |
-| Slice Logic    |     0.001 |      697 |       --- |             --- |
+| Slice Logic    |     0.001 |      699 |       --- |             --- |
 |   LUT as Logic |     0.001 |      263 |     20800 |            1.26 |
 |   CARRY4       |    <0.001 |       37 |      8150 |            0.45 |
 |   Register     |    <0.001 |      270 |     41600 |            0.65 |
 |   F7/F8 Muxes  |    <0.001 |        1 |     32600 |           <0.01 |
 |   Others       |     0.000 |       22 |       --- |             --- |
-| Signals        |     0.001 |      573 |       --- |             --- |
-| I/O            |     0.028 |       24 |       106 |           22.64 |
+| Signals        |     0.001 |      575 |       --- |             --- |
+| I/O            |     0.029 |       24 |       106 |           22.64 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.104 |          |           |                 |
+| Total          |     0.105 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -141,7 +141,7 @@ Table of Contents
 +----------------------+-----------+
 | Name                 | Power (W) |
 +----------------------+-----------+
-| top_stopwatch        |     0.032 |
+| top_stopwatch        |     0.033 |
 |   U_Btn_Clock_Module |     0.002 |
 +----------------------+-----------+
 
