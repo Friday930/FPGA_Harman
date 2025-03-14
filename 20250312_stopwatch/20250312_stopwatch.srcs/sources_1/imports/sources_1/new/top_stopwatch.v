@@ -68,7 +68,7 @@ module top_stopwatch(
         .reset          (reset),
         .i_btn_hour     (btn_hour),     // 시간 설정 버튼 (아래 버튼)
         .i_btn_min      (btn_min),      // 분 설정 버튼 (왼쪽 버튼)
-        .i_btn_sec      (btn_sec),      // 초 설정 버튼 (위 버튼)
+        // .i_btn_sec      (btn_sec),      // 초 설정 버튼 (위 버튼)
         .o_sec          (w_btn_sec),    // 초 (0-59)
         .o_min          (w_btn_min),    // 분 (0-59)
         .o_hour         (w_btn_hour)    // 시 (0-23)
