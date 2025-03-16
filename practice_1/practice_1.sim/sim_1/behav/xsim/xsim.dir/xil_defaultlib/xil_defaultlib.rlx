@@ -1,0 +1,7 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+C:/FPGA_Harman/practice_1/practice_1.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,,,,,,,
+C:/FPGA_Harman/practice_1/practice_1.srcs/sim_1/imports/FPGA_Harman/tb_fsm_moore_1010.v,1741572057,verilog,,,,TB,,,,,,,,
+C:/FPGA_Harman/practice_1/practice_1.srcs/sources_1/new/practice.v,1741571836,verilog,,C:/FPGA_Harman/practice_1/practice_1.srcs/sim_1/imports/FPGA_Harman/tb_fsm_moore_1010.v,,seq_detector_1010,,,,,,,,

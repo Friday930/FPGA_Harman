@@ -1,0 +1,10 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+C:/FPGA_Harman/stopwatch_base/stopwatch_base.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,,,,,,,
+C:/FPGA_Harman/stopwatch_base/stopwatch_base.srcs/sim_1/new/tb_stopwatch.v,1741332048,verilog,,,,tb_stopwatch,,,,,,,,
+C:/FPGA_Harman/stopwatch_base/stopwatch_base.srcs/sources_1/new/btn_debounce.v,1741331642,verilog,,C:/FPGA_Harman/stopwatch_base/stopwatch_base.srcs/sources_1/new/control_unit.v,,btn_debounce,,,,,,,,
+C:/FPGA_Harman/stopwatch_base/stopwatch_base.srcs/sources_1/new/control_unit.v,1741331901,verilog,,C:/FPGA_Harman/stopwatch_base/stopwatch_base.srcs/sources_1/new/fnd_controller.v,,control_unit,,,,,,,,
+C:/FPGA_Harman/stopwatch_base/stopwatch_base.srcs/sources_1/new/counter_100.v,1741332017,verilog,,C:/FPGA_Harman/stopwatch_base/stopwatch_base.srcs/sim_1/new/tb_stopwatch.v,,counter_100;counter_tick;tick_100hz,,,,,,,,
+C:/FPGA_Harman/stopwatch_base/stopwatch_base.srcs/sources_1/new/fnd_controller.v,1741331264,verilog,,C:/FPGA_Harman/stopwatch_base/stopwatch_base.srcs/sources_1/new/counter_100.v,,bcdtoseg;clk_divider;counter_4;decoder_2x4;digit_splitter;fnd_controller;mux_4x1,,,,,,,,

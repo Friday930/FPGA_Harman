@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.runs/synth_1/fnd_controller.tcl"
+  variable script "C:/FPGA_Harman/20250304_HW/20250304_HW.runs/synth_1/fnd_controller.tcl"
   variable category "vivado_synth"
 }
 
@@ -78,17 +78,17 @@ create_project -in_memory -part xc7a35tcpg236-1
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.cache/wt [current_project]
-set_property parent.project_path C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.xpr [current_project]
+set_property webtalk.parent_dir C:/FPGA_Harman/20250304_HW/20250304_HW.cache/wt [current_project]
+set_property parent.project_path C:/FPGA_Harman/20250304_HW/20250304_HW.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_output_repo c:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.cache/ip [current_project]
+set_property ip_output_repo c:/FPGA_Harman/20250304_HW/20250304_HW.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v
-  C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v
+  C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/new/counter.v
+  C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/sources_1/imports/new/fnd_controller.v
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -99,8 +99,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc
-set_property used_in_implementation false [get_files C:/Vivado_Workspace/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc]
+read_xdc C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc
+set_property used_in_implementation false [get_files C:/FPGA_Harman/20250304_HW/20250304_HW.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]

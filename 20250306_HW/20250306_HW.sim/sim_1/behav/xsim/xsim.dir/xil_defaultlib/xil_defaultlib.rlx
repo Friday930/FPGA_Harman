@@ -1,0 +1,8 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+C:/FPGA_Harman/20250306_HW/20250306_HW.sim/sim_1/behav/xsim/glbl.v,1741305305,verilog,,,,glbl,,,,,,,,
+C:/FPGA_Harman/20250306_HW/20250306_HW.srcs/sim_1/new/mealy_fsm_tb.v,1741306403,verilog,,,,mealy_fsm_tb,,,,,,,,
+C:/FPGA_Harman/20250306_HW/20250306_HW.srcs/sim_1/new/tb_mealy.v,1741305305,verilog,,,,mealy_tb,,,,,,,,
+C:/FPGA_Harman/20250306_HW/20250306_HW.srcs/sources_1/new/mealy.v,1741305305,verilog,,C:/FPGA_Harman/20250306_HW/20250306_HW.srcs/sim_1/new/tb_mealy.v,,mealy,,,,,,,,
