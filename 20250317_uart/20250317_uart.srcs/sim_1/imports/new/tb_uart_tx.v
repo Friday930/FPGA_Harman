@@ -28,6 +28,13 @@ module tb_uart_tx();
         .tx         (tx_dout)
     );  
 
+    send_char dut2(
+        .clk(),
+        .rst(),
+        .btn_start(tx_start_trig),
+        .tx(tx_dout)
+    );
+
     always #5 clk = ~clk;
 
     initial begin
