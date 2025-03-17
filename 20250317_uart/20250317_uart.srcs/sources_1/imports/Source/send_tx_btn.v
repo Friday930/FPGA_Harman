@@ -15,7 +15,7 @@ module send_tx_btn(
     btn_debounce U_Start_btn(
         .i_btn          (btn_start), 
         .clk            (clk), 
-        .reset          (rset),
+        .reset          (rst),
         .o_btn          (w_start)
     );
 
@@ -24,8 +24,8 @@ module send_tx_btn(
         .rst            (rst),
         .btn_start      (w_start),
         .tx_data_in     (send_tx_data_reg),
-        .tx             (tx),
-        .tx_done        (w_tx_done)
+        .o_tx           (tx),
+        .o_tx_done      (w_tx_done)
     );  
 
     always @(posedge clk, posedge rst) begin

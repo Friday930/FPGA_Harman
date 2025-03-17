@@ -16,8 +16,8 @@ module top_uart(
         .tick           (w_tick),
         .start_trigger  (btn_start),
         .data_in        (tx_data_in), // ASCII
-        .o_tx_done      (tx_done),
-        .o_tx           (tx)
+        .o_tx_done      (o_tx_done),
+        .o_tx           (o_tx)
     );
 
     baud_tick_gen U_BAUD_Tick_Gen(
@@ -47,8 +47,8 @@ module uart_tx (
     reg                 tx_done_next;
     reg                 [2:0] bit_count_reg;
     reg                 [2:0] bit_count_next;
-    reg                 [3:0]tick_count_reg;
-    reg                 [3:0]tick_count_next;
+    reg                 [3:0] tick_count_reg;
+    reg                 [3:0] tick_count_next;
 
     assign              o_tx = tx_reg;
     assign              o_tx_done = tx_done_reg;
@@ -74,8 +74,8 @@ module uart_tx (
         next = state;
         tx_next = tx_reg;
         tx_done_next = tx_done_reg;
-        bit_count_reg = bit_count_next;
-        tick_count_reg = tick_count_next;
+        bit_count_next = bit_count_reg;
+        tick_count_next = tick_count_reg;
         case (state)
             IDLE: begin
                 // tx_done_next = 1'b1; // high
@@ -111,7 +111,7 @@ module uart_tx (
                 tx_next = data_in[bit_count_reg]; // UART LSB first
                 if (tick) begin
                     if (tick_count_reg == 15) begin
-                        tick_count_reg = 0; // 다음 상태 가기 전 초기화
+                        tick_count_next = 0; // 다음 상태 가기 전 초기화
                         if (bit_count_reg == 7) begin
                             next = STOP; 
                         end else begin

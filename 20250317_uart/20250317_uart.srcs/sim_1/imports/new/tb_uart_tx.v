@@ -20,21 +20,22 @@ module tb_uart_tx();
     //     .o_tx()
     // );
 
-    // top_uart dut(
-    //     .clk        (clk),
-    //     .rst        (rst),
-    //     .btn_start  (tx_start_trig),
-    //     .tx_done    (tx_done),
-    //     .tx         (tx_dout)
-    // );  
-
-    send_tx_btn dut(
+     top_uart dut(
+         .clk        (clk),
+         .rst        (rst),
+         .btn_start  (tx_start_trig),
+         .tx_data_in(tx_din),
+         .o_tx(tx_dout),
+         .o_tx_done   (tx_done)      
+     );  
+/*
+    send_tx_btn dut1(
         .clk(clk),
         .rst(rst),
         .btn_start(tx_start_trig),
         .tx(tx_dout)
     );
-
+*/
     always #5 clk = ~clk;
 
     initial begin
