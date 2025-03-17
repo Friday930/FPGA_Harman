@@ -20,17 +20,17 @@ module tb_uart_tx();
     //     .o_tx()
     // );
 
-    top_uart dut(
-        .clk        (clk),
-        .rst        (rst),
-        .btn_start  (tx_start_trig),
-        .tx_done    (tx_done),
-        .tx         (tx_dout)
-    );  
+    // top_uart dut(
+    //     .clk        (clk),
+    //     .rst        (rst),
+    //     .btn_start  (tx_start_trig),
+    //     .tx_done    (tx_done),
+    //     .tx         (tx_dout)
+    // );  
 
-    send_char dut2(
-        .clk(),
-        .rst(),
+    send_tx_btn dut(
+        .clk(clk),
+        .rst(rst),
         .btn_start(tx_start_trig),
         .tx(tx_dout)
     );
@@ -40,11 +40,11 @@ module tb_uart_tx();
     initial begin
         clk = 1'b0;
         rst = 1'b1;
-        // tx_din = 8'b01010101;
+        tx_din = 8'b01010101;
         tx_start_trig = 1'b0;
 
         #20 rst = 1'b0;
-        #20 tx_start_trig = 1'b1;
+        #20000 tx_start_trig = 1'b1;
         #20 tx_start_trig = 1'b0;
     end
 
