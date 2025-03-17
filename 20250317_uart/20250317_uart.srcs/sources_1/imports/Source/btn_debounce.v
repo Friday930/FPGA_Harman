@@ -5,15 +5,15 @@ module btn_debounce(
     input       i_btn, clk, reset,
     output      o_btn
     );
-
+    localparam  DEBOUNCE_COUNT = 1_000;
     // state
     //         state, next;
     reg         [7:0] q_reg, q_next; // shift register
     reg         edge_detect;
     wire        btn_debounce;
 
-    // 1kHz clk, state
-    reg         [$clog2(100_000)-1:0] counter;
+    // 100kHz clk, state
+    reg         [$clog2(DEBOUNCE_COUNT)-1:0] counter;
     reg         r_1kHz;
 
     always @(posedge clk, posedge reset) begin
@@ -21,7 +21,7 @@ module btn_debounce(
             counter <= 0;
             r_1kHz <= 0;
         end else begin
-            if (counter == 100_000 - 1) begin
+            if (counter == DEBOUNCE_COUNT - 1) begin
                 counter <= 0;
                 r_1kHz <= 1'b1;
             end else begin // 1kHz 1thick

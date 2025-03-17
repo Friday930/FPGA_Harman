@@ -45,8 +45,8 @@ module uart_tx (
     reg                 tx_reg, tx_next;
     reg                 tx_done_reg;
     reg                 tx_done_next;
-    reg                 bit_count_reg;
-    reg                 bit_count_next;
+    reg                 [2:0] bit_count_reg;
+    reg                 [2:0] bit_count_next;
 
     assign              o_tx = tx_reg;
     assign              o_tx_done = tx_done_reg;
@@ -77,6 +77,7 @@ module uart_tx (
             IDLE: begin
                 // tx_done_next = 1'b1; // high
                 tx_next = 1'b1;
+                tx_done_next = 1'b0;
                 if (start_trigger) begin
                     // 1번 자리
                     next = SEND;
@@ -92,7 +93,7 @@ module uart_tx (
             START: begin
                 tx_done_next = 1'b1;
                 if (tick == 1'b1) begin
-                    tx_done_next = 1'b1;// 2번 자리
+                    tx_done_next = 1'b1;
                     tx_next = 1'b0; // 출력
                     next = DATA;
                     bit_count_next = 0; // bit_count 초기화 (안하면 DATA bit_count에 잘못된 값 들어갈 가능성 O)
@@ -100,17 +101,19 @@ module uart_tx (
             end
 
             DATA: begin
-                if (bit_count_reg == 7) begin
-                    next = STOP;
-                end else begin
-                   next = DATA;
-                   tx_next = data_in[bit_count_reg]; // UART LSB first
+                tx_next = data_in[bit_count_reg]; // UART LSB first
+                if (tick) begin
+                    bit_count_next = bit_count_reg + 1; // bit count 증가  
+                    if (bit_count_reg == 7) begin
+                        next = STOP;
+                    end else begin
+                        next = DATA;
+                    end
                 end
             end
 
             STOP: begin
                 if (tick == 1'b1) begin
-                    tx_done_next = 1'b0; // 3번 자리
                     tx_next = 1'b1;
                     next = IDLE;
                 end
