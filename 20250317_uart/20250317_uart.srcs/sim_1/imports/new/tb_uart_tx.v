@@ -47,6 +47,8 @@ module tb_uart_tx();
         #20 rst = 1'b0;
         #20000 tx_start_trig = 1'b1;
         #20 tx_start_trig = 1'b0;
+        #20000 tx_start_trig = 1'b1;
+        #20 tx_start_trig = 1'b0;
     end
 
 endmodule
