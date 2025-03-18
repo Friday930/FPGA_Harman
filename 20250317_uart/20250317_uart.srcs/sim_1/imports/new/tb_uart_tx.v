@@ -58,6 +58,8 @@ module tb_uart_tx();
         clk = 1'b0;
         rst = 1'b1;
         rx = 1;
+        #10;
+        rst = 0;
         #100;
         rx = 0;    // start
         #104160; // 9600 1bit
