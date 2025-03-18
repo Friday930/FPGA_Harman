@@ -9,7 +9,6 @@ module tb_uart_tx();
     reg             [7:0] tx_din;
 
     wire            tx_dout;
-    wire            tx_done;
 
     // uart_tx UART_DUT(
     //     .clk(),
@@ -20,22 +19,22 @@ module tb_uart_tx();
     //     .o_tx()
     // );
 
-     top_uart dut(
-         .clk        (clk),
-         .rst        (rst),
-         .btn_start  (tx_start_trig),
-         .tx_data_in(tx_din),
-         .o_tx(tx_dout),
-         .o_tx_done   (tx_done)      
-     );  
-/*
+    //  top_uart dut(
+    //      .clk        (clk),
+    //      .rst        (rst),
+    //      .btn_start  (tx_start_trig),
+    //      .tx_data_in(tx_din),
+    //      .o_tx(tx_dout),
+    //      .o_tx_done   (tx_done)      
+    //  );  
+
     send_tx_btn dut1(
         .clk(clk),
         .rst(rst),
         .btn_start(tx_start_trig),
         .tx(tx_dout)
     );
-*/
+
     always #5 clk = ~clk;
 
     initial begin
@@ -46,9 +45,7 @@ module tb_uart_tx();
 
         #20 rst = 1'b0;
         #20000 tx_start_trig = 1'b1;
-        #20 tx_start_trig = 1'b0;
-        #20000 tx_start_trig = 1'b1;
-        #20 tx_start_trig = 1'b0;
+        #20000000 tx_start_trig = 1'b0;
     end
 
 endmodule
