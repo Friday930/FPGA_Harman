@@ -4,19 +4,21 @@ module top_hw(
     input           clk,
     input           rst,
     input           rx,
-    output          [7:0] fnd_font,
-    output          [3:0] fnd_comm
+    output          [7:0] fnd_font
     );
 
     TOP_UART U_UART (
         .clk        (clk),
         .rst        (rst),
         .rx         (rx),
-        .tx         ()
+        .tx         (tx)
     );    
 
+    bcdtoseg U_SEG(
+    .bcd            (tx),
+    .seg            (fnd_font)
+    );
     
-
 endmodule
 
 
