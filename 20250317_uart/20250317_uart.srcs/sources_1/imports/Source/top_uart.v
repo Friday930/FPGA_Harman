@@ -167,7 +167,7 @@ module uart_rx (
     reg                 [1:0] state, next;
     reg                 rx_done_reg, rx_done_next;
     reg                 [2:0] bit_count_reg_rx, bit_count_next_rx;
-    reg                 [3:0] tick_count_reg_rx, tick_count_next_rx;
+    reg                 [4:0] tick_count_reg_rx, tick_count_next_rx; // rx tick count 24
     reg                 [7:0] rx_data_reg, rx_data_next;
 
     // output

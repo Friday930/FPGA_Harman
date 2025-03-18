@@ -14,14 +14,15 @@ module tb_uart_tx();
     wire            [7:0] rx_data;
     reg             rx;
 
-    // uart_tx UART_DUT(
-    //     .clk(),
-    //     .rst(),
-    //     .tick(),
-    //     .start_trigger(),
-    //     .data_in(),
-    //     .o_tx()
-    // );
+    uart_tx UART_DUT(
+        .clk(clk),
+        .rst(rst),
+        .tick(w_tick),
+        .start_trigger(btn_start),
+        .data_in(tx_data_in),
+        .o_tx(tx),
+        .o_tx_done(tx_done)
+    );
 
     //  top_uart dut(
     //      .clk        (clk),
