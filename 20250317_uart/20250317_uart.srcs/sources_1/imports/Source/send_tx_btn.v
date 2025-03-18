@@ -75,12 +75,9 @@ module send_tx_btn(
                         next = IDLE;
                     end else next = START;
                     // w_tx_done이 0으로 떨어진 다음에 1번만 증가시키기 위함.
-                    
-                    if (w_start == 1'b1) begin // from debounce
-                        if (send_tx_data_reg == "z") begin
-                            send_tx_data_next = "0";
-                        end else send_tx_data_next = send_tx_data_reg + 1; // ASCII code value increase 1 
-                    end
+                    if (send_tx_data_reg == "z") begin
+                        send_tx_data_next = "0";
+                    end else send_tx_data_next = send_tx_data_reg + 1; // ASCII code value increase 1 
                 end
             end
         endcase

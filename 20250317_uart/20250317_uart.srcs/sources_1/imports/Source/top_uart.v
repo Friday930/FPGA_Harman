@@ -139,6 +139,91 @@ module uart_tx (
 
 endmodule
 
+// UART RX
+module uart_rx (
+    input               clk,
+    input               rst,
+    input               tick,
+    input               rx,
+    output              rx_done,
+    output              [7:0] rx_data
+);
+
+    localparam          IDLE = 0, START = 1, DATA = 2, STOP = 3;
+    reg                 [1:0] state, next;
+    reg                 rx_done_reg, rx_done_next;
+    reg                 [2:0] bit_count_reg_rx, bit_count_next_rx;
+    reg                 [3:0] tick_count_reg_rx, tick_count_next_rx;
+    reg                 [7:0] rx_data_reg, rx_data_next;
+
+    // output
+    assign              rx_done = rx_done_reg;
+    assign              rx_data = rx_data_reg;
+
+    // state
+    always @(posedge clk, posedge rst) begin
+        if (rst) begin
+            state <= 0;
+            rx_done_reg <= 0;
+            rx_data_reg <= 0;
+            bit_count_reg_rx <= 0;
+            tick_count_reg_rx <= 0;
+        end else begin
+            state <= next;
+            rx_done_reg <= rx_done_next;
+            rx_data_reg <= rx_data_reg;
+            bit_count_reg_rx <= bit_count_next_rx;
+            tick_count_reg_rx <= tick_count_next_rx;
+        end
+    end
+
+    // next
+    always @(*) begin
+        next = state;
+        tick_count_next_rx = tick_count_reg_rx;
+        bit_count_next_rx = bit_count_reg_rx;
+        case (state)
+            IDLE: begin
+                tick_count_next_rx = 0;
+                bit_count_next_rx = 0;
+                if (rx == 0) begin
+                    next = START;
+                end 
+            end
+            START: begin
+                if (tick_count_reg_rx == 7) begin // 8번 반복
+                    next = DATA;
+                    tick_count_next_rx = 0; // init tick count
+                end else begin
+                    tick_count_next_rx = tick_count_reg_rx + 1;
+                end
+            end
+            DATA: begin
+                if (tick_count_reg_rx == 15) begin
+                    if (bit_count_reg_rx == 7) begin
+                        next = STOP;
+                        tick_count_next_rx = 0; // tick count 초기화
+                    end else begin
+                        next = DATA;
+                        bit_count_next_rx = bit_count_reg_rx + 1;
+                        tick_count_next_rx = 0; // tick count 초기화, 다음 state로 갈땐 초기화
+                    end
+                end else begin
+                    tick_count_next_rx = tick_count_reg_rx + 1;
+                end
+            end
+            STOP: begin
+                if (tick_count_reg_rx == 7) begin
+                    next = IDLE;
+                end else begin
+                    tick_count_next_rx = tick_count_reg_rx + 1;
+                end
+            end
+        endcase
+    end
+
+endmodule
+
 module baud_tick_gen (
     input               clk,
     input               rst,
