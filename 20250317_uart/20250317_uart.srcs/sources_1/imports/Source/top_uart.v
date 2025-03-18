@@ -219,10 +219,12 @@ module uart_rx (
                 end
             end
             STOP: begin
-                if (tick_count_reg_rx == 7) begin
-                    next = IDLE;
-                end else begin
-                    tick_count_next_rx = tick_count_reg_rx + 1;
+                if (tick == 1'b1) begin
+                    if (tick_count_reg_rx == 7) begin
+                        next = IDLE;
+                    end else begin
+                        tick_count_next_rx = tick_count_reg_rx + 1;
+                    end
                 end
             end
         endcase
