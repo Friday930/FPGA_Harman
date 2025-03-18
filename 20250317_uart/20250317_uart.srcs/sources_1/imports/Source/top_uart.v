@@ -200,6 +200,7 @@ module uart_rx (
             end
             DATA: begin
                 if (tick_count_reg_rx == 15) begin
+                    rx_data_next[bit_count_reg_rx] = rx; 
                     if (bit_count_reg_rx == 7) begin
                         next = STOP;
                         tick_count_next_rx = 0; // tick count 초기화
