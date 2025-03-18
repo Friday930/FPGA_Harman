@@ -1,6 +1,30 @@
 `timescale 1ns / 1ps
 
-module top_uart(
+module TOP_UART (
+    input               clk,
+    input               rst,
+    input               rx,
+    output              tx
+);    
+    wire                w_rx_done;
+    wire                [7:0] w_rx_data;
+
+    uart U_UART(
+        .clk            (clk),
+        .rst            (rst),
+        .btn_start      (w_rx_done),
+        .tx_data_in     (w_rx_data),
+        .tx_done        (),
+        .tx             (tx),   
+        .rx             (rx),
+        .rx_done        (w_rx_done),
+        .rx_data        (w_rx_data)
+    );  
+
+    
+endmodule
+
+module uart(
     input               clk,
     input               rst,
 
@@ -32,13 +56,15 @@ module top_uart(
     );
 
     uart_rx U_UART_RX(
-        .clk(clk),
-        .rst(rst),
-        .tick(w_tick),
-        .rx(rx),
-        .rx_done(rx_done),
-        .rx_data(rx_data)
+        .clk            (clk),
+        .rst            (rst),
+        .tick           (w_tick),
+        .rx             (rx),
+        .rx_done        (rx_done),
+        .rx_data        (rx_data)
     );
+
+
 
 endmodule
 
@@ -95,6 +121,7 @@ module uart_tx (
                 // tx_done_next = 1'b1; // high
                 tx_next = 1'b1;
                 tx_done_next = 1'b0;
+                tick_count_next = 0;
                 if (start_trigger) begin
                     // 1번 자리
                     next = SEND;
@@ -185,7 +212,7 @@ module uart_rx (
         end else begin
             state <= next;
             rx_done_reg <= rx_done_next;
-            rx_data_reg <= rx_data_reg;
+            rx_data_reg <= rx_data_next;
             bit_count_reg_rx <= bit_count_next_rx;
             tick_count_reg_rx <= tick_count_next_rx;
         end
@@ -194,12 +221,15 @@ module uart_rx (
     // next
     always @(*) begin
         next = state;
+        rx_data_next = rx_data_reg;
         tick_count_next_rx = tick_count_reg_rx;
         bit_count_next_rx = bit_count_reg_rx;
+        rx_done_next = 1'b0;
         case (state)
             IDLE: begin
                 tick_count_next_rx = 0;
                 bit_count_next_rx = 0;
+                rx_done_next = 1'b0;
                 if (rx == 0) begin
                     next = START;
                 end 
@@ -234,7 +264,8 @@ module uart_rx (
             end
             STOP: begin
                 if (tick == 1'b1) begin
-                    if (tick_count_reg_rx == 7) begin
+                    if (tick_count_reg_rx == 23) begin
+                        rx_done_next = 1'b1;
                         next = IDLE;
                     end else begin
                         tick_count_next_rx = tick_count_reg_rx + 1;

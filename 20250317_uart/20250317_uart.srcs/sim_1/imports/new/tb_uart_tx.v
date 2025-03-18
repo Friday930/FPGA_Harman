@@ -9,28 +9,35 @@ module tb_uart_tx();
     // reg             [7:0] tx_din;
 
     wire            tx_dout;
-    wire            w_tick;
-    wire            w_rx_done;
-    wire            [7:0] rx_data;
+    // wire            w_tick;
+    // wire            w_rx_done;
+    // wire            [7:0] rx_data;
     reg             rx;
 
-    uart_tx UART_DUT(
-        .clk(clk),
-        .rst(rst),
-        .tick(w_tick),
-        .start_trigger(btn_start),
-        .data_in(tx_data_in),
-        .o_tx(tx),
-        .o_tx_done(tx_done)
-    );
+    // uart_tx UART_DUT(
+    //     .clk(clk),
+    //     .rst(rst),
+    //     .tick(w_tick),
+    //     .start_trigger(btn_start),
+    //     .data_in(tx_data_in),
+    //     .o_tx(tx),
+    //     .o_tx_done(tx_done)
+    // );
+
+    TOP_UART DUT1(
+    .clk(clk),
+    .rst(rst),
+    .rx(rx),
+    .tx(tx_dout)
+);  
 
     //  top_uart dut(
     //      .clk        (clk),
     //      .rst        (rst),
     //      .btn_start  (tx_start_trig),
     //      .tx_data_in(tx_din),
-    //      .o_tx(tx_dout),
-    //      .o_tx_done   (tx_done)      
+    //      .tx(tx_dout),
+    //      .tx_done   (tx_done)      
     //  );  
 
     // send_tx_btn dut1(
@@ -39,19 +46,19 @@ module tb_uart_tx();
     //     .btn_start(tx_start_trig),
     //     .tx(tx_dout)
     // );
-    uart_rx dut2(
-    .clk(clk),
-    .rst(rst),
-    .tick(w_tick),
-    .rx(rx),
-    .rx_done(w_rx_done),
-    .rx_data(rx_data)
-);
-    baud_tick_gen U_BAUD_TICK(
-    .clk(clk),
-    .rst(rst),
-    .baud_tick(w_tick)
-); 
+//     uart_rx dut2(
+//     .clk(clk),
+//     .rst(rst),
+//     .tick(w_tick),
+//     .rx(rx),
+//     .rx_done(w_rx_done),
+//     .rx_data(rx_data)
+// );
+//     baud_tick_gen U_BAUD_TICK(
+//     .clk(clk),
+//     .rst(rst),
+//     .baud_tick(w_tick)
+// ); 
 
     always #5 clk = ~clk;
 
@@ -64,7 +71,7 @@ module tb_uart_tx();
         #100;
         rx = 0;    // start
         #104160; // 9600 1bit
-        rx = 0;     // data 0
+        rx = 1;     // data 0
         #104160; // 9600 1bit
         rx = 0;     // data 1
         #104160; // 9600 1bit
@@ -72,9 +79,9 @@ module tb_uart_tx();
         #104160; // 9600 1bit
         rx = 0;     // data 3
         #104160; // 9600 1bit
-        rx = 0;     // data 4
+        rx = 1;     // data 4
         #104160; // 9600 1bit
-        rx = 0;     // data 5
+        rx = 1;     // data 5
         #104160; // 9600 1bit
         rx = 0;     // data 6
         #104160; // 9600 1bit

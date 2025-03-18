@@ -23,7 +23,7 @@ module send_tx_btn(
         .o_btn          (w_start)
     );
 
-    top_uart U_UART(
+    uart U_UART(
         .clk            (clk),
         .rst            (rst),
         .btn_start      (send_reg),
