@@ -191,26 +191,31 @@ module uart_rx (
                 end 
             end
             START: begin
-                if (tick_count_reg_rx == 7) begin // 8번 반복
-                    next = DATA;
-                    tick_count_next_rx = 0; // init tick count
-                end else begin
-                    tick_count_next_rx = tick_count_reg_rx + 1;
+                if (tick == 1'b1) begin    
+                    if (tick_count_reg_rx == 7) begin // 8번 반복
+                        next = DATA;
+                        tick_count_next_rx = 0; // init tick count
+                    end else begin
+                        tick_count_next_rx = tick_count_reg_rx + 1;
+                    end
                 end
             end
             DATA: begin
-                if (tick_count_reg_rx == 15) begin
-                    rx_data_next[bit_count_reg_rx] = rx; 
-                    if (bit_count_reg_rx == 7) begin
-                        next = STOP;
-                        tick_count_next_rx = 0; // tick count 초기화
+                if (tick == 1'b1) begin
+                    if (tick_count_reg_rx == 15) begin
+                        // read data
+                        rx_data_next [bit_count_reg_rx] = rx; 
+                        if (bit_count_reg_rx == 7) begin
+                            next = STOP;
+                            tick_count_next_rx = 0; // tick count 초기화
+                        end else begin
+                            next = DATA;
+                            bit_count_next_rx = bit_count_reg_rx + 1;
+                            tick_count_next_rx = 0; // tick count 초기화, 다음 state로 갈땐 초기화
+                        end
                     end else begin
-                        next = DATA;
-                        bit_count_next_rx = bit_count_reg_rx + 1;
-                        tick_count_next_rx = 0; // tick count 초기화, 다음 state로 갈땐 초기화
+                        tick_count_next_rx = tick_count_reg_rx + 1;
                     end
-                end else begin
-                    tick_count_next_rx = tick_count_reg_rx + 1;
                 end
             end
             STOP: begin
