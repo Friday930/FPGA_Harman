@@ -22,10 +22,49 @@ module TOP_UART (
         .rx_data        (w_rx_data)
     );  
 
-    bcdtoseg U_SEG(
-        .bcd            (w_rx_data),
-        .seg            (fnd_font)
+
+    simple_fnd_controller U_FND_CTR (
+        .clk(clk),
+        .reset(rst),
+        .data_in(w_rx_data),   // 포트 이름 매칭
+        .fnd_font(fnd_font),
+        .fnd_comm(fnd_comm)
     );
+
+endmodule
+
+module simple_fnd_controller (
+    input clk, 
+    input reset,
+    input [7:0] data_in,
+    // input rx_done,
+    output [7:0] fnd_font,
+    output [3:0] fnd_comm
+);
+
+
+    wire[3:0] w_bcd;//TEST
+    reg [3:0] value_hex;
+
+    always @(*) begin
+        if (data_in >= 8'h30 && data_in <= 8'h39)  // ASCII '0'-'9'
+            value_hex = data_in - 8'h30;
+        else if (data_in >= 8'h41 && data_in <= 8'h46)  // ASCII 'A'-'F'
+            value_hex = data_in - 8'h41 + 4'hA;
+        else if (data_in >= 8'h61 && data_in <= 8'h66)  // ASCII 'a'-'f'
+            value_hex = data_in - 8'h61 + 4'hA;
+        else 
+            value_hex = 4'h0;  // 기본값
+    end
+    
+    assign w_bcd = value_hex;
+
+     bcdtoseg U_BCDTOSEG(
+        .bcd(w_bcd),
+        .seg(fnd_font)
+
+    );
+    assign fnd_comm = 4'b1110;
 
 endmodule
 

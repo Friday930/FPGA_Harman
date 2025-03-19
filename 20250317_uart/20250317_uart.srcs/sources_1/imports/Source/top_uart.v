@@ -121,10 +121,10 @@ module uart_tx (
                 // tx_done_next = 1'b1; // high
                 tx_next = 1'b1;
                 tx_done_next = 1'b0;
-                tick_count_next = 0;
+                tick_count_next = 4'h0;
                 if (start_trigger) begin
                     // 1번 자리
-                    next = SEND;
+                    next = START;
                 end
             end
 
