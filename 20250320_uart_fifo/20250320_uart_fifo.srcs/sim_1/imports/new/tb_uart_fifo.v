@@ -56,10 +56,14 @@ module tb_uart_fifo;
         end
     endtask
     
-    // UART 바이트 수신 태스크
+    // UART 바이트 수신 태스크 - 수정됨
     task uart_receive_byte;
         output [7:0] data;
+        reg [7:0] temp_data;
         begin
+            // 초기화
+            temp_data = 8'h00;
+            
             // 시작 비트 (하강 에지) 대기
             @(negedge tx);
             
@@ -68,27 +72,30 @@ module tb_uart_fifo;
             
             // 시작 비트가 로우인지 확인
             if (tx !== 1'b0) begin
-                $display("ERROR: Invalid start bit at time %t", $time);
+                $display("오류: 유효하지 않은 시작 비트 (시간: %t)", $time);
             end
             
             // 각 데이터 비트의 중간 지점에서 샘플링
-            #BIT_TIME;
-            data[0] = tx; #BIT_TIME;  // 비트 0 수신
-            data[1] = tx; #BIT_TIME;  // 비트 1 수신
-            data[2] = tx; #BIT_TIME;  // 비트 2 수신
-            data[3] = tx; #BIT_TIME;  // 비트 3 수신
-            data[4] = tx; #BIT_TIME;  // 비트 4 수신
-            data[5] = tx; #BIT_TIME;  // 비트 5 수신
-            data[6] = tx; #BIT_TIME;  // 비트 6 수신
-            data[7] = tx; #BIT_TIME;  // 비트 7 수신
+            #BIT_TIME;  // 첫 번째 비트의 중간으로 이동
+            
+            // 8개의 데이터 비트 샘플링 (LSB 먼저)
+            temp_data[0] = tx; #BIT_TIME;
+            temp_data[1] = tx; #BIT_TIME;
+            temp_data[2] = tx; #BIT_TIME;
+            temp_data[3] = tx; #BIT_TIME;
+            temp_data[4] = tx; #BIT_TIME;
+            temp_data[5] = tx; #BIT_TIME;
+            temp_data[6] = tx; #BIT_TIME;
+            temp_data[7] = tx;
+            
+            // 결과 저장
+            data = temp_data;
             
             // 정지 비트가 하이인지 확인
-            if (tx !== 1'b1) begin
-                $display("ERROR: Invalid stop bit at time %t", $time);
-            end
-            
-            // 전체 정지 비트 시간 대기
             #BIT_TIME;
+            if (tx !== 1'b1) begin
+                $display("오류: 유효하지 않은 정지 비트 (시간: %t)", $time);
+            end
         end
     endtask
     
@@ -112,11 +119,11 @@ module tb_uart_fifo;
         #(CLK_PERIOD*10);     // 10 클럭 주기 대기
         
         // UART 테스트 시작
-        $display("=== UART FIFO Test Started === Time: %t", $time);
+        $display("=== UART FIFO 테스트 시작 === 시간: %t", $time);
         
         // 테스트 데이터 하나씩 전송
         for (i = 0; i < 5; i = i + 1) begin
-            $display("Sending data: %h at time: %t", test_data[i], $time);
+            $display("데이터 전송: %h (시간: %t)", test_data[i], $time);
             uart_send_byte(test_data[i]);  // 데이터 전송
             #(BIT_TIME*2);                 // 바이트 간 추가 지연
         end
@@ -125,7 +132,7 @@ module tb_uart_fifo;
         #(BIT_TIME*100);
         
         // 시뮬레이션 종료
-        $display("=== Simulation Completed === Time: %t", $time);
+        $display("=== 시뮬레이션 완료 === 시간: %t", $time);
         $finish;
     end
     
@@ -139,18 +146,12 @@ module tb_uart_fifo;
         // TX 라인에서 루프백 데이터 모니터링
         repeat (5) begin
             uart_receive_byte(received_byte);  // 바이트 수신
-            $display("Received data: %h at time: %t", received_byte, $time);
-            
-            // // 수신된 데이터가 테스트 데이터와 일치하는지 확인 (선택적)
-            // for (i = 0; i < 5; i = i + 1) begin
-            //     if (received_byte == test_data[i]) begin
-            //         $display("데이터 일치 확인 (test_data[%0d]과 일치)", i);
-            //         break;
-            //     end
-            // end
+            $display("데이터 수신: %h (시간: %t)", received_byte, $time);
             
             // 수신 간 지연 추가
             #(BIT_TIME*2);
         end
     end
+    
+
 endmodule
