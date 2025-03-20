@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 2025/03/19 16:34:22
+// Create Date: 2025/03/20 09:35:04
 // Design Name: 
-// Module Name: tb_fifo
+// Module Name: tb_fifo_2
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,15 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module tb_fifo();
-
-    
+module tb_fifo_2();
     reg         clk;
     reg         reset;
     reg         wr;
     reg [7:0]   wdata;
-    wire        full;
     reg         rd;
+    wire        full;
     wire [7:0]  rdata;
     wire        empty;
     
@@ -45,6 +43,13 @@ module tb_fifo();
     );
 
     always #5   clk = ~clk;
+    integer     i;
+
+    integer     rand_rd;
+    integer     rand_wr;
+    reg [7:0]   compare_data[2**4-1:0]; // 16byte buffer
+    integer     write_count;
+    integer     read_count;
 
     initial begin
         clk = 0;
@@ -55,50 +60,38 @@ module tb_fifo();
 
         #10;
         reset = 0;
+        #10;
 
-        #10;
+        // 쓰기(full) test
         wr = 1;
-        wdata = 8'haa;
-        #10; 
-        wdata = 8'h55;
-        #10;
-        wdata = 8'ha7;
-        #10; 
-        wdata = 8'h23;
-        #10;
-        wdata = 8'hda;
-        #10; 
-        wdata = 8'h81;
-        #10;
-        wdata = 8'h67;
-        #10; 
-        wdata = 8'h25;
-        #10;
-        wdata = 8'hfa;
-        #10; 
-        wdata = 8'hce;
-        #10;
-        wdata = 8'h12;
-        #10; 
-        wdata = 8'h95;
-        #10;
-        wdata = 8'had;
-        #10; 
-        wdata = 8'h20;
-        #10;
-        wdata = 8'h45;
-        #10;
-        wdata = 8'hff;
-        #10;
-        wdata = 8'h90;
-        #10;
-        wdata = 8'hff;
-        #10;
+        for (i = 0; i < 17 ; i = i + 1 ) begin
+            wdata = i;
+            #10;
+        end
+
+        // 읽기(empty) test
         wr = 0;
         rd = 1;
-        #20;
-        $stop;
+        for (i = 0; i < 17 ; i = i + 1 ) begin
+            #10;
+        end      
+        wr = 0;
+        rd = 0;  
+        #10;
+        // 동시 읽고 쓰기
+        wr = 1;
+        rd = 1;
+        for (i = 0; i < 17 ; i = i + 1 ) begin
+            wdata = i * 2 + 1;
+            #10;
+        end
 
+        for (i = 0 ; i < 50 ; i = i + 1) begin
+            @(negedge clk); // 5ns clk
+            rand_wr = $random%2;
+            if (~full & rand_wr) begin
+                wdata = $random%256; // 모든 값 집어넣기 위해 <- 256
+            end
+        end
     end
-
 endmodule
