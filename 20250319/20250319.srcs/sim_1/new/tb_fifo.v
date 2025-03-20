@@ -27,8 +27,8 @@ module tb_fifo();
     reg         reset;
     reg         wr;
     reg [7:0]   wdata;
-    wire        full;
     reg         rd;
+    wire        full;
     wire [7:0]  rdata;
     wire        empty;
     
