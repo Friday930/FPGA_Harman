@@ -69,7 +69,7 @@ module register_file (
     output [7:0]    rdata
 );
 
-    reg         [7:0] mem [0:(2**4)-1]; // 4bit address
+    reg         [7:0] mem [0:(2**6)-1]; // 4bit address
 
     // write
     always @(posedge clk) begin
