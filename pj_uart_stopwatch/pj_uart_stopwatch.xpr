@@ -75,10 +75,73 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
       <Filter Type="Srcs"/>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/new/btn_clock.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../20250312_stopwatch/20250312_stopwatch.srcs/sources_1/new/btn_clock.v"/>
+          <Attr Name="ImportTime" Val="1741928750"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/btn_debounce.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../20250312_stopwatch/20250312_stopwatch.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/btn_debounce.v"/>
+          <Attr Name="ImportTime" Val="1741765596"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/new/clock_cu.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../20250312_stopwatch/20250312_stopwatch.srcs/sources_1/new/clock_cu.v"/>
+          <Attr Name="ImportTime" Val="1741765227"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/imports/imports/Source/memory/fifo.v">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../20250320_uart_fifo/20250320_uart_fifo.srcs/sources_1/imports/Source/memory/fifo.v"/>
           <Attr Name="ImportTime" Val="1742371821"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../20250312_stopwatch/20250312_stopwatch.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v"/>
+          <Attr Name="ImportTime" Val="1741758625"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_cu.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../20250312_stopwatch/20250312_stopwatch.srcs/sources_1/imports/sources_1/new/stopwatch_cu.v"/>
+          <Attr Name="ImportTime" Val="1741834841"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../20250312_stopwatch/20250312_stopwatch.srcs/sources_1/imports/sources_1/new/stopwatch_dp.v"/>
+          <Attr Name="ImportTime" Val="1741750292"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/sources_1/imports/sources_1/new/top_stopwatch.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../20250312_stopwatch/20250312_stopwatch.srcs/sources_1/imports/sources_1/new/top_stopwatch.v"/>
+          <Attr Name="ImportTime" Val="1741932467"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -93,10 +156,24 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PSRCDIR/sources_1/new/uart_CU.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/imports/imports/new/uart_fifo.v">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../20250320_uart_fifo/20250320_uart_fifo.srcs/sources_1/imports/new/uart_fifo.v"/>
           <Attr Name="ImportTime" Val="1742518265"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/prj_uart_stopwatch.v">
+        <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -112,87 +189,9 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/sources_1/new/clock_cu.v">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="ImportPath" Val="$PPRDIR/../20250312_stopwatch/20250312_stopwatch.srcs/sources_1/new/clock_cu.v"/>
-          <Attr Name="ImportTime" Val="1741765227"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="ImportPath" Val="$PPRDIR/../20250312_stopwatch/20250312_stopwatch.srcs/sources_1/imports/sources_1/new/stopwatch_dp.v"/>
-          <Attr Name="ImportTime" Val="1741750292"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="ImportPath" Val="$PPRDIR/../20250312_stopwatch/20250312_stopwatch.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v"/>
-          <Attr Name="ImportTime" Val="1741758625"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/sources_1/imports/sources_1/new/top_stopwatch.v">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="ImportPath" Val="$PPRDIR/../20250312_stopwatch/20250312_stopwatch.srcs/sources_1/imports/sources_1/new/top_stopwatch.v"/>
-          <Attr Name="ImportTime" Val="1741932467"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/sources_1/new/btn_clock.v">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="ImportPath" Val="$PPRDIR/../20250312_stopwatch/20250312_stopwatch.srcs/sources_1/new/btn_clock.v"/>
-          <Attr Name="ImportTime" Val="1741928750"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/btn_debounce.v">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="ImportPath" Val="$PPRDIR/../20250312_stopwatch/20250312_stopwatch.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/btn_debounce.v"/>
-          <Attr Name="ImportTime" Val="1741765596"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_cu.v">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="ImportPath" Val="$PPRDIR/../20250312_stopwatch/20250312_stopwatch.srcs/sources_1/imports/sources_1/new/stopwatch_cu.v"/>
-          <Attr Name="ImportTime" Val="1741834841"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/new/uart_CU.v">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
-        <Option Name="TopModule" Val="uart_fifo"/>
+        <Option Name="TopModule" Val="prj_uart_stopwatch"/>
         <Option Name="TopAutoSet" Val="TRUE"/>
       </Config>
     </FileSet>

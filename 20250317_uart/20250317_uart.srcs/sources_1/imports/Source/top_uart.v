@@ -21,6 +21,14 @@ module TOP_UART (
         .rx_data        (w_rx_data)
     );  
 
+    ila_0 U_ila(
+        .clk(clk),
+
+
+        .probe0(rx_data),
+        .probe1(rx_done)
+    );
+
     
 endmodule
 

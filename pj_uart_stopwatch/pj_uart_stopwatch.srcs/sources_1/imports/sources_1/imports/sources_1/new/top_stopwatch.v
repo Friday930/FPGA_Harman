@@ -1,7 +1,12 @@
 `timescale 1ns / 1ps
 
 module top_stopwatch(
-    input               clk, reset, btn_run, btn_clear, btn_hour, btn_min,
+    input               clk, 
+    input               reset,
+    input               btn_run,
+    input               btn_clear,
+    input               btn_hour,
+    input               btn_min,
     input               [1:0] sw,
     output              [3:0] fnd_comm,
     output              [7:0] fnd_font,
