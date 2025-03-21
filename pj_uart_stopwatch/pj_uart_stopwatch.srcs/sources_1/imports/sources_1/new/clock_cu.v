@@ -112,7 +112,7 @@ module clock_cu(
 endmodule
 
 module clock_divider #(
-    parameter CLOCK_FREQ = 100_000_000  // 기본 100MHz, 필요에 따라 변경 (예: 16_000_000)
+    parameter CLOCK_FREQ = 100_000_000  // 보드 클럭 주파수: 100MHz
 )(
     input clk,
     input reset,
@@ -122,15 +122,15 @@ module clock_divider #(
     output reg o_hour_tick     // 1시간 펄스
 );
     // 1ms에 필요한 클럭 사이클 수
-    localparam MSEC_COUNT_MAX = CLOCK_FREQ / 1000;
+    localparam integer MSEC_COUNT_MAX = CLOCK_FREQ / 1000;
     // 1초에 필요한 클럭 사이클 수
-    localparam SEC_COUNT_MAX = CLOCK_FREQ;
+    localparam integer SEC_COUNT_MAX  = CLOCK_FREQ;
     
-    // 카운터의 비트폭 계산
-    reg [$clog2(MSEC_COUNT_MAX)-1:0] msec_count;
-    reg [$clog2(SEC_COUNT_MAX)-1:0] sec_count;
-    reg [5:0] minute_count;  // 0~59
-    reg [4:0] hour_count;    // 0~23
+    // 명시적으로 32비트 카운터 사용
+    reg [31:0] msec_count;
+    reg [31:0] sec_count;
+    reg [5:0]  minute_count;  // 0~59
+    reg [4:0]  hour_count;    // 0~23
 
     always @(posedge clk or posedge reset) begin
         if (reset) begin

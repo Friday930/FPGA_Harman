@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date             : Fri Mar 21 17:07:18 2025
+| Date             : Fri Mar 21 17:17:09 2025
 | Host             : DESKTOP-7CFQ9ND running 64-bit major release  (build 9200)
 | Command          : report_power -file prj_uart_stopwatch_power_routed.rpt -pb prj_uart_stopwatch_power_summary_routed.pb -rpx prj_uart_stopwatch_power_routed.rpx
 | Design           : prj_uart_stopwatch
@@ -33,7 +33,7 @@ Table of Contents
 | Total On-Chip Power (W)  | 0.115        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.043        |
+| Dynamic (W)              | 0.044        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.4         |
@@ -52,16 +52,16 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.008 |        4 |       --- |             --- |
-| Slice Logic              |     0.002 |     4134 |       --- |             --- |
-|   LUT as Logic           |     0.002 |     1253 |     20800 |            6.02 |
-|   Register               |    <0.001 |     2102 |     41600 |            5.05 |
-|   CARRY4                 |    <0.001 |       61 |      8150 |            0.75 |
+| Clocks                   |     0.009 |        4 |       --- |             --- |
+| Slice Logic              |     0.002 |     4147 |       --- |             --- |
+|   LUT as Logic           |     0.002 |     1269 |     20800 |            6.10 |
+|   Register               |    <0.001 |     2107 |     41600 |            5.06 |
+|   CARRY4                 |    <0.001 |       62 |      8150 |            0.76 |
 |   LUT as Shift Register  |    <0.001 |       70 |      9600 |            0.73 |
 |   LUT as Distributed RAM |    <0.001 |       40 |      9600 |            0.42 |
 |   F7/F8 Muxes            |    <0.001 |        2 |     32600 |           <0.01 |
 |   Others                 |     0.000 |      242 |       --- |             --- |
-| Signals                  |     0.003 |     3109 |       --- |             --- |
+| Signals                  |     0.003 |     3120 |       --- |             --- |
 | Block RAM                |    <0.001 |      1.5 |        50 |            3.00 |
 | I/O                      |     0.029 |       22 |       106 |           20.75 |
 | Static Power             |     0.072 |          |           |                 |
@@ -75,7 +75,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.024 |       0.014 |      0.010 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.025 |       0.015 |      0.010 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.014 |       0.001 |      0.013 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.009 |       0.008 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -145,11 +145,12 @@ Table of Contents
 +--------------------------+-----------+
 | Name                     | Power (W) |
 +--------------------------+-----------+
-| prj_uart_stopwatch       |     0.043 |
+| prj_uart_stopwatch       |     0.044 |
 |   U_Stopwatch_watch      |     0.003 |
-|   U_ila                  |     0.007 |
-|     inst                 |     0.007 |
-|       ila_core_inst      |     0.007 |
+|     U_Fnd_Ctrl           |     0.001 |
+|   U_ila                  |     0.008 |
+|     inst                 |     0.008 |
+|       ila_core_inst      |     0.008 |
 |   dbg_hub                |     0.003 |
 |     inst                 |     0.003 |
 |       BSCANID.u_xsdbm_id |     0.003 |
