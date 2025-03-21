@@ -13,7 +13,7 @@ module tb_uart_fifo;
     parameter   BIT_TIME = 1_000_000_000 / BAUD_RATE; // 한 비트당 시간 (ns 단위)
     
     // 테스트 데이터
-    reg [7:0]   test_data [0:4];  // 테스트할 5개의 데이터 바이트
+    reg [7:0]   test_data [0:15];  // 테스트할 5개의 데이터 바이트
     integer     i;                // 반복문 변수
     
     // DUT(Design Under Test) 인스턴스화
@@ -112,6 +112,18 @@ module tb_uart_fifo;
         test_data[2] = 8'hF0;  // 테스트 데이터 3: 11110000
         test_data[3] = 8'h55;  // 테스트 데이터 4: 01010101
         test_data[4] = 8'hAA;  // 테스트 데이터 5: 10101010
+        test_data[5] = 8'h27;  // 테스트 데이터 5: 10101010
+        test_data[6] = 8'h69;  // 테스트 데이터 5: 10101010
+        test_data[7] = 8'h35;  // 테스트 데이터 5: 10101010
+        test_data[8] = 8'h27;  // 테스트 데이터 5: 10101010
+        test_data[9] = 8'hBF;  // 테스트 데이터 5: 10101010
+        test_data[10] = 8'h4D;  // 테스트 데이터 5: 10101010
+        test_data[11] = 8'h86;  // 테스트 데이터 5: 10101010
+        test_data[12] = 8'h12;  // 테스트 데이터 5: 10101010
+        test_data[13] = 8'hAE;  // 테스트 데이터 5: 10101010
+        test_data[14] = 8'hCB;  // 테스트 데이터 5: 10101010
+        test_data[15] = 8'hFF;  // 테스트 데이터 5: 10101010
+
         
         // 리셋 해제
         #(CLK_PERIOD*10);     // 10 클럭 주기 대기
@@ -122,7 +134,7 @@ module tb_uart_fifo;
         $display("=== UART FIFO 테스트 시작 === 시간: %t", $time);
         
         // 테스트 데이터 하나씩 전송
-        for (i = 0; i < 5; i = i + 1) begin
+        for (i = 0; i < 16; i = i + 1) begin
             $display("데이터 전송: %h (시간: %t)", test_data[i], $time);
             uart_send_byte(test_data[i]);  // 데이터 전송
             #(BIT_TIME*2);                 // 바이트 간 추가 지연
