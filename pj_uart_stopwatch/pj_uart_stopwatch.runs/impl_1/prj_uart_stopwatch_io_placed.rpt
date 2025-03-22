@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date                      : Sat Mar 22 17:55:59 2025
+| Date                      : Sat Mar 22 18:08:20 2025
 | Host                      : DESKTOP-M5QDJD3 running 64-bit major release  (build 9200)
 | Command                   : report_io -file prj_uart_stopwatch_io_placed.rpt
 | Design                    : prj_uart_stopwatch
