@@ -2,11 +2,11 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Fri Mar 21 17:15:31 2025
-# Process ID: 5824
-# Current directory: C:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.runs/synth_1
+# Start of session at: Sat Mar 22 13:56:28 2025
+# Process ID: 6336
+# Current directory: C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.runs/synth_1
 # Command line: vivado.exe -log prj_uart_stopwatch.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source prj_uart_stopwatch.tcl
-# Log file: C:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.runs/synth_1/prj_uart_stopwatch.vds
-# Journal file: C:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.runs/synth_1\vivado.jou
+# Log file: C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.runs/synth_1/prj_uart_stopwatch.vds
+# Journal file: C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
 source prj_uart_stopwatch.tcl -notrace

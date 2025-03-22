@@ -1,8 +1,8 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Fri Mar 14 15:08:54 2025
-| Host         : DESKTOP-7CFQ9ND running 64-bit major release  (build 9200)
+| Date         : Sat Mar 22 14:14:33 2025
+| Host         : DESKTOP-M5QDJD3 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_stopwatch_control_sets_placed.rpt
 | Design       : top_stopwatch
 | Device       : xc7a35t
@@ -74,18 +74,18 @@ Table of Contents
 |                  Clock Signal                 |                   Enable Signal                  | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
 +-----------------------------------------------+--------------------------------------------------+------------------+------------------+----------------+--------------+
 |  U_Fnd_Ctrl/U_Clk_Divider/CLK                 |                                                  | reset_IBUF       |                2 |              3 |         1.50 |
-|  clk_IBUF_BUFG                                | U_Btn_Clock_Module/U_BTN_SEC/r_1Hz_tick_reg_0[0] | reset_IBUF       |                1 |              5 |         5.00 |
 |  clk_IBUF_BUFG                                | U_StopWatch_DP/U_Time_Min/E[0]                   | reset_IBUF       |                2 |              5 |         2.50 |
-|  clk_IBUF_BUFG                                | U_Btn_Clock_Module/U_BTN_SEC/E[0]                | reset_IBUF       |                2 |              6 |         3.00 |
-|  clk_IBUF_BUFG                                | U_Btn_Clock_Module/U_BTN_SEC/r_1Hz_tick_reg[0]   | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG                                | U_Btn_Clock_Module/U_BTN_SEC/r_1Hz_tick_reg_0[0] | reset_IBUF       |                1 |              5 |         5.00 |
 |  clk_IBUF_BUFG                                | U_StopWatch_DP/U_Time_mSec/E[0]                  | reset_IBUF       |                2 |              6 |         3.00 |
 |  clk_IBUF_BUFG                                | U_StopWatch_DP/U_Time_Sec/tick_reg_reg_0[0]      | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG                                | U_Btn_Clock_Module/U_BTN_SEC/E[0]                | reset_IBUF       |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG                                | U_Btn_Clock_Module/U_BTN_SEC/r_1Hz_tick_reg[0]   | reset_IBUF       |                2 |              6 |         3.00 |
 |  clk_IBUF_BUFG                                | U_StopWatch_DP/U_Clk_Div/E[0]                    | reset_IBUF       |                2 |              7 |         3.50 |
-|  U_Btn_DB_CLEAR/r_1kHz_reg_n_0                |                                                  | reset_IBUF       |                2 |              8 |         4.00 |
-|  U_Btn_DB_RUN/r_1kHz                          |                                                  | reset_IBUF       |                3 |              8 |         2.67 |
 |  U_Btn_Clock_Module/U_BTN_HOUR/r_1kHz_reg_n_0 |                                                  | reset_IBUF       |                1 |              8 |         8.00 |
 |  U_Btn_Clock_Module/U_BTN_MIN/r_1kHz_reg_n_0  |                                                  | reset_IBUF       |                2 |              8 |         4.00 |
 |  U_Btn_Clock_Module/U_BTN_SEC/r_1kHz_reg_n_0  |                                                  | reset_IBUF       |                1 |              8 |         8.00 |
+|  U_Btn_DB_CLEAR/r_1kHz_reg_n_0                |                                                  | reset_IBUF       |                2 |              8 |         4.00 |
+|  U_Btn_DB_RUN/r_1kHz                          |                                                  | reset_IBUF       |                3 |              8 |         2.67 |
 |  clk_IBUF_BUFG                                | U_Stopwatch_CU/E[0]                              | reset_IBUF       |                5 |             20 |         4.00 |
 |  clk_IBUF_BUFG                                |                                                  | reset_IBUF       |               52 |            166 |         3.19 |
 +-----------------------------------------------+--------------------------------------------------+------------------+------------------+----------------+--------------+

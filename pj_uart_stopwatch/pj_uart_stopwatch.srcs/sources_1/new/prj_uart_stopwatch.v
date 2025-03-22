@@ -75,13 +75,13 @@ module prj_uart_stopwatch(
         .led        (led)
     );
 
-    ila_0 U_ila(
-        .clk(clk),
+    // ila_0 U_ila(
+    //     .clk(clk),
 
 
-        .probe0(h),
-        .probe1(fnd_font)
-    );
+    //     .probe0(h),
+    //     .probe1(fnd_font)
+    // );
 
 endmodule
 
