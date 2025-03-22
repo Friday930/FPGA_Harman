@@ -70,6 +70,11 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 4
+set_param synth.incrementalSynthesisCache C:/Users/user/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-3044-DESKTOP-2CUDO2B/incrSyn
+set_param xicom.use_bs_reader 1
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -85,7 +90,6 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/btn_debounce.v
   D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/new/clock_cu.v
   D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/imports/Source/memory/fifo.v
   D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v

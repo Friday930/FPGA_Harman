@@ -1,5 +1,4 @@
 `timescale 1ns / 1ps
-`timescale 1ns / 1ps
 
 module TOP_UART (
     input               clk,
@@ -24,6 +23,8 @@ module TOP_UART (
 
     
 endmodule
+
+`timescale 1ns / 1ps
 
 module uart(
     input               clk,
@@ -65,9 +66,157 @@ module uart(
         .rx_data        (rx_data)
     );
 
+endmodule
 
+module uart_rx (
+    input               clk,
+    input               rst,
+    input               tick,
+    input               rx,
+    output              rx_done,
+    output              [7:0] rx_data
+);
+
+    localparam          IDLE = 0, START = 1, DATA = 2, STOP = 3;
+    reg                 [1:0] state, next;
+    reg                 rx_done_reg, rx_done_next;
+    reg                 [2:0] bit_count_reg_rx, bit_count_next_rx;
+    reg                 [4:0] tick_count_reg_rx, tick_count_next_rx;
+    reg                 [7:0] rx_data_reg, rx_data_next;
+    
+    // 디바운스 관련 레지스터 추가
+    reg                 rx_done_pulse;
+    reg                 [1:0] rx_done_shift;
+
+    // output
+    assign              rx_done = rx_done_pulse;
+    assign              rx_data = rx_data_reg;
+
+    // state
+    always @(posedge clk, posedge rst) begin
+        if (rst) begin
+            state <= 0;
+            rx_done_reg <= 0;
+            rx_data_reg <= 0;
+            bit_count_reg_rx <= 0;
+            tick_count_reg_rx <= 0;
+            rx_done_shift <= 2'b00;
+            rx_done_pulse <= 1'b0;
+        end else begin
+            state <= next;
+            rx_done_reg <= rx_done_next;
+            rx_data_reg <= rx_data_next;
+            bit_count_reg_rx <= bit_count_next_rx;
+            tick_count_reg_rx <= tick_count_next_rx;
+            
+            // 엣지 검출 로직 추가 (돌아가는 명령을 보내기 위함)
+            rx_done_shift <= {rx_done_shift[0], rx_done_reg};
+            rx_done_pulse <= rx_done_shift[0] & ~rx_done_shift[1]; // 상승 엣지만 펄스 생성
+        end
+    end
+
+    // next
+    always @(*) begin
+        next = state;
+        rx_data_next = rx_data_reg;
+        tick_count_next_rx = tick_count_reg_rx;
+        bit_count_next_rx = bit_count_reg_rx;
+        rx_done_next = 1'b0;
+        case (state)
+            IDLE: begin
+                tick_count_next_rx = 0;
+                bit_count_next_rx = 0;
+                rx_done_next = 1'b0;
+                if (rx == 0) begin
+                    next = START;
+                end 
+            end
+            START: begin
+                if (tick == 1'b1) begin    
+                    if (tick_count_reg_rx == 7) begin
+                        next = DATA;
+                        tick_count_next_rx = 0;
+                    end else begin
+                        tick_count_next_rx = tick_count_reg_rx + 1;
+                    end
+                end
+            end
+            DATA: begin
+                if (tick == 1'b1) begin
+                    if (tick_count_reg_rx == 15) begin
+                        rx_data_next [bit_count_reg_rx] = rx; 
+                        if (bit_count_reg_rx == 7) begin
+                            next = STOP;
+                            tick_count_next_rx = 0;
+                        end else begin
+                            next = DATA;
+                            bit_count_next_rx = bit_count_reg_rx + 1;
+                            tick_count_next_rx = 0;
+                        end
+                    end else begin
+                        tick_count_next_rx = tick_count_reg_rx + 1;
+                    end
+                end
+            end
+            STOP: begin
+                if (tick == 1'b1) begin
+                    if (tick_count_reg_rx == 23) begin
+                        rx_done_next = 1'b1;
+                        next = IDLE;
+                    end else begin
+                        tick_count_next_rx = tick_count_reg_rx + 1;
+                    end
+                end
+            end
+        endcase
+    end
 
 endmodule
+
+
+// module uart(
+//     input               clk,
+//     input               rst,
+
+//     input               btn_start,
+//     input               [7:0] tx_data_in,
+//     output              tx_done,
+//     output              tx,
+
+//     input               rx,
+//     output              rx_done,
+//     output              [7:0] rx_data
+// );  
+//     wire                w_tick;
+
+//     uart_tx U_UART_TX(
+//         .clk            (clk),
+//         .rst            (rst),
+//         .tick           (w_tick),
+//         .start_trigger  (btn_start),
+//         .data_in        (tx_data_in), // ASCII
+//         .o_tx_done      (tx_done),
+//         .o_tx           (tx)
+//     );
+
+//     baud_tick_gen U_BAUD_Tick_Gen(
+//         .clk            (clk),
+//         .rst            (rst),
+//         .baud_tick      (w_tick)
+//     );
+
+//     uart_rx U_UART_RX(
+//         .clk            (clk),
+//         .rst            (rst),
+//         .tick           (w_tick),
+//         .rx             (rx),
+//         .rx_done        (rx_done),
+//         .rx_data        (rx_data)
+//     );
+
+
+
+// endmodule
 
 module uart_tx (
     input               clk,
@@ -188,102 +337,102 @@ module uart_tx (
 
 endmodule
 
-// UART RX
-module uart_rx (
-    input               clk,
-    input               rst,
-    input               tick,
-    input               rx,
-    output              rx_done,
-    output              [7:0] rx_data
-);
+// // UART RX
+// module uart_rx (
+//     input               clk,
+//     input               rst,
+//     input               tick,
+//     input               rx,
+//     output              rx_done,
+//     output              [7:0] rx_data
+// );
 
-    localparam          IDLE = 0, START = 1, DATA = 2, STOP = 3;
-    reg                 [1:0] state, next;
-    reg                 rx_done_reg, rx_done_next;
-    reg                 [2:0] bit_count_reg_rx, bit_count_next_rx;
-    reg                 [4:0] tick_count_reg_rx, tick_count_next_rx; // rx tick count 24
-    reg                 [7:0] rx_data_reg, rx_data_next;
+//     localparam          IDLE = 0, START = 1, DATA = 2, STOP = 3;
+//     reg                 [1:0] state, next;
+//     reg                 rx_done_reg, rx_done_next;
+//     reg                 [2:0] bit_count_reg_rx, bit_count_next_rx;
+//     reg                 [4:0] tick_count_reg_rx, tick_count_next_rx; // rx tick count 24
+//     reg                 [7:0] rx_data_reg, rx_data_next;
 
-    // output
-    assign              rx_done = rx_done_reg;
-    assign              rx_data = rx_data_reg;
+//     // output
+//     assign              rx_done = rx_done_reg;
+//     assign              rx_data = rx_data_reg;
 
-    // state
-    always @(posedge clk, posedge rst) begin
-        if (rst) begin
-            state <= 0;
-            rx_done_reg <= 0;
-            rx_data_reg <= 0;
-            bit_count_reg_rx <= 0;
-            tick_count_reg_rx <= 0;
-        end else begin
-            state <= next;
-            rx_done_reg <= rx_done_next;
-            rx_data_reg <= rx_data_next;
-            bit_count_reg_rx <= bit_count_next_rx;
-            tick_count_reg_rx <= tick_count_next_rx;
-        end
-    end
+//     // state
+//     always @(posedge clk, posedge rst) begin
+//         if (rst) begin
+//             state <= 0;
+//             rx_done_reg <= 0;
+//             rx_data_reg <= 0;
+//             bit_count_reg_rx <= 0;
+//             tick_count_reg_rx <= 0;
+//         end else begin
+//             state <= next;
+//             rx_done_reg <= rx_done_next;
+//             rx_data_reg <= rx_data_next;
+//             bit_count_reg_rx <= bit_count_next_rx;
+//             tick_count_reg_rx <= tick_count_next_rx;
+//         end
+//     end
 
-    // next
-    always @(*) begin
-        next = state;
-        rx_data_next = rx_data_reg;
-        tick_count_next_rx = tick_count_reg_rx;
-        bit_count_next_rx = bit_count_reg_rx;
-        rx_done_next = 1'b0;
-        case (state)
-            IDLE: begin
-                tick_count_next_rx = 0;
-                bit_count_next_rx = 0;
-                rx_done_next = 1'b0;
-                if (rx == 0) begin
-                    next = START;
-                end 
-            end
-            START: begin
-                if (tick == 1'b1) begin    
-                    if (tick_count_reg_rx == 7) begin // 8번 반복
-                        next = DATA;
-                        tick_count_next_rx = 0; // init tick count
-                    end else begin
-                        tick_count_next_rx = tick_count_reg_rx + 1;
-                    end
-                end
-            end
-            DATA: begin
-                if (tick == 1'b1) begin
-                    if (tick_count_reg_rx == 15) begin
-                        // read data
-                        rx_data_next [bit_count_reg_rx] = rx; 
-                        if (bit_count_reg_rx == 7) begin
-                            next = STOP;
-                            tick_count_next_rx = 0; // tick count 초기화
-                        end else begin
-                            next = DATA;
-                            bit_count_next_rx = bit_count_reg_rx + 1;
-                            tick_count_next_rx = 0; // tick count 초기화, 다음 state로 갈땐 초기화
-                        end
-                    end else begin
-                        tick_count_next_rx = tick_count_reg_rx + 1;
-                    end
-                end
-            end
-            STOP: begin
-                if (tick == 1'b1) begin
-                    if (tick_count_reg_rx == 23) begin
-                        rx_done_next = 1'b1;
-                        next = IDLE;
-                    end else begin
-                        tick_count_next_rx = tick_count_reg_rx + 1;
-                    end
-                end
-            end
-        endcase
-    end
+//     // next
+//     always @(*) begin
+//         next = state;
+//         rx_data_next = rx_data_reg;
+//         tick_count_next_rx = tick_count_reg_rx;
+//         bit_count_next_rx = bit_count_reg_rx;
+//         rx_done_next = 1'b0;
+//         case (state)
+//             IDLE: begin
+//                 tick_count_next_rx = 0;
+//                 bit_count_next_rx = 0;
+//                 rx_done_next = 1'b0;
+//                 if (rx == 0) begin
+//                     next = START;
+//                 end 
+//             end
+//             START: begin
+//                 if (tick == 1'b1) begin    
+//                     if (tick_count_reg_rx == 7) begin // 8번 반복
+//                         next = DATA;
+//                         tick_count_next_rx = 0; // init tick count
+//                     end else begin
+//                         tick_count_next_rx = tick_count_reg_rx + 1;
+//                     end
+//                 end
+//             end
+//             DATA: begin
+//                 if (tick == 1'b1) begin
+//                     if (tick_count_reg_rx == 15) begin
+//                         // read data
+//                         rx_data_next [bit_count_reg_rx] = rx; 
+//                         if (bit_count_reg_rx == 7) begin
+//                             next = STOP;
+//                             tick_count_next_rx = 0; // tick count 초기화
+//                         end else begin
+//                             next = DATA;
+//                             bit_count_next_rx = bit_count_reg_rx + 1;
+//                             tick_count_next_rx = 0; // tick count 초기화, 다음 state로 갈땐 초기화
+//                         end
+//                     end else begin
+//                         tick_count_next_rx = tick_count_reg_rx + 1;
+//                     end
+//                 end
+//             end
+//             STOP: begin
+//                 if (tick == 1'b1) begin
+//                     if (tick_count_reg_rx == 23) begin
+//                         rx_done_next = 1'b1;
+//                         next = IDLE;
+//                     end else begin
+//                         tick_count_next_rx = tick_count_reg_rx + 1;
+//                     end
+//                 end
+//             end
+//         endcase
+//     end
 
-endmodule
+// endmodule
 
 module baud_tick_gen (
     input               clk,

@@ -49,7 +49,19 @@ module prj_uart_stopwatch(
         .loopback   (U_UART_FIFO.data),
         .inst       (ctrl)
     );
+    // 명령어 버퍼 추가
+    // wire [7:0] buffered_cmd;
+    // wire       cmd_ready;
     
+    // command_buffer U_CMD_BUFFER(
+    //     .clk        (clk),
+    //     .rst        (rst),
+    //     .cmd_in     (ctrl),
+    //     .cmd_valid  (|ctrl), // ctrl이 0이 아니면 유효
+    //     .cmd_out    (buffered_cmd),
+    //     .cmd_ready  (cmd_ready)
+    // );
+        
     cmd_decoder U_CMD(
         .clk        (clk),
         .rst        (rst),
@@ -114,3 +126,86 @@ module cmd_decoder(
         endcase
     end
 endmodule
+
+// module command_buffer(
+//     input           clk, 
+//     input           rst,
+    
+//     // 입력 명령 (UART/FIFO로부터)
+//     input [7:0]     cmd_in,     // 입력 명령어
+//     input           cmd_valid,  // 명령어 유효 신호
+    
+//     // 출력 명령 (시계 모듈로)
+//     output reg [7:0] cmd_out,    // 출력 명령어
+//     output reg       cmd_ready   // 명령어 준비 완료 신호
+// );
+
+//     // 상태 정의
+//     localparam IDLE = 2'b00;
+//     localparam CMD_RECEIVED = 2'b01;
+//     localparam CMD_PROCESSING = 2'b10;
+//     localparam CMD_COMPLETE = 2'b11;
+    
+//     // 상태 변수
+//     reg [1:0] state, next_state;
+    
+//     // 내부 명령어 저장
+//     reg [7:0] current_cmd;
+    
+//     // 상태 머신 - 상태 업데이트
+//     always @(posedge clk or posedge rst) begin
+//         if (rst) begin
+//             state <= IDLE;
+//             cmd_out <= 8'h00;
+//             cmd_ready <= 1'b0;
+//             current_cmd <= 8'h00;
+//         end else begin
+//             state <= next_state;
+            
+//             // CMD_RECEIVED 상태에서만 명령어 저장 및 출력
+//             if (state == IDLE && cmd_valid && cmd_in != 8'h00) begin
+//                 current_cmd <= cmd_in;
+//                 cmd_out <= cmd_in;
+//                 cmd_ready <= 1'b1;
+//             end
+            
+//             // 처리 완료되면 ready 신호 내림
+//             if (state == CMD_COMPLETE) begin
+//                 cmd_ready <= 1'b0;
+//             end
+//         end
+//     end
+    
+//     // 상태 머신 - 다음 상태 결정
+//     always @(*) begin
+//         next_state = state;
+        
+//         case (state)
+//             IDLE: begin
+//                 // 유효한 명령이 들어오면 다음 상태로
+//                 if (cmd_valid && cmd_in != 8'h00) begin
+//                     next_state = CMD_RECEIVED;
+//                 end
+//             end
+            
+//             CMD_RECEIVED: begin
+//                 next_state = CMD_PROCESSING;
+//             end
+            
+//             CMD_PROCESSING: begin
+//                 // 명령 처리 중 - 현재 명령 완료 대기
+//                 if (!cmd_valid) begin
+//                     next_state = CMD_COMPLETE;
+//                 end
+//             end
+            
+//             CMD_COMPLETE: begin
+//                 // 처리 완료 후 IDLE로 돌아감
+//                 next_state = IDLE;
+//             end
+            
+//             default: next_state = IDLE;
+//         endcase
+//     end
+
+// endmodule
