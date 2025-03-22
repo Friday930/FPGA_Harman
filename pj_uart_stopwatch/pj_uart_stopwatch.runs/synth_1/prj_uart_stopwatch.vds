@@ -2,8 +2,8 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Sat Mar 22 13:56:28 2025
-# Process ID: 6336
+# Start of session at: Sat Mar 22 17:55:04 2025
+# Process ID: 39616
 # Current directory: C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.runs/synth_1
 # Command line: vivado.exe -log prj_uart_stopwatch.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source prj_uart_stopwatch.tcl
 # Log file: C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.runs/synth_1/prj_uart_stopwatch.vds
@@ -17,36 +17,38 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 15104
+INFO: [Synth 8-7075] Helper process launched with PID 35432
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1015.074 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1015.828 ; gain = 0.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'prj_uart_stopwatch' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/new/prj_uart_stopwatch.v:23]
 INFO: [Synth 8-6157] synthesizing module 'uart_fifo' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/imports/new/uart_fifo.v:23]
-INFO: [Synth 8-6157] synthesizing module 'uart' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/uart/top_uart.v:27]
-INFO: [Synth 8-6157] synthesizing module 'uart_tx' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/uart/top_uart.v:71]
+INFO: [Synth 8-6157] synthesizing module 'uart' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/new/top_uart.v:28]
+INFO: [Synth 8-6157] synthesizing module 'uart_tx' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/new/top_uart.v:72]
 	Parameter IDLE bound to: 0 - type: integer 
 	Parameter SEND bound to: 1 - type: integer 
 	Parameter START bound to: 2 - type: integer 
 	Parameter DATA bound to: 3 - type: integer 
 	Parameter STOP bound to: 4 - type: integer 
-INFO: [Synth 8-155] case statement is not full and has no default [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/uart/top_uart.v:123]
-INFO: [Synth 8-6155] done synthesizing module 'uart_tx' (1#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/uart/top_uart.v:71]
-INFO: [Synth 8-6157] synthesizing module 'baud_tick_gen' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/uart/top_uart.v:286]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/new/top_uart.v:124]
+INFO: [Synth 8-6155] done synthesizing module 'uart_tx' (1#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/new/top_uart.v:72]
+INFO: [Synth 8-6157] synthesizing module 'baud_tick_gen' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/new/top_uart.v:287]
 	Parameter BAUD_RATE bound to: 9600 - type: integer 
 	Parameter BAUD_COUNT bound to: 651 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'baud_tick_gen' (2#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/uart/top_uart.v:286]
-INFO: [Synth 8-6157] synthesizing module 'uart_rx' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/uart/top_uart.v:190]
+INFO: [Synth 8-6155] done synthesizing module 'baud_tick_gen' (2#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/new/top_uart.v:287]
+INFO: [Synth 8-6157] synthesizing module 'uart_rx' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/new/top_uart.v:191]
 	Parameter IDLE bound to: 0 - type: integer 
 	Parameter START bound to: 1 - type: integer 
 	Parameter DATA bound to: 2 - type: integer 
 	Parameter STOP bound to: 3 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'uart_rx' (3#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/uart/top_uart.v:190]
-INFO: [Synth 8-6155] done synthesizing module 'uart' (4#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/uart/top_uart.v:27]
+INFO: [Synth 8-6155] done synthesizing module 'uart_rx' (3#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/new/top_uart.v:191]
+INFO: [Synth 8-6155] done synthesizing module 'uart' (4#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/new/top_uart.v:28]
 INFO: [Synth 8-6157] synthesizing module 'fifo' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/imports/Source/memory/fifo.v:23]
 INFO: [Synth 8-6157] synthesizing module 'fifo_control_unit' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/imports/Source/memory/fifo.v:86]
 INFO: [Synth 8-155] case statement is not full and has no default [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/imports/Source/memory/fifo.v:129]
 INFO: [Synth 8-6155] done synthesizing module 'fifo_control_unit' (5#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/imports/Source/memory/fifo.v:86]
+WARNING: [Synth 8-689] width (4) of port connection 'waddr' does not match port width (6) of module 'fifo_control_unit' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/imports/Source/memory/fifo.v:43]
+WARNING: [Synth 8-689] width (4) of port connection 'raddr' does not match port width (6) of module 'fifo_control_unit' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/imports/Source/memory/fifo.v:46]
 INFO: [Synth 8-6157] synthesizing module 'register_file' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/imports/Source/memory/fifo.v:61]
 INFO: [Synth 8-6155] done synthesizing module 'register_file' (6#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/imports/Source/memory/fifo.v:61]
 INFO: [Synth 8-6155] done synthesizing module 'fifo' (7#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/imports/Source/memory/fifo.v:23]
@@ -56,27 +58,27 @@ INFO: [Synth 8-6155] done synthesizing module 'uart_CU' (9#1) [C:/Vivado_Workspa
 INFO: [Synth 8-6157] synthesizing module 'cmd_decoder' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/new/prj_uart_stopwatch.v:88]
 INFO: [Synth 8-6155] done synthesizing module 'cmd_decoder' (10#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/new/prj_uart_stopwatch.v:88]
 INFO: [Synth 8-6157] synthesizing module 'top_stopwatch' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/top_stopwatch.v:3]
-INFO: [Synth 8-6157] synthesizing module 'clock_divider' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/new/clock_cu.v:114]
+INFO: [Synth 8-6157] synthesizing module 'clock_divider' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/new/clock_cu.v:116]
 	Parameter CLOCK_FREQ bound to: 100000000 - type: integer 
 	Parameter MSEC_COUNT_MAX bound to: 100000 - type: integer 
 	Parameter SEC_COUNT_MAX bound to: 100000000 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'clock_divider' (11#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/new/clock_cu.v:114]
+INFO: [Synth 8-6155] done synthesizing module 'clock_divider' (11#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/new/clock_cu.v:116]
 INFO: [Synth 8-6157] synthesizing module 'stopwatch_dp' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v:3]
-INFO: [Synth 8-6157] synthesizing module 'time_counter' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v:58]
+INFO: [Synth 8-6157] synthesizing module 'time_counter' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v:57]
 	Parameter TICK_COUNT bound to: 100 - type: integer 
 	Parameter BIT_WIDTH bound to: 7 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'time_counter' (12#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v:58]
-INFO: [Synth 8-6157] synthesizing module 'time_counter__parameterized0' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v:58]
+INFO: [Synth 8-6155] done synthesizing module 'time_counter' (12#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v:57]
+INFO: [Synth 8-6157] synthesizing module 'time_counter__parameterized0' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v:57]
 	Parameter TICK_COUNT bound to: 60 - type: integer 
 	Parameter BIT_WIDTH bound to: 6 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'time_counter__parameterized0' (12#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v:58]
-INFO: [Synth 8-6157] synthesizing module 'time_counter__parameterized1' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v:58]
+INFO: [Synth 8-6155] done synthesizing module 'time_counter__parameterized0' (12#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v:57]
+INFO: [Synth 8-6157] synthesizing module 'time_counter__parameterized1' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v:57]
 	Parameter TICK_COUNT bound to: 24 - type: integer 
 	Parameter BIT_WIDTH bound to: 5 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'time_counter__parameterized1' (12#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v:58]
-INFO: [Synth 8-6157] synthesizing module 'clk_div_100' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v:97]
+INFO: [Synth 8-6155] done synthesizing module 'time_counter__parameterized1' (12#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v:57]
+INFO: [Synth 8-6157] synthesizing module 'clk_div_100' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v:96]
 	Parameter FCOUNT bound to: 1000000 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'clk_div_100' (13#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v:97]
+INFO: [Synth 8-6155] done synthesizing module 'clk_div_100' (13#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v:96]
 INFO: [Synth 8-6155] done synthesizing module 'stopwatch_dp' (14#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v:3]
 INFO: [Synth 8-6157] synthesizing module 'btn_debounce' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/btn_debounce.v:4]
 WARNING: [Synth 8-567] referenced signal 'q_reg' should be on the sensitivity list [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/btn_debounce.v:55]
@@ -88,8 +90,8 @@ INFO: [Synth 8-6157] synthesizing module 'stopwatch_cu' [C:/Vivado_Workspace/FPG
 INFO: [Synth 8-155] case statement is not full and has no default [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_cu.v:24]
 INFO: [Synth 8-155] case statement is not full and has no default [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_cu.v:49]
 INFO: [Synth 8-6155] done synthesizing module 'stopwatch_cu' (16#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_cu.v:3]
-INFO: [Synth 8-6157] synthesizing module 'clock_cu' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/new/clock_cu.v:29]
-INFO: [Synth 8-6155] done synthesizing module 'clock_cu' (17#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/new/clock_cu.v:29]
+INFO: [Synth 8-6157] synthesizing module 'clock_cu' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/new/clock_cu.v:31]
+INFO: [Synth 8-6155] done synthesizing module 'clock_cu' (17#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/new/clock_cu.v:31]
 INFO: [Synth 8-6157] synthesizing module 'led_indicator' [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/top_stopwatch.v:348]
 INFO: [Synth 8-226] default block is never used [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/top_stopwatch.v:354]
 INFO: [Synth 8-6155] done synthesizing module 'led_indicator' (18#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/top_stopwatch.v:348]
@@ -136,18 +138,18 @@ WARNING: [Synth 8-7023] instance 'U_Fnd_Ctrl' of module 'fnd_controller' has 10 
 INFO: [Synth 8-6155] done synthesizing module 'top_stopwatch' (29#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/top_stopwatch.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'prj_uart_stopwatch' (30#1) [C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/new/prj_uart_stopwatch.v:23]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1015.074 ; gain = 0.000
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1015.828 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1015.074 ; gain = 0.000
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1015.828 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1015.074 ; gain = 0.000
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1015.828 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1015.074 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1015.828 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -158,26 +160,26 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/prj_uart_stopwatch_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1052.383 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1052.309 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1052.383 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1052.309 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1052.383 ; gain = 37.309
+Finished Constraint Validation : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1052.309 ; gain = 36.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1052.383 ; gain = 37.309
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1052.309 ; gain = 36.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1052.383 ; gain = 37.309
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1052.309 ; gain = 36.480
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'uart_tx'
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'uart_rx'
@@ -209,7 +211,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'stopwatch_cu'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1052.383 ; gain = 37.309
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1052.309 ; gain = 36.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -222,9 +224,9 @@ Detailed RTL Component Info :
 	   2 Input   17 Bit       Adders := 2     
 	   2 Input   10 Bit       Adders := 1     
 	   2 Input    7 Bit       Adders := 1     
-	   2 Input    6 Bit       Adders := 5     
+	   2 Input    6 Bit       Adders := 13    
 	   2 Input    5 Bit       Adders := 4     
-	   2 Input    4 Bit       Adders := 9     
+	   2 Input    4 Bit       Adders := 1     
 	   2 Input    3 Bit       Adders := 3     
 +---Registers : 
 	               32 Bit    Registers := 2     
@@ -234,9 +236,9 @@ Detailed RTL Component Info :
 	               10 Bit    Registers := 1     
 	                8 Bit    Registers := 6     
 	                7 Bit    Registers := 1     
-	                6 Bit    Registers := 5     
+	                6 Bit    Registers := 9     
 	                5 Bit    Registers := 4     
-	                4 Bit    Registers := 5     
+	                4 Bit    Registers := 1     
 	                3 Bit    Registers := 3     
 	                1 Bit    Registers := 25    
 +---Muxes : 
@@ -279,7 +281,7 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 1052.383 ; gain = 37.309
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 1052.309 ; gain = 36.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -301,13 +303,13 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 1052.383 ; gain = 37.309
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1052.309 ; gain = 36.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 1052.660 ; gain = 37.586
+Finished Timing Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1053.605 ; gain = 37.777
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -328,7 +330,7 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 1053.672 ; gain = 38.598
+Finished Technology Mapping : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1054.910 ; gain = 39.082
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -346,37 +348,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 1066.770 ; gain = 51.695
+Finished IO Insertion : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1067.105 ; gain = 51.277
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 1066.770 ; gain = 51.695
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1067.105 ; gain = 51.277
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 1066.770 ; gain = 51.695
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1067.105 ; gain = 51.277
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 1066.770 ; gain = 51.695
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1067.105 ; gain = 51.277
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 1066.770 ; gain = 51.695
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1067.105 ; gain = 51.277
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 1066.770 ; gain = 51.695
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1067.105 ; gain = 51.277
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -397,37 +399,38 @@ Report Cell Usage:
 |3     |LUT1   |    12|
 |4     |LUT2   |    79|
 |5     |LUT3   |    46|
-|6     |LUT4   |    74|
-|7     |LUT5   |    88|
-|8     |LUT6   |   111|
-|9     |RAM32M |     4|
-|10    |FDCE   |   253|
-|11    |FDPE   |     5|
-|12    |FDRE   |     8|
-|13    |IBUF   |     5|
-|14    |OBUF   |    17|
+|6     |LUT4   |    76|
+|7     |LUT5   |    92|
+|8     |LUT6   |   118|
+|9     |MUXF7  |     1|
+|10    |RAM32M |     4|
+|11    |FDCE   |   261|
+|12    |FDPE   |     5|
+|13    |FDRE   |     8|
+|14    |IBUF   |     5|
+|15    |OBUF   |    17|
 +------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 1066.770 ; gain = 51.695
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1067.105 ; gain = 51.277
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:20 . Memory (MB): peak = 1066.770 ; gain = 14.387
-Synthesis Optimization Complete : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 1066.770 ; gain = 51.695
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:19 . Memory (MB): peak = 1067.105 ; gain = 14.797
+Synthesis Optimization Complete : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1067.105 ; gain = 51.277
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1078.855 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 30 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1079.172 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 31 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1081.852 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1079.172 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 4 instances were transformed.
   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 4 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-98 Infos, 7 Warnings, 0 Critical Warnings and 0 Errors encountered.
+98 Infos, 9 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 1081.852 ; gain = 66.777
+synth_design: Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 1079.172 ; gain = 63.344
 INFO: [Common 17-1381] The checkpoint 'C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.runs/synth_1/prj_uart_stopwatch.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file prj_uart_stopwatch_utilization_synth.rpt -pb prj_uart_stopwatch_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sat Mar 22 13:56:58 2025...
+INFO: [Common 17-206] Exiting Vivado at Sat Mar 22 17:55:32 2025...

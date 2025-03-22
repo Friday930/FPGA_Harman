@@ -71,6 +71,10 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 4
+set_param synth.incrementalSynthesisCache C:/Users/PJS.DESKTOP-M5QDJD3/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-30444-DESKTOP-M5QDJD3/incrSyn
+set_param xicom.use_bs_reader 1
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -93,7 +97,7 @@ read_verilog -library xil_defaultlib {
   C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_cu.v
   C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v
   C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/top_stopwatch.v
-  C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/uart/top_uart.v
+  C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/new/top_uart.v
   C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/new/uart_CU.v
   C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/imports/new/uart_fifo.v
   C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/new/prj_uart_stopwatch.v

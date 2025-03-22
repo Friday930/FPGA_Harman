@@ -139,70 +139,70 @@ module top_stopwatch(
         .fnd_comm       (fnd_comm)
     );
 endmodule
-// // Module to convert button presses to clock values
-// module btn_to_clock(
-//     input           clk, reset,
-//     input           btn_hour,
-//     input           btn_min,
-//     input           btn_sec,
-//     output reg      [4:0] o_hour,    // 0-23 hours
-//     output reg      [5:0] o_min,     // 0-59 minutes
-//     output reg      [5:0] o_sec      // 0-59 seconds
-// );
-//     // Edge detection for buttons
-//     reg btn_hour_prev, btn_min_prev, btn_sec_prev;
-//     wire hour_pulse, min_pulse, sec_pulse;
+// Module to convert button presses to clock values
+module btn_to_clock(
+    input           clk, reset,
+    input           btn_hour,
+    input           btn_min,
+    input           btn_sec,
+    output reg      [4:0] o_hour,    // 0-23 hours
+    output reg      [5:0] o_min,     // 0-59 minutes
+    output reg      [5:0] o_sec      // 0-59 seconds
+);
+    // Edge detection for buttons
+    reg btn_hour_prev, btn_min_prev, btn_sec_prev;
+    wire hour_pulse, min_pulse, sec_pulse;
     
-//     // Detect rising edges
-//     always @(posedge clk) begin
-//         if (reset) begin
-//             btn_hour_prev <= 0;
-//             btn_min_prev <= 0;
-//             btn_sec_prev <= 0;
-//         end else begin
-//             btn_hour_prev <= btn_hour;
-//             btn_min_prev <= btn_min;
-//             btn_sec_prev <= btn_sec;
-//         end
-//     end
+    // Detect rising edges
+    always @(posedge clk) begin
+        if (reset) begin
+            btn_hour_prev <= 0;
+            btn_min_prev <= 0;
+            btn_sec_prev <= 0;
+        end else begin
+            btn_hour_prev <= btn_hour;
+            btn_min_prev <= btn_min;
+            btn_sec_prev <= btn_sec;
+        end
+    end
     
-//     assign hour_pulse = btn_hour & ~btn_hour_prev;
-//     assign min_pulse = btn_min & ~btn_min_prev;
-//     assign sec_pulse = btn_sec & ~btn_sec_prev;
+    assign hour_pulse = btn_hour & ~btn_hour_prev;
+    assign min_pulse = btn_min & ~btn_min_prev;
+    assign sec_pulse = btn_sec & ~btn_sec_prev;
     
-//     // Update time values on button presses
-//     always @(posedge clk, posedge reset) begin
-//         if (reset) begin
-//             o_sec <= 0;
-//             o_min <= 0;
-//             o_hour <= 0;
-//         end else begin
-//             // Second increment
-//             if (sec_pulse) begin
-//                 if (o_sec == 59)
-//                     o_sec <= 0;
-//                 else
-//                     o_sec <= o_sec + 1;
-//             end
+    // Update time values on button presses
+    always @(posedge clk, posedge reset) begin
+        if (reset) begin
+            o_sec <= 0;
+            o_min <= 0;
+            o_hour <= 0;
+        end else begin
+            // Second increment
+            if (sec_pulse) begin
+                if (o_sec == 59)
+                    o_sec <= 0;
+                else
+                    o_sec <= o_sec + 1;
+            end
             
-//             // Minute increment
-//             if (min_pulse) begin
-//                 if (o_min == 59)
-//                     o_min <= 0;
-//                 else
-//                     o_min <= o_min + 1;
-//             end
+            // Minute increment
+            if (min_pulse) begin
+                if (o_min == 59)
+                    o_min <= 0;
+                else
+                    o_min <= o_min + 1;
+            end
             
-//             // Hour increment
-//             if (hour_pulse) begin
-//                 if (o_hour == 23)
-//                     o_hour <= 0;
-//                 else
-//                     o_hour <= o_hour + 1;
-//             end
-//         end
-//     end
-// endmodule
+            // Hour increment
+            if (hour_pulse) begin
+                if (o_hour == 23)
+                    o_hour <= 0;
+                else
+                    o_hour <= o_hour + 1;
+            end
+        end
+    end
+endmodule
 
 
 
@@ -300,15 +300,15 @@ endmodule
 //     );
     
 //     clock_cu U_Clock_CU(
-//     .clk                (clk), 
-//     .reset              (reset),
-//     .c_sec              (w_btn_sec),
-//     .c_minute           (w_btn_min),
-//     .c_hour             (w_btn_hour),
-//     .cs                 (cs),
-//     .o_c_sec            (ccu_sec),     // 비트 폭 수정 (6비트)
-//     .o_c_minute         (ccu_minute),  // 비트 폭 수정 (6비트)
-//     .o_c_hour           (ccu_hour)     // 비트 폭 수정 (5비트)
+//         .clk                (clk), 
+//         .reset              (reset),
+//         .c_sec              (w_btn_sec),
+//         .c_minute           (w_btn_min),
+//         .c_hour             (w_btn_hour),
+//         .cs                 (cs),
+//         .o_c_sec            (ccu_sec),     // 비트 폭 수정 (6비트)
+//         .o_c_minute         (ccu_minute),  // 비트 폭 수정 (6비트)
+//         .o_c_hour           (ccu_hour)     // 비트 폭 수정 (5비트)
 //     );
 
 //     led_indicator U_LED(

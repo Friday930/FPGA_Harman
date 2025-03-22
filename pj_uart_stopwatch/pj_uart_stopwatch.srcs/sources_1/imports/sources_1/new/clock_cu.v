@@ -26,6 +26,8 @@
 //     end
 // endmodule
 
+`timescale 1ns / 1ps
+
 module clock_cu(
     input           clk, reset,
     input           sec_tick,       // 1Hz tick for automatic time increment

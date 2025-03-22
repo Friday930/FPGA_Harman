@@ -54,7 +54,6 @@ endmodule
 
 
 
-
 module time_counter #(parameter TICK_COUNT = 100, BIT_WIDTH = 7)(
     input       clk, reset, tick, clear,
     output      [BIT_WIDTH - 1:0] o_time, 

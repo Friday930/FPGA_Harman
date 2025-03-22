@@ -27,9 +27,9 @@ module prj_uart_stopwatch(
     output          fifo_tx,
 
     input   [1:0]   sw,
-    output              [3:0] fnd_comm,
-    output              [7:0] fnd_font,
-    output              [3:0] led
+    output  [3:0]   fnd_comm,
+    output  [7:0]   fnd_font,
+    output  [3:0]   led
     );
 
     wire            loopback;

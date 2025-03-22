@@ -61,15 +61,15 @@ endmodule
 module register_file (
     input           clk,
 
-    input [3:0]     waddr, // 4bit
+    input [5:0]     waddr, // 4bit
     input [7:0]     wdata, // 8bit
     input           wr,
 
-    input [3:0]     raddr,
+    input [5:0]     raddr,
     output [7:0]    rdata
 );
 
-    reg         [7:0] mem [0:(2**6)-1]; // 4bit address
+    reg [7:0]       mem [0:(2**6)-1]; // 4bit address
 
     // write
     always @(posedge clk) begin
@@ -88,17 +88,17 @@ module fifo_control_unit (
     input           reset,
 
     input           wr,
-    output [3:0]    waddr,
+    output [5:0]    waddr,
     output          full,
 
     input           rd,
-    output [3:0]    raddr,
+    output [5:0]    raddr,
     output          empty
 );
     // 1bit 상태 output
     reg             full_reg, full_next, empty_reg, empty_next; // 출력 내보내기 위한 fsm
     // W/R address 관리
-    reg [3:0]       wptr_reg, wptr_next, rptr_reg, rptr_next;
+    reg [5:0]       wptr_reg, wptr_next, rptr_reg, rptr_next;
 
     assign          waddr = wptr_reg;
     assign          raddr = rptr_reg;
