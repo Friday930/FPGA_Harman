@@ -1,8 +1,8 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date             : Sat Mar 22 18:08:34 2025
-| Host             : DESKTOP-M5QDJD3 running 64-bit major release  (build 9200)
+| Date             : Sat Mar 22 21:38:55 2025
+| Host             : DESKTOP-2CUDO2B running 64-bit major release  (build 9200)
 | Command          : report_power -file prj_uart_stopwatch_power_routed.rpt -pb prj_uart_stopwatch_power_summary_routed.pb -rpx prj_uart_stopwatch_power_routed.rpx
 | Design           : prj_uart_stopwatch
 | Device           : xc7a35tcpg236-1
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.107        |
+| Total On-Chip Power (W)  | 0.105        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.035        |
+| Dynamic (W)              | 0.034        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.5         |
@@ -53,16 +53,16 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |     0.002 |        3 |       --- |             --- |
-| Slice Logic              |     0.001 |      782 |       --- |             --- |
-|   LUT as Logic           |     0.001 |      320 |     20800 |            1.54 |
-|   Register               |    <0.001 |      276 |     41600 |            0.66 |
+| Slice Logic              |     0.001 |      784 |       --- |             --- |
+|   LUT as Logic           |     0.001 |      319 |     20800 |            1.53 |
+|   Register               |    <0.001 |      274 |     41600 |            0.66 |
 |   CARRY4                 |    <0.001 |       26 |      8150 |            0.32 |
 |   LUT as Distributed RAM |    <0.001 |       16 |      9600 |            0.17 |
-|   Others                 |     0.000 |       25 |       --- |             --- |
-| Signals                  |     0.001 |      611 |       --- |             --- |
-| I/O                      |     0.030 |       22 |       106 |           20.75 |
+|   Others                 |     0.000 |       24 |       --- |             --- |
+| Signals                  |     0.001 |      618 |       --- |             --- |
+| I/O                      |     0.029 |       22 |       106 |           20.75 |
 | Static Power             |     0.072 |          |           |                 |
-| Total                    |     0.107 |          |           |                 |
+| Total                    |     0.105 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -72,7 +72,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.015 |       0.005 |      0.010 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.014 |       0.005 |      0.010 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.014 |       0.001 |      0.013 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.009 |       0.008 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -141,9 +141,8 @@ Table of Contents
 +---------------------+-----------+
 | Name                | Power (W) |
 +---------------------+-----------+
-| prj_uart_stopwatch  |     0.035 |
+| prj_uart_stopwatch  |     0.034 |
 |   U_Stopwatch_watch |     0.003 |
-|     U_Fnd_Ctrl      |     0.001 |
 |   U_UART_FIFO       |     0.001 |
 +---------------------+-----------+
 

@@ -1,80 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1742634442">
-  <File Type="BITSTR-BMM" Name="prj_uart_stopwatch_bd.bmm"/>
-  <File Type="OPT-METHODOLOGY-DRC" Name="prj_uart_stopwatch_methodology_drc_opted.rpt"/>
-  <File Type="INIT-TIMING" Name="prj_uart_stopwatch_timing_summary_init.rpt"/>
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1742647052">
   <File Type="ROUTE-PWR" Name="prj_uart_stopwatch_power_routed.rpt"/>
   <File Type="PA-TCL" Name="prj_uart_stopwatch.tcl"/>
-  <File Type="OPT-TIMING" Name="prj_uart_stopwatch_timing_summary_opted.rpt"/>
-  <File Type="OPT-DCP" Name="prj_uart_stopwatch_opt.dcp"/>
   <File Type="ROUTE-PWR-SUM" Name="prj_uart_stopwatch_power_summary_routed.pb"/>
   <File Type="REPORTS-TCL" Name="prj_uart_stopwatch_reports.tcl"/>
+  <File Type="BITSTR-MSK" Name="prj_uart_stopwatch.msk"/>
+  <File Type="ROUTE-CLK" Name="prj_uart_stopwatch_clock_utilization_routed.rpt"/>
+  <File Type="RDI-RDI" Name="prj_uart_stopwatch.vdi"/>
+  <File Type="BG-BIT" Name="prj_uart_stopwatch.bit"/>
+  <File Type="BG-DRC" Name="prj_uart_stopwatch.drc"/>
+  <File Type="BG-BGN" Name="prj_uart_stopwatch.bgn"/>
+  <File Type="BG-BIN" Name="prj_uart_stopwatch.bin"/>
+  <File Type="BITSTR-RBT" Name="prj_uart_stopwatch.rbt"/>
+  <File Type="BITSTR-NKY" Name="prj_uart_stopwatch.nky"/>
+  <File Type="BITSTR-BMM" Name="prj_uart_stopwatch_bd.bmm"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="prj_uart_stopwatch_methodology_drc_routed.rpt"/>
+  <File Type="BITSTR-MMI" Name="prj_uart_stopwatch.mmi"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="prj_uart_stopwatch_methodology_drc_routed.pb"/>
+  <File Type="BITSTR-SYSDEF" Name="prj_uart_stopwatch.sysdef"/>
+  <File Type="ROUTE-DRC-RPX" Name="prj_uart_stopwatch_drc_routed.rpx"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="prj_uart_stopwatch.ltx"/>
+  <File Type="RCFI_FILE" Name="prj_uart_stopwatch.rcfi"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <File Type="OPT-DRC" Name="prj_uart_stopwatch_drc_opted.rpt"/>
   <File Type="OPT-HWDEF" Name="prj_uart_stopwatch.hwdef"/>
-  <File Type="PWROPT-DCP" Name="prj_uart_stopwatch_pwropt.dcp"/>
-  <File Type="PWROPT-DRC" Name="prj_uart_stopwatch_drc_pwropted.rpt"/>
-  <File Type="PWROPT-TIMING" Name="prj_uart_stopwatch_timing_summary_pwropted.rpt"/>
-  <File Type="PLACE-DCP" Name="prj_uart_stopwatch_placed.dcp"/>
   <File Type="PLACE-IO" Name="prj_uart_stopwatch_io_placed.rpt"/>
-  <File Type="PLACE-CLK" Name="prj_uart_stopwatch_clock_utilization_placed.rpt"/>
   <File Type="PLACE-UTIL" Name="prj_uart_stopwatch_utilization_placed.rpt"/>
   <File Type="PLACE-UTIL-PB" Name="prj_uart_stopwatch_utilization_placed.pb"/>
   <File Type="PLACE-CTRL" Name="prj_uart_stopwatch_control_sets_placed.rpt"/>
-  <File Type="PLACE-SIMILARITY" Name="prj_uart_stopwatch_incremental_reuse_placed.rpt"/>
   <File Type="PLACE-PRE-SIMILARITY" Name="prj_uart_stopwatch_incremental_reuse_pre_placed.rpt"/>
-  <File Type="PLACE-TIMING" Name="prj_uart_stopwatch_timing_summary_placed.rpt"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="prj_uart_stopwatch_postplace_pwropt.dcp"/>
-  <File Type="BG-BIN" Name="prj_uart_stopwatch.bin"/>
-  <File Type="POSTPLACE-PWROPT-TIMING" Name="prj_uart_stopwatch_timing_summary_postplace_pwropted.rpt"/>
-  <File Type="PHYSOPT-DCP" Name="prj_uart_stopwatch_physopt.dcp"/>
-  <File Type="PHYSOPT-DRC" Name="prj_uart_stopwatch_drc_physopted.rpt"/>
-  <File Type="BITSTR-MSK" Name="prj_uart_stopwatch.msk"/>
-  <File Type="PHYSOPT-TIMING" Name="prj_uart_stopwatch_timing_summary_physopted.rpt"/>
-  <File Type="ROUTE-ERROR-DCP" Name="prj_uart_stopwatch_routed_error.dcp"/>
-  <File Type="ROUTE-DCP" Name="prj_uart_stopwatch_routed.dcp"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="prj_uart_stopwatch_routed_bb.dcp"/>
   <File Type="ROUTE-DRC" Name="prj_uart_stopwatch_drc_routed.rpt"/>
   <File Type="ROUTE-DRC-PB" Name="prj_uart_stopwatch_drc_routed.pb"/>
-  <File Type="ROUTE-DRC-RPX" Name="prj_uart_stopwatch_drc_routed.rpx"/>
-  <File Type="BITSTR-MMI" Name="prj_uart_stopwatch.mmi"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="prj_uart_stopwatch_methodology_drc_routed.rpt"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="prj_uart_stopwatch_methodology_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="prj_uart_stopwatch_methodology_drc_routed.pb"/>
   <File Type="ROUTE-PWR-RPX" Name="prj_uart_stopwatch_power_routed.rpx"/>
   <File Type="ROUTE-STATUS" Name="prj_uart_stopwatch_route_status.rpt"/>
   <File Type="ROUTE-STATUS-PB" Name="prj_uart_stopwatch_route_status.pb"/>
+  <File Type="ROUTE-DCP" Name="prj_uart_stopwatch_routed.dcp"/>
+  <File Type="ROUTE-ERROR-DCP" Name="prj_uart_stopwatch_routed_error.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="prj_uart_stopwatch_routed_bb.dcp"/>
   <File Type="ROUTE-TIMINGSUMMARY" Name="prj_uart_stopwatch_timing_summary_routed.rpt"/>
   <File Type="ROUTE-TIMING-PB" Name="prj_uart_stopwatch_timing_summary_routed.pb"/>
   <File Type="ROUTE-TIMING-RPX" Name="prj_uart_stopwatch_timing_summary_routed.rpx"/>
-  <File Type="ROUTE-SIMILARITY" Name="prj_uart_stopwatch_incremental_reuse_routed.rpt"/>
-  <File Type="ROUTE-CLK" Name="prj_uart_stopwatch_clock_utilization_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW" Name="prj_uart_stopwatch_bus_skew_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW-PB" Name="prj_uart_stopwatch_bus_skew_routed.pb"/>
   <File Type="ROUTE-BUS-SKEW-RPX" Name="prj_uart_stopwatch_bus_skew_routed.rpx"/>
+  <File Type="OPT-DCP" Name="prj_uart_stopwatch_opt.dcp"/>
+  <File Type="PLACE-DCP" Name="prj_uart_stopwatch_placed.dcp"/>
+  <File Type="PWROPT-DCP" Name="prj_uart_stopwatch_pwropt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="prj_uart_stopwatch_postplace_pwropt.dcp"/>
+  <File Type="PHYSOPT-DCP" Name="prj_uart_stopwatch_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="prj_uart_stopwatch_postroute_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="prj_uart_stopwatch_postroute_physopt_bb.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="prj_uart_stopwatch_timing_summary_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="prj_uart_stopwatch_timing_summary_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="prj_uart_stopwatch_timing_summary_postroute_physopted.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="prj_uart_stopwatch_bus_skew_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="prj_uart_stopwatch_bus_skew_postroute_physopted.pb"/>
-  <File Type="BG-BIT" Name="prj_uart_stopwatch.bit"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="prj_uart_stopwatch_bus_skew_postroute_physopted.rpx"/>
-  <File Type="BITSTR-RBT" Name="prj_uart_stopwatch.rbt"/>
-  <File Type="BITSTR-NKY" Name="prj_uart_stopwatch.nky"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="prj_uart_stopwatch_methodology_drc_routed.rpx"/>
   <File Type="PDI-FILE" Name="prj_uart_stopwatch.pdi"/>
-  <File Type="RCFI_FILE" Name="prj_uart_stopwatch.rcfi"/>
   <File Type="CFI_FILE" Name="prj_uart_stopwatch.cfi"/>
   <File Type="RNPI_FILE" Name="prj_uart_stopwatch.rnpi"/>
   <File Type="NPI_FILE" Name="prj_uart_stopwatch.npi"/>
   <File Type="RBD_FILE" Name="prj_uart_stopwatch.rbd"/>
-  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
-  <File Type="BITSTR-LTX" Name="prj_uart_stopwatch.ltx"/>
-  <File Type="BITSTR-SYSDEF" Name="prj_uart_stopwatch.sysdef"/>
-  <File Type="BG-BGN" Name="prj_uart_stopwatch.bgn"/>
-  <File Type="BG-DRC" Name="prj_uart_stopwatch.drc"/>
-  <File Type="RDI-RDI" Name="prj_uart_stopwatch.vdi"/>
-  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/imports/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/btn_debounce.v">
@@ -217,9 +199,7 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020">
-      <Desc>Default settings for Implementation.</Desc>
-    </StratHandle>
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020"/>
     <Step Id="init_design"/>
     <Step Id="opt_design"/>
     <Step Id="power_opt_design"/>

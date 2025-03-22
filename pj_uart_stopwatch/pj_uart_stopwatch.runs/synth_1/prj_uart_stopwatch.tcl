@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.runs/synth_1/prj_uart_stopwatch.tcl"
+  variable script "D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.runs/synth_1/prj_uart_stopwatch.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,36 +70,32 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 4
-set_param xicom.use_bs_reader 1
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.cache/wt [current_project]
-set_property parent.project_path C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.xpr [current_project]
+set_property webtalk.parent_dir D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.cache/wt [current_project]
+set_property parent.project_path D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_output_repo c:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.cache/ip [current_project]
+set_property ip_output_repo d:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/btn_debounce.v
-  C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/new/clock_cu.v
-  C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/imports/Source/memory/fifo.v
-  C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v
-  C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_cu.v
-  C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v
-  C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/top_stopwatch.v
-  C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/new/top_uart.v
-  C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/new/uart_CU.v
-  C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/imports/new/uart_fifo.v
-  C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/new/prj_uart_stopwatch.v
+  D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/btn_debounce.v
+  D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/new/clock_cu.v
+  D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/imports/Source/memory/fifo.v
+  D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/fnd_controller.v
+  D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_cu.v
+  D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/stopwatch_dp.v
+  D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/sources_1/imports/sources_1/new/top_stopwatch.v
+  D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/new/top_uart.v
+  D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/new/uart_CU.v
+  D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/imports/imports/new/uart_fifo.v
+  D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/sources_1/new/prj_uart_stopwatch.v
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -110,8 +106,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc
-set_property used_in_implementation false [get_files C:/Vivado_Workspace/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc]
+read_xdc D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc
+set_property used_in_implementation false [get_files D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]

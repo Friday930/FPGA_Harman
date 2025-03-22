@@ -103,6 +103,7 @@ module uart_tx (
             tx_done_reg <= 0;
             bit_count_reg <= 0;
             tick_count_reg <= 0;
+            temp_data_reg <= 0;
         end else begin
             state <= next;
             tx_reg <= tx_next;
