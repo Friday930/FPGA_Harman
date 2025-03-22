@@ -10,7 +10,7 @@ module clock_dp(
     output      [5:0] minute, 
     output      [4:0] hour
     );
-
+ // dsdf
     wire    w_msec_tick, w_sec_tick, w_minute_tick;
 
     time_counter #(.TICK_COUNT(100), .BIT_WIDTH(7)) U_Time_mSec(
