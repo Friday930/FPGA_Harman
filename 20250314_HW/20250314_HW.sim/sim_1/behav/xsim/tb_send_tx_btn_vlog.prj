@@ -1,0 +1,12 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../20250314_HW.srcs/sources_1/imports/FPGA_Harman/20250312_stopwatch/20250312_stopwatch.srcs/sources_1/imports/sources_1/imports/20250310_stopwatch_fsm/btn_debounce.v" \
+"../../../../20250314_HW.srcs/sources_1/imports/FPGA_Harman/20250313_uart/20250313_uart.srcs/sources_1/new/send_tx_btn.v" \
+"../../../../20250314_HW.srcs/sources_1/new/uart.v" \
+"../../../../20250314_HW.srcs/sim_1/new/tb_uart.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
