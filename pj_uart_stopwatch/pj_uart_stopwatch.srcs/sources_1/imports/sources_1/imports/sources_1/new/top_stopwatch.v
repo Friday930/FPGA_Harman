@@ -3,11 +3,11 @@
 module top_stopwatch(
     input               clk, 
     input               reset,
-    input               btn_run,   // Run signal from cmd_decoder
-    input               btn_clear, // Clear signal from cmd_decoder
-    input               btn_hour,  // Hour increment signal from cmd_decoder
-    input               btn_min,   // Minute increment signal from cmd_decoder
-    input               btn_sec,   // Second increment signal from cmd_decoder
+    input               uart_run,   // Run signal from cmd_decoder
+    input               uart_clear, // Clear signal from cmd_decoder
+    input               uart_hour,  // Hour increment signal from cmd_decoder
+    input               uart_min,   // Minute increment signal from cmd_decoder
+    input               uart_sec,   // Second increment signal from cmd_decoder
     input               [1:0] sw,  // Mode switches
     output              [3:0] fnd_comm,  // 7-segment display control
     output              [7:0] fnd_font,  // 7-segment display data
@@ -85,8 +85,8 @@ module top_stopwatch(
         .clk            (clk),
         .reset          (reset),
         .cs             (cs_inv),        // Active in stopwatch mode
-        .i_btn_run      (btn_run),
-        .i_btn_clear    (btn_clear),
+        .i_btn_run      (uart_run),
+        .i_btn_clear    (uart_clear),
         .o_run          (run),
         .o_clear        (clear)
     );
@@ -96,9 +96,9 @@ module top_stopwatch(
         .clk            (clk), 
         .reset          (reset),
         .sec_tick       (w_sec_tick),     // 1Hz tick for automatic time progression
-        .btn_hour       (btn_hour),       // Direct button inputs, no debounce needed as already processed
-        .btn_min        (btn_min), 
-        .btn_sec        (btn_sec),
+        .btn_hour       (uart_hour),       // Direct button inputs, no debounce needed as already processed
+        .btn_min        (uart_min), 
+        .btn_sec        (uart_sec),
         .cs             (cs),             // Active in clock mode
         .o_sec          (ccu_sec),
         .o_minute       (ccu_minute),
