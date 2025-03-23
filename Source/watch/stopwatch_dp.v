@@ -6,6 +6,10 @@ module stopwatch_dp(
     output      [5:0] sec, minute, 
     output      [4:0] hour
     );
+<<<<<<< HEAD:20250312_stopwatch/20250312_stopwatch.srcs/sources_1/new/clock_dp.v
+ // dsdf
+=======
+>>>>>>> ba03b269e15fbe170722602d8be74cc9f4174f00:Source/watch/stopwatch_dp.v
     wire    w_msec_tick, w_sec_tick, w_minute_tick;
     time_counter #(.TICK_COUNT(100), .BIT_WIDTH(7)) U_Time_mSec(
         .clk            (clk),

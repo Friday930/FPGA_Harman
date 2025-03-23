@@ -16,7 +16,8 @@ module top_stopwatch(
 
     // Internal signals
     wire                w_msec_tick, w_sec_tick, w_minute_tick, w_hour_tick;
-    wire                w_run, w_clear, run, clear; 
+    // wire                w_run, w_clear;
+    wire                run, clear; 
     wire                cs, cs_inv;  // Clock/Stopwatch mode selector
 
     // Time values for display
@@ -65,27 +66,27 @@ module top_stopwatch(
     );
 
     // Button debouncing for run/clear signals
-    btn_debounce U_Btn_DB_RUN(
-        .clk            (clk),
-        .reset          (reset),
-        .i_btn          (btn_run),
-        .o_btn          (w_run)
-    );
+    // btn_debounce U_Btn_DB_RUN(
+    //     .clk            (clk),
+    //     .reset          (reset),
+    //     .i_btn          (btn_run),
+    //     .o_btn          (w_run)
+    // );
 
-    btn_debounce U_Btn_DB_CLEAR(
-        .clk            (clk),
-        .reset          (reset),
-        .i_btn          (btn_clear),
-        .o_btn          (w_clear)
-    );
+    // btn_debounce U_Btn_DB_CLEAR(
+    //     .clk            (clk),
+    //     .reset          (reset),
+    //     .i_btn          (btn_clear),
+    //     .o_btn          (w_clear)
+    // );
 
     // Stopwatch control unit
     stopwatch_cu U_Stopwatch_CU(
         .clk            (clk),
         .reset          (reset),
         .cs             (cs_inv),        // Active in stopwatch mode
-        .i_btn_run      (w_run),
-        .i_btn_clear    (w_clear),
+        .i_btn_run      (btn_run),
+        .i_btn_clear    (btn_clear),
         .o_run          (run),
         .o_clear        (clear)
     );
