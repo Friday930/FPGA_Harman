@@ -2,8 +2,8 @@
 # Webtalk v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Mon Mar 24 01:15:37 2025
-# Process ID: 17620
+# Start of session at: Mon Mar 24 01:09:40 2025
+# Process ID: 17380
 # Current directory: D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.sim/sim_1/behav/xsim
 # Command line: wbtcv.exe -mode batch -source D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.sim/sim_1/behav/xsim/xsim.dir/tb_uart_cu_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: D:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.sim/sim_1/behav/xsim/webtalk.log
