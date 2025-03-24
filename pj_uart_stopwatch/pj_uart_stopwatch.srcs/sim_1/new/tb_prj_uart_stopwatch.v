@@ -304,52 +304,409 @@
 
 // endmodule
 
+// `timescale 1ns / 1ps
+
+// module tb_prj_uart_stopwatch();
+
+//     // Clock and reset signals
+//     reg clk;
+//     reg rst;
+    
+//     // UART signals
+//     reg fifo_rx;
+//     wire fifo_tx;
+    
+//     // Switch and output signals
+//     reg [1:0] sw;
+//     wire [3:0] fnd_comm;
+//     wire [7:0] fnd_font;
+//     wire [3:0] led;
+    
+//     // 모든 중간 신호를 모니터링하기 위한 변수들
+//     // UART 관련 신호
+//     wire [7:0] uart_rx_data;   // UART 수신 데이터
+//     wire uart_rx_valid;        // UART 수신 데이터 유효성
+//     wire uart_rx_ready;        // UART 수신기 준비 상태
+    
+//     // FIFO 관련 신호
+//     wire fifo_empty;          // FIFO 비어있음 플래그
+//     wire fifo_full;           // FIFO 가득참 플래그
+//     wire fifo_rd_en;          // FIFO 읽기 활성화
+//     wire fifo_wr_en;          // FIFO 쓰기 활성화
+//     wire [7:0] fifo_data_out; // FIFO 출력 데이터
+    
+//     // UART_CU 관련 신호
+//     wire [7:0] loopback_sig;  // UART_CU 입력
+//     wire [7:0] loopback_reg_sig; // UART_CU 내부 저장 레지스터
+//     wire [7:0] inst_sig;      // UART_CU 출력
+    
+//     // CMD_DECODER 관련 신호
+//     wire [7:0] cmd_ctrl;      // CMD_DECODER 입력
+//     wire r_cmd, c_cmd, h_cmd, m_cmd, s_cmd;  // 디코딩된 명령어
+    
+//     // UART transmission constants
+//     localparam BAUD_RATE = 9600;
+//     localparam BAUD_PERIOD = 1000000000 / BAUD_RATE; // Period in nanoseconds
+    
+//     // Module instantiation
+//     prj_uart_stopwatch UUT (
+//         .clk(clk),
+//         .rst(rst),
+//         .fifo_rx(fifo_rx),
+//         .fifo_tx(fifo_tx),
+//         .sw(sw),
+//         .fnd_comm(fnd_comm),
+//         .fnd_font(fnd_font),
+//         .led(led)
+//     );
+    
+//     // 내부 신호 연결 (모니터링 목적)
+//     // 계층 구조를 명확히 하기 위해 주석 처리된 예시를 포함합니다
+//     // assign uart_rx_data = UUT.uart_rx_module.rx_data;
+//     // assign uart_rx_valid = UUT.uart_rx_module.rx_valid;
+//     // assign fifo_empty = UUT.fifo_module.empty;
+//     // assign fifo_data_out = UUT.fifo_module.data_out;
+    
+//     // 실제 프로젝트 계층 구조에 맞게 수정해야 합니다.
+//     // 여러 가능한 경로를 제공하여 옳은 것을 찾을 수 있도록 합니다.
+    
+//     // UART_CU 신호 연결 시도
+//     // 버전 1: 직접 매핑 (가장 표준적인 방법)
+//     assign loopback_sig = UUT.U_UART_CU.loopback;
+//     assign loopback_reg_sig = UUT.U_UART_CU.loopback_reg;
+//     assign inst_sig = UUT.U_UART_CU.inst;
+    
+//     // 버전 2: 대체 경로
+//     // assign loopback_sig = UUT.uart_control_unit.loopback;
+//     // assign loopback_reg_sig = UUT.uart_control_unit.loopback_reg;
+//     // assign inst_sig = UUT.uart_control_unit.inst;
+    
+//     // 버전 3: 또 다른 가능한 경로
+//     // assign loopback_sig = UUT.UART_CU_INST.loopback;
+//     // assign loopback_reg_sig = UUT.UART_CU_INST.loopback_reg;
+//     // assign inst_sig = UUT.UART_CU_INST.inst;
+    
+//     // CMD_DECODER 신호
+//     assign cmd_ctrl = UUT.ctrl;
+//     assign r_cmd = UUT.r;
+//     assign c_cmd = UUT.c;
+//     assign h_cmd = UUT.h;
+//     assign m_cmd = UUT.m;
+//     assign s_cmd = UUT.s;
+    
+//     // Clock generation (100MHz)
+//     initial begin
+//         clk = 0;
+//         forever #5 clk = ~clk; // 10ns period (100MHz)
+//     end
+    
+//     // UART character transmission task
+//     task send_uart_byte;
+//         input [7:0] data;
+//         integer i;
+//         begin
+//             // Start bit (low)
+//             fifo_rx = 0;
+//             #BAUD_PERIOD;
+            
+//             // 8 data bits (LSB first)
+//             for (i = 0; i < 8; i = i + 1) begin
+//                 fifo_rx = data[i];
+//                 #BAUD_PERIOD;
+//             end
+            
+//             // Stop bit (high)
+//             fifo_rx = 1;
+//             #BAUD_PERIOD;
+            
+//             // 추가 안정화 지연
+//             #(BAUD_PERIOD / 2);
+//         end
+//     endtask
+    
+//     // 직접 하드코딩 강제 설정 태스크
+//     task force_loopback;
+//         input [7:0] data;
+//         begin
+//             $display("Time: %0t - 직접 loopback 강제 설정: %h", $time, data);
+//             force UUT.U_UART_CU.loopback = data;
+//             #20;  // 적당한 시간 대기
+//             release UUT.U_UART_CU.loopback;
+//             #100; // 결과 관찰 시간
+//         end
+//     endtask
+    
+//     // 디버그용 변수
+//     integer error_count = 0;
+    
+//     // Test scenario
+//     initial begin
+//         // Initialization
+//         rst = 1;
+//         fifo_rx = 1; // Idle state is high
+//         sw = 2'b00;
+//         #500; // 긴 리셋 시간
+//         rst = 0;
+//         #500; // 긴 안정화 시간
+        
+//         $display("==== 정상 UART 전송 테스트 ====");
+        
+//         // 테스트 1: 'R' 명령어 전송
+//         $display("\nTest 1: Sending 'R' command (0x52)");
+//         send_uart_byte(8'h52); // ASCII 'R'
+//         #(BAUD_PERIOD * 10);
+//         if (inst_sig != 8'h52) begin
+//             $display("오류! inst_sig = %h, 예상값: %h", inst_sig, 8'h52);
+//             error_count = error_count + 1;
+//         end
+        
+//         // 테스트 2: 'h' 명령어 전송
+//         $display("\nTest 2: Sending 'h' command (0x68)");
+//         send_uart_byte(8'h68); // ASCII 'h'
+//         #(BAUD_PERIOD * 10);
+//         if (inst_sig != 8'h48) begin  // 'H'로 변환되어야 함
+//             $display("오류! inst_sig = %h, 예상값: %h", inst_sig, 8'h48);
+//             error_count = error_count + 1;
+//         end
+        
+//         // 테스트 3: 같은 명령 두 번 전송 (변화 감지 테스트)
+//         $display("\nTest 3: 같은 명령 두 번 전송 - 'm' (0x6D)");
+//         send_uart_byte(8'h6D); // ASCII 'm'
+//         #(BAUD_PERIOD * 5);
+//         send_uart_byte(8'h00); // 0 (중간 값 변경)
+//         #(BAUD_PERIOD * 5);
+//         send_uart_byte(8'h6D); // ASCII 'm' 다시
+//         #(BAUD_PERIOD * 10);
+        
+//         $display("\n==== 직접 loopback 강제 설정 테스트 ====");
+        
+//         // 테스트 4: 직접 loopback 강제 설정
+//         $display("\nTest 4: 직접 loopback 강제 설정 - 'R' (0x52)");
+//         force_loopback(8'h52); // 'R'
+//         if (inst_sig != 8'h52) begin
+//             $display("오류! inst_sig = %h, 예상값: %h", inst_sig, 8'h52);
+//             error_count = error_count + 1;
+//         end
+        
+//         // 테스트 5: 다른 값으로 강제 설정
+//         $display("\nTest 5: 직접 loopback 강제 설정 - 'C' (0x43)");
+//         force_loopback(8'h43); // 'C'
+//         if (inst_sig != 8'h43) begin
+//             $display("오류! inst_sig = %h, 예상값: %h", inst_sig, 8'h43);
+//             error_count = error_count + 1;
+//         end
+        
+//         // 모듈 경로 검증
+//         $display("\n==== 모듈 경로 검증 ====");
+//         $display("loopback_sig 경로 확인: %h", loopback_sig);
+//         $display("loopback_reg_sig 경로 확인: %h", loopback_reg_sig);
+//         $display("inst_sig 경로 확인: %h", inst_sig);
+        
+//         // 결과 요약
+//         #500;
+//         $display("\n==== 테스트 결과 요약 ====");
+//         if (error_count > 0) begin
+//             $display("테스트 실패! 총 %d개의 오류 발견", error_count);
+//         end else begin
+//             $display("모든 테스트 통과!");
+//         end
+        
+//         // 추가 디버깅 메시지
+//         $display("\n문제 진단 힌트:");
+//         $display("1. loopback과 loopback_reg 값이 다른지 확인하세요 (변화 감지에 필요)");
+//         $display("2. UART_CU 모듈 내 경로가 올바른지 확인하세요");
+//         $display("3. 하드코딩 테스트 결과와 UART 테스트 결과를 비교하세요");
+        
+//         // End simulation
+//         $display("\nSimulation complete");
+//         $finish;
+//     end
+    
+//     // Signal monitoring - loopback과 inst 값 변화에 초점을 맞춤
+//     initial begin
+//         $monitor("Time: %0t, rst: %b, rx: %b, loopback: %h, loopback_reg: %h, inst: %h, r: %b, c: %b, h: %b, m: %b, s: %b",
+//                  $time, rst, fifo_rx, loopback_sig, loopback_reg_sig, inst_sig, r_cmd, c_cmd, h_cmd, m_cmd, s_cmd);
+//     end
+    
+    
+//     // 디버깅을 위한 스트로브 모니터링
+//     // 특정 시간마다 중요 신호들의 변화를 추적
+//     initial begin
+//         forever begin
+//             #(BAUD_PERIOD);
+//             $display("STROBE - Time: %0t, loopback: %h, loopback_reg: %h, inst: %h",
+//                      $time, loopback_sig, loopback_reg_sig, inst_sig);
+//         end
+//     end
+
+// endmodule
+
+// `timescale 1ns / 1ps
+
+// module prj_uart_stopwatch_tb;
+//     // 파라미터 정의
+//     parameter CLK_PERIOD = 10; // 10ns = 100MHz
+//     parameter UART_BAUD_RATE = 9600;
+//     parameter UART_BIT_PERIOD = 1_000_000_000 / UART_BAUD_RATE; // ns 단위
+    
+//     // 내부 신호
+//     reg clk;
+//     reg rst;
+//     reg fifo_rx;
+//     wire fifo_tx;
+//     reg [1:0] sw;
+//     wire [3:0] fnd_comm;
+//     wire [7:0] fnd_font;
+//     wire [3:0] led;
+    
+//     // UART 송신 태스크에 사용할 변수들
+//     reg [7:0] tx_data;
+//     integer i;
+    
+//     // 디바이스 인스턴스화
+//     prj_uart_stopwatch dut (
+//         .clk(clk),
+//         .rst(rst),
+//         .fifo_rx(fifo_rx),
+//         .fifo_tx(fifo_tx),
+//         .sw(sw),
+//         .fnd_comm(fnd_comm),
+//         .fnd_font(fnd_font),
+//         .led(led)
+//     );
+    
+//     // 클럭 생성
+//     initial begin
+//         clk = 0;
+//         forever #(CLK_PERIOD/2) clk = ~clk;
+//     end
+    
+//     // UART 문자 송신 태스크 정의
+//     task uart_send_byte;
+//         input [7:0] data;
+//         begin
+//             // 시작 비트 (0)
+//             fifo_rx = 0;
+//             #(UART_BIT_PERIOD);
+            
+//             // 8비트 데이터 (LSB 먼저)
+//             for (i = 0; i < 8; i = i + 1) begin
+//                 fifo_rx = data[i];
+//                 #(UART_BIT_PERIOD);
+//             end
+            
+//             // 정지 비트 (1)
+//             fifo_rx = 1;
+//             #(UART_BIT_PERIOD);
+//         end
+//     endtask
+    
+//     // 테스트 시나리오
+//     initial begin
+//         // 초기화
+//         rst = 1;
+//         fifo_rx = 1; // UART idle
+//         sw = 2'b00;
+        
+//         // 리셋 해제
+//         #100;
+//         rst = 0;
+//         #100;
+        
+//         // 테스트 1: 스톱워치 시작 ('R' 명령)
+//         $display("Test 1: Start Stopwatch ('R' command)");
+//         uart_send_byte(8'h52); // 'R'
+//         #(UART_BIT_PERIOD * 20); // 여유 시간
+        
+//         // 시간 경과 시뮬레이션 (여러 클럭 대기)
+//         #10000;
+        
+//         // 테스트 2: 시간 증가 ('H' 명령 - 시간 증가)
+//         $display("Test 2: Increment Hour ('H' command)");
+//         uart_send_byte(8'h48); // 'H'
+//         #(UART_BIT_PERIOD * 20);
+        
+//         // 테스트 3: 분 증가 ('M' 명령)
+//         $display("Test 3: Increment Minute ('M' command)");
+//         uart_send_byte(8'h4D); // 'M'
+//         #(UART_BIT_PERIOD * 20);
+        
+//         // 테스트 4: 초 증가 ('S' 명령)
+//         $display("Test 4: Increment Second ('S' command)");
+//         uart_send_byte(8'h53); // 'S'
+//         #(UART_BIT_PERIOD * 20);
+        
+//         // 테스트 5: 스톱워치 정지 (다시 'R' 명령)
+//         $display("Test 5: Stop Stopwatch (another 'R' command)");
+//         uart_send_byte(8'h52); // 'R'
+//         #(UART_BIT_PERIOD * 20);
+        
+//         // 테스트 6: 스톱워치 초기화 ('C' 명령)
+//         $display("Test 6: Reset Stopwatch ('C' command)");
+//         uart_send_byte(8'h43); // 'C'
+//         #(UART_BIT_PERIOD * 20);
+        
+//         // 테스트 7: 소문자 명령 테스트 ('r' 명령)
+//         $display("Test 7: Lowercase Command Test ('r' command)");
+//         uart_send_byte(8'h72); // 'r'
+//         #(UART_BIT_PERIOD * 20);
+        
+//         // 테스트 8: 유효하지 않은 명령 테스트
+//         $display("Test 8: Invalid Command Test ('X' command)");
+//         uart_send_byte(8'h58); // 'X'
+//         #(UART_BIT_PERIOD * 20);
+        
+//         // 테스트 종료
+//         $display("All tests completed");
+//         #1000;
+//         $finish;
+//     end
+    
+//     // 모니터링
+//     // FND 표시 모니터링
+//     always @(fnd_comm or fnd_font) begin
+//         case(fnd_comm)
+//             4'b1110: $display("FND 1 (rightmost): %h", fnd_font);
+//             4'b1101: $display("FND 2: %h", fnd_font);
+//             4'b1011: $display("FND 3: %h", fnd_font);
+//             4'b0111: $display("FND 4 (leftmost): %h", fnd_font);
+//         endcase
+//     end
+    
+//     // 제어 신호 모니터링
+//     always @(dut.r or dut.c or dut.h or dut.m or dut.s) begin
+//         if(dut.r) $display("Command Detected: Run/Stop");
+//         if(dut.c) $display("Command Detected: Clear");
+//         if(dut.h) $display("Command Detected: Hour++");
+//         if(dut.m) $display("Command Detected: Minute++");
+//         if(dut.s) $display("Command Detected: Second++");
+//     end
+    
+// endmodule
 `timescale 1ns / 1ps
 
-module tb_prj_uart_stopwatch();
-
-    // Clock and reset signals
+module prj_uart_stopwatch_tb;
+    // 파라미터 정의
+    parameter CLK_PERIOD = 10; // 10ns = 100MHz
+    parameter UART_BAUD_RATE = 9600;
+    parameter UART_BIT_PERIOD = 1_000_000_000 / UART_BAUD_RATE; // ns 단위
+    
+    // 내부 신호
     reg clk;
     reg rst;
-    
-    // UART signals
     reg fifo_rx;
     wire fifo_tx;
-    
-    // Switch and output signals
     reg [1:0] sw;
     wire [3:0] fnd_comm;
     wire [7:0] fnd_font;
     wire [3:0] led;
     
-    // 모든 중간 신호를 모니터링하기 위한 변수들
-    // UART 관련 신호
-    wire [7:0] uart_rx_data;   // UART 수신 데이터
-    wire uart_rx_valid;        // UART 수신 데이터 유효성
-    wire uart_rx_ready;        // UART 수신기 준비 상태
+    // UART 송신 태스크에 사용할 변수들
+    reg [7:0] tx_data;
+    integer i;
     
-    // FIFO 관련 신호
-    wire fifo_empty;          // FIFO 비어있음 플래그
-    wire fifo_full;           // FIFO 가득참 플래그
-    wire fifo_rd_en;          // FIFO 읽기 활성화
-    wire fifo_wr_en;          // FIFO 쓰기 활성화
-    wire [7:0] fifo_data_out; // FIFO 출력 데이터
-    
-    // UART_CU 관련 신호
-    wire [7:0] loopback_sig;  // UART_CU 입력
-    wire [7:0] loopback_reg_sig; // UART_CU 내부 저장 레지스터
-    wire [7:0] inst_sig;      // UART_CU 출력
-    
-    // CMD_DECODER 관련 신호
-    wire [7:0] cmd_ctrl;      // CMD_DECODER 입력
-    wire r_cmd, c_cmd, h_cmd, m_cmd, s_cmd;  // 디코딩된 명령어
-    
-    // UART transmission constants
-    localparam BAUD_RATE = 9600;
-    localparam BAUD_PERIOD = 1000000000 / BAUD_RATE; // Period in nanoseconds
-    
-    // Module instantiation
-    prj_uart_stopwatch UUT (
+    // 디바이스 인스턴스화
+    prj_uart_stopwatch dut (
         .clk(clk),
         .rst(rst),
         .fifo_rx(fifo_rx),
@@ -360,183 +717,168 @@ module tb_prj_uart_stopwatch();
         .led(led)
     );
     
-    // 내부 신호 연결 (모니터링 목적)
-    // 계층 구조를 명확히 하기 위해 주석 처리된 예시를 포함합니다
-    // assign uart_rx_data = UUT.uart_rx_module.rx_data;
-    // assign uart_rx_valid = UUT.uart_rx_module.rx_valid;
-    // assign fifo_empty = UUT.fifo_module.empty;
-    // assign fifo_data_out = UUT.fifo_module.data_out;
-    
-    // 실제 프로젝트 계층 구조에 맞게 수정해야 합니다.
-    // 여러 가능한 경로를 제공하여 옳은 것을 찾을 수 있도록 합니다.
-    
-    // UART_CU 신호 연결 시도
-    // 버전 1: 직접 매핑 (가장 표준적인 방법)
-    assign loopback_sig = UUT.U_UART_CU.loopback;
-    assign loopback_reg_sig = UUT.U_UART_CU.loopback_reg;
-    assign inst_sig = UUT.U_UART_CU.inst;
-    
-    // 버전 2: 대체 경로
-    // assign loopback_sig = UUT.uart_control_unit.loopback;
-    // assign loopback_reg_sig = UUT.uart_control_unit.loopback_reg;
-    // assign inst_sig = UUT.uart_control_unit.inst;
-    
-    // 버전 3: 또 다른 가능한 경로
-    // assign loopback_sig = UUT.UART_CU_INST.loopback;
-    // assign loopback_reg_sig = UUT.UART_CU_INST.loopback_reg;
-    // assign inst_sig = UUT.UART_CU_INST.inst;
-    
-    // CMD_DECODER 신호
-    assign cmd_ctrl = UUT.ctrl;
-    assign r_cmd = UUT.r;
-    assign c_cmd = UUT.c;
-    assign h_cmd = UUT.h;
-    assign m_cmd = UUT.m;
-    assign s_cmd = UUT.s;
-    
-    // Clock generation (100MHz)
+    // 클럭 생성
     initial begin
         clk = 0;
-        forever #5 clk = ~clk; // 10ns period (100MHz)
+        forever #(CLK_PERIOD/2) clk = ~clk;
     end
     
-    // UART character transmission task
-    task send_uart_byte;
+    // UART 문자 송신 태스크 정의
+    task uart_send_byte;
         input [7:0] data;
-        integer i;
         begin
-            // Start bit (low)
+            // 시작 비트 (0)
             fifo_rx = 0;
-            #BAUD_PERIOD;
+            #(UART_BIT_PERIOD);
             
-            // 8 data bits (LSB first)
+            // 8비트 데이터 (LSB 먼저)
             for (i = 0; i < 8; i = i + 1) begin
                 fifo_rx = data[i];
-                #BAUD_PERIOD;
+                #(UART_BIT_PERIOD);
             end
             
-            // Stop bit (high)
+            // 정지 비트 (1)
             fifo_rx = 1;
-            #BAUD_PERIOD;
-            
-            // 추가 안정화 지연
-            #(BAUD_PERIOD / 2);
+            #(UART_BIT_PERIOD);
         end
     endtask
     
-    // 직접 하드코딩 강제 설정 태스크
-    task force_loopback;
-        input [7:0] data;
-        begin
-            $display("Time: %0t - 직접 loopback 강제 설정: %h", $time, data);
-            force UUT.U_UART_CU.loopback = data;
-            #20;  // 적당한 시간 대기
-            release UUT.U_UART_CU.loopback;
-            #100; // 결과 관찰 시간
-        end
-    endtask
-    
-    // 디버그용 변수
-    integer error_count = 0;
-    
-    // Test scenario
+    // 테스트 시나리오
     initial begin
-        // Initialization
+        // 초기화
         rst = 1;
-        fifo_rx = 1; // Idle state is high
+        fifo_rx = 1; // UART idle
         sw = 2'b00;
-        #500; // 긴 리셋 시간
+        
+        // 파형 저장 설정
+        $dumpfile("uart_stopwatch.vcd");
+        $dumpvars(0, prj_uart_stopwatch_tb);
+        
+        // 리셋 해제
+        #100;
         rst = 0;
-        #500; // 긴 안정화 시간
+        #100;
         
-        $display("==== 정상 UART 전송 테스트 ====");
+        // =====================================================
+        // 테스트 1: SW=0일 때, R/C 명령만 동작 확인
+        // =====================================================
+        $display("Test Group 1: SW=0, Testing R/C commands");
+        sw = 2'b00;
+        #50;
         
-        // 테스트 1: 'R' 명령어 전송
-        $display("\nTest 1: Sending 'R' command (0x52)");
-        send_uart_byte(8'h52); // ASCII 'R'
-        #(BAUD_PERIOD * 10);
-        if (inst_sig != 8'h52) begin
-            $display("오류! inst_sig = %h, 예상값: %h", inst_sig, 8'h52);
-            error_count = error_count + 1;
-        end
+        // R 명령 테스트
+        $display("Test 1.1: SW=0, R command (should work)");
+        uart_send_byte(8'h52); // 'R'
+        #(UART_BIT_PERIOD * 20);
         
-        // 테스트 2: 'h' 명령어 전송
-        $display("\nTest 2: Sending 'h' command (0x68)");
-        send_uart_byte(8'h68); // ASCII 'h'
-        #(BAUD_PERIOD * 10);
-        if (inst_sig != 8'h48) begin  // 'H'로 변환되어야 함
-            $display("오류! inst_sig = %h, 예상값: %h", inst_sig, 8'h48);
-            error_count = error_count + 1;
-        end
+        // C 명령 테스트
+        $display("Test 1.2: SW=0, C command (should work)");
+        uart_send_byte(8'h43); // 'C'
+        #(UART_BIT_PERIOD * 20);
         
-        // 테스트 3: 같은 명령 두 번 전송 (변화 감지 테스트)
-        $display("\nTest 3: 같은 명령 두 번 전송 - 'm' (0x6D)");
-        send_uart_byte(8'h6D); // ASCII 'm'
-        #(BAUD_PERIOD * 5);
-        send_uart_byte(8'h00); // 0 (중간 값 변경)
-        #(BAUD_PERIOD * 5);
-        send_uart_byte(8'h6D); // ASCII 'm' 다시
-        #(BAUD_PERIOD * 10);
+        // S 명령 테스트 (작동하지 않아야 함)
+        $display("Test 1.3: SW=0, S command (should NOT work)");
+        uart_send_byte(8'h53); // 'S'
+        #(UART_BIT_PERIOD * 20);
         
-        $display("\n==== 직접 loopback 강제 설정 테스트 ====");
+        // H 명령 테스트 (작동하지 않아야 함)
+        $display("Test 1.4: SW=0, H command (should NOT work)");
+        uart_send_byte(8'h48); // 'H'
+        #(UART_BIT_PERIOD * 20);
         
-        // 테스트 4: 직접 loopback 강제 설정
-        $display("\nTest 4: 직접 loopback 강제 설정 - 'R' (0x52)");
-        force_loopback(8'h52); // 'R'
-        if (inst_sig != 8'h52) begin
-            $display("오류! inst_sig = %h, 예상값: %h", inst_sig, 8'h52);
-            error_count = error_count + 1;
-        end
+        // M 명령 테스트 (작동하지 않아야 함)
+        $display("Test 1.5: SW=0, M command (should NOT work)");
+        uart_send_byte(8'h4D); // 'M'
+        #(UART_BIT_PERIOD * 20);
         
-        // 테스트 5: 다른 값으로 강제 설정
-        $display("\nTest 5: 직접 loopback 강제 설정 - 'C' (0x43)");
-        force_loopback(8'h43); // 'C'
-        if (inst_sig != 8'h43) begin
-            $display("오류! inst_sig = %h, 예상값: %h", inst_sig, 8'h43);
-            error_count = error_count + 1;
-        end
+        // =====================================================
+        // 테스트 2: SW=2일 때, S 명령만 동작 확인
+        // =====================================================
+        $display("Test Group 2: SW=2, Testing S command");
+        sw = 2'b10;
+        #50;
         
-        // 모듈 경로 검증
-        $display("\n==== 모듈 경로 검증 ====");
-        $display("loopback_sig 경로 확인: %h", loopback_sig);
-        $display("loopback_reg_sig 경로 확인: %h", loopback_reg_sig);
-        $display("inst_sig 경로 확인: %h", inst_sig);
+        // S 명령 테스트
+        $display("Test 2.1: SW=2, S command (should work)");
+        uart_send_byte(8'h53); // 'S'
+        #(UART_BIT_PERIOD * 20);
         
-        // 결과 요약
-        #500;
-        $display("\n==== 테스트 결과 요약 ====");
-        if (error_count > 0) begin
-            $display("테스트 실패! 총 %d개의 오류 발견", error_count);
-        end else begin
-            $display("모든 테스트 통과!");
-        end
+        // R 명령 테스트 (작동하지 않아야 함)
+        $display("Test 2.2: SW=2, R command (should NOT work)");
+        uart_send_byte(8'h52); // 'R'
+        #(UART_BIT_PERIOD * 20);
         
-        // 추가 디버깅 메시지
-        $display("\n문제 진단 힌트:");
-        $display("1. loopback과 loopback_reg 값이 다른지 확인하세요 (변화 감지에 필요)");
-        $display("2. UART_CU 모듈 내 경로가 올바른지 확인하세요");
-        $display("3. 하드코딩 테스트 결과와 UART 테스트 결과를 비교하세요");
+        // C 명령 테스트 (작동하지 않아야 함)
+        $display("Test 2.3: SW=2, C command (should NOT work)");
+        uart_send_byte(8'h43); // 'C'
+        #(UART_BIT_PERIOD * 20);
         
-        // End simulation
-        $display("\nSimulation complete");
+        // H 명령 테스트 (작동하지 않아야 함)
+        $display("Test 2.4: SW=2, H command (should NOT work)");
+        uart_send_byte(8'h48); // 'H'
+        #(UART_BIT_PERIOD * 20);
+        
+        // M 명령 테스트 (작동하지 않아야 함)
+        $display("Test 2.5: SW=2, M command (should NOT work)");
+        uart_send_byte(8'h4D); // 'M'
+        #(UART_BIT_PERIOD * 20);
+        
+        // =====================================================
+        // 테스트 3: SW=3일 때, M과 H 명령만 동작 확인
+        // =====================================================
+        $display("Test Group 3: SW=3, Testing M/H commands");
+        sw = 2'b11;
+        #50;
+        
+        // M 명령 테스트
+        $display("Test 3.1: SW=3, M command (should work)");
+        uart_send_byte(8'h4D); // 'M'
+        #(UART_BIT_PERIOD * 20);
+        
+        // H 명령 테스트
+        $display("Test 3.2: SW=3, H command (should work)");
+        uart_send_byte(8'h48); // 'H'
+        #(UART_BIT_PERIOD * 20);
+        
+        // R 명령 테스트 (작동하지 않아야 함)
+        $display("Test 3.3: SW=3, R command (should NOT work)");
+        uart_send_byte(8'h52); // 'R'
+        #(UART_BIT_PERIOD * 20);
+        
+        // C 명령 테스트 (작동하지 않아야 함)
+        $display("Test 3.4: SW=3, C command (should NOT work)");
+        uart_send_byte(8'h43); // 'C'
+        #(UART_BIT_PERIOD * 20);
+        
+        // S 명령 테스트 (작동하지 않아야 함)
+        $display("Test 3.5: SW=3, S command (should NOT work)");
+        uart_send_byte(8'h53); // 'S'
+        #(UART_BIT_PERIOD * 20);
+        
+        // 테스트 종료
+        $display("All tests completed");
+        #1000;
         $finish;
     end
     
-    // Signal monitoring - loopback과 inst 값 변화에 초점을 맞춤
-    initial begin
-        $monitor("Time: %0t, rst: %b, rx: %b, loopback: %h, loopback_reg: %h, inst: %h, r: %b, c: %b, h: %b, m: %b, s: %b",
-                 $time, rst, fifo_rx, loopback_sig, loopback_reg_sig, inst_sig, r_cmd, c_cmd, h_cmd, m_cmd, s_cmd);
+    // 모니터링
+    // FND 표시 모니터링
+    always @(fnd_comm or fnd_font) begin
+        case(fnd_comm)
+            4'b1110: $display("FND 1 (rightmost): %h", fnd_font);
+            4'b1101: $display("FND 2: %h", fnd_font);
+            4'b1011: $display("FND 3: %h", fnd_font);
+            4'b0111: $display("FND 4 (leftmost): %h", fnd_font);
+        endcase
     end
     
-    
-    // 디버깅을 위한 스트로브 모니터링
-    // 특정 시간마다 중요 신호들의 변화를 추적
-    initial begin
-        forever begin
-            #(BAUD_PERIOD);
-            $display("STROBE - Time: %0t, loopback: %h, loopback_reg: %h, inst: %h",
-                     $time, loopback_sig, loopback_reg_sig, inst_sig);
-        end
+    // 제어 신호 모니터링
+    always @(dut.U_CMD.r or dut.U_CMD.c or dut.U_CMD.h or dut.U_CMD.m or dut.U_CMD.s) begin
+        if(dut.U_CMD.r) $display("Command Detected: Run/Stop (SW=%b)", sw);
+        if(dut.U_CMD.c) $display("Command Detected: Clear (SW=%b)", sw);
+        if(dut.U_CMD.h) $display("Command Detected: Hour++ (SW=%b)", sw);
+        if(dut.U_CMD.m) $display("Command Detected: Minute++ (SW=%b)", sw);
+        if(dut.U_CMD.s) $display("Command Detected: Second++ (SW=%b)", sw);
     end
-
+    
 endmodule

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1742662754">
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1742783042">
   <File Type="ROUTE-PWR" Name="prj_uart_stopwatch_power_routed.rpt"/>
   <File Type="PA-TCL" Name="prj_uart_stopwatch.tcl"/>
   <File Type="ROUTE-PWR-SUM" Name="prj_uart_stopwatch_power_summary_routed.pb"/>
@@ -16,9 +16,12 @@
   <File Type="BITSTR-BMM" Name="prj_uart_stopwatch_bd.bmm"/>
   <File Type="ROUTE-METHODOLOGY-DRC" Name="prj_uart_stopwatch_methodology_drc_routed.rpt"/>
   <File Type="BITSTR-MMI" Name="prj_uart_stopwatch.mmi"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="prj_uart_stopwatch_methodology_drc_routed.pb"/>
   <File Type="BITSTR-SYSDEF" Name="prj_uart_stopwatch.sysdef"/>
+  <File Type="ROUTE-DRC-RPX" Name="prj_uart_stopwatch_drc_routed.rpx"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
   <File Type="BITSTR-LTX" Name="prj_uart_stopwatch.ltx"/>
+  <File Type="RCFI_FILE" Name="prj_uart_stopwatch.rcfi"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <File Type="OPT-DRC" Name="prj_uart_stopwatch_drc_opted.rpt"/>
   <File Type="OPT-HWDEF" Name="prj_uart_stopwatch.hwdef"/>
@@ -48,11 +51,8 @@
   <File Type="PHYSOPT-DCP" Name="prj_uart_stopwatch_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="prj_uart_stopwatch_postroute_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="prj_uart_stopwatch_postroute_physopt_bb.dcp"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="prj_uart_stopwatch_methodology_drc_routed.pb"/>
-  <File Type="ROUTE-DRC-RPX" Name="prj_uart_stopwatch_drc_routed.rpx"/>
   <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="prj_uart_stopwatch_methodology_drc_routed.rpx"/>
   <File Type="PDI-FILE" Name="prj_uart_stopwatch.pdi"/>
-  <File Type="RCFI_FILE" Name="prj_uart_stopwatch.rcfi"/>
   <File Type="CFI_FILE" Name="prj_uart_stopwatch.cfi"/>
   <File Type="RNPI_FILE" Name="prj_uart_stopwatch.rnpi"/>
   <File Type="NPI_FILE" Name="prj_uart_stopwatch.npi"/>
@@ -210,6 +210,5 @@
     <Step Id="route_design"/>
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
-    <Step Id="write_device_image"/>
   </Strategy>
 </GenRun>

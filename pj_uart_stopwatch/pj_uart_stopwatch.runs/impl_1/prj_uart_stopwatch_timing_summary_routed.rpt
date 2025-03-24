@@ -1,8 +1,8 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Sun Mar 23 02:00:18 2025
-| Host         : DESKTOP-2CUDO2B running 64-bit major release  (build 9200)
+| Date         : Mon Mar 24 11:25:28 2025
+| Host         : DESKTOP-7CFQ9ND running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -file prj_uart_stopwatch_timing_summary_routed.rpt -pb prj_uart_stopwatch_timing_summary_routed.pb -rpx prj_uart_stopwatch_timing_summary_routed.rpx -warn_on_violation
 | Design       : prj_uart_stopwatch
 | Device       : 7a35t-cpg236
