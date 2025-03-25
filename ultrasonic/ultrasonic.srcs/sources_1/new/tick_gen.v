@@ -20,34 +20,31 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module tick_gen(
-    input wire clk_in,     // 시스템 클럭 입력 (예: 50MHz 또는 100MHz)
-    input wire reset,      // 리셋 신호
-    output reg tick_10us   // 10us 마다 발생하는 틱 신호
+module baud_tick_gen(
+    input               clk,        // 시스템 클럭 (예: 50MHz)
+    input               reset,      // 리셋 신호 (활성 높음)
+    output reg          tick_1us    // 1us 마다 발생하는 틱
 );
 
     // 클럭 주파수에 따른 카운터 값 설정
-    // 예시: 100MHz 클럭에서 10us 틱을 생성하려면 1000 카운트 필요
-    // 100MHz = 10ns 주기, 10us / 10ns = 1000
-    parameter COUNT_MAX = 1000 - 1;  // 0부터 시작하므로 1 빼기
+    // 예: 50MHz 클럭에서 1us를 위한 카운트 값 = 50MHz * 0.000001s = 50
+    parameter COUNT_MAX = 50;
     
     // 카운터 레지스터
-    reg [15:0] counter;
+    reg [5:0] counter; // 최대 63까지 카운트 가능
     
     // 카운터 로직
-    always @(posedge clk_in or posedge reset) begin
+    always @(posedge clk or posedge reset) begin
         if (reset) begin
-            counter <= 16'd0;
-            tick_10us <= 1'b0;
+            counter <= 6'd0;
+            tick_1us <= 1'b0;
         end else begin
-            if (counter >= COUNT_MAX) begin
-                counter <= 16'd0;
-                tick_10us <= 1'b1;  // 10us 마다 틱 발생
+            if (counter >= COUNT_MAX - 1) begin
+                counter <= 6'd0;
+                tick_1us <= 1'b1;  // 1us 마다 틱 발생
             end else begin
                 counter <= counter + 1'b1;
-                if (counter == 16'd0) begin
-                    tick_10us <= 1'b0;  // 틱 신호는 1클럭 주기만 유지
-                end
+                tick_1us <= 1'b0;  // 틱은 1클럭 주기만 유지
             end
         end
     end

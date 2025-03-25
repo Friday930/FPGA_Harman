@@ -20,37 +20,51 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module hcsr04_controller(
-    input wire clk,           // 시스템 클럭
-    input wire reset_n,       // 리셋 신호
-    input wire tick_10us,     // 10us 타이머 틱
-    input wire echo,          // HC-SR04 에코 핀
-    output reg trigger,       // HC-SR04 트리거 핀
-    output reg [15:0] distance // 계산된 거리 (mm 단위)
+module hscr04_controller(
+    input               clk,        // 시스템 클럭
+    input               reset,      // 리셋 신호 (활성 높음)
+    input               tick_1us,   // 1us 타이머 틱
+    input               btn_start,  // 시작 버튼
+    output reg          trigger,    // HC-SR04 트리거 핀
+    output reg          tick_start  // 거리 측정 시작 신호
 );
 
     // 상태 정의
     localparam IDLE = 2'b00;
-    localparam TRIGGER = 2'b01;
-    localparam WAIT_ECHO = 2'b10;
-    localparam CALC_DISTANCE = 2'b11;
+    localparam START = 2'b01;
+    localparam WAIT = 2'b10;
     
     reg [1:0] state;
     reg [1:0] next_state;
     
-    // 내부 카운터와 신호
-    reg [3:0] trigger_counter;  // 트리거 펄스 생성용 (10us 단위로 카운트)
-    reg [16:0] echo_counter;    // 에코 펄스 길이 측정용 (10us 단위로 카운트)
+    // 트리거 펄스 카운터 (10us 트리거 펄스 생성)
+    reg [3:0] trigger_counter;
     
-    // 음속 관련 상수
-    // 음속: 약 340m/s = 0.34mm/us
-    // 거리 = (echo 시간 * 음속) / 2 (왕복 시간이므로 2로 나눔)
-    // 10us 단위로 카운트하므로, 1 카운트 = 10us = 3.4mm (왕복 기준)
-    // 따라서 거리(mm) = echo_counter * 34 / 20 = echo_counter * 1.7
+    // 500ms 대기 타이머 (0.5초)
+    reg [19:0] wait_counter; // 최대 1,048,575까지 카운트 가능
+    parameter WAIT_500MS = 500000; // 500ms = 500,000us
+    
+    // 버튼 에지 검출을 위한 레지스터
+    reg btn_start_r1, btn_start_r2;
+    wire btn_start_posedge;
+    
+    // 버튼 에지 검출 로직
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            btn_start_r1 <= 1'b0;
+            btn_start_r2 <= 1'b0;
+        end else begin
+            btn_start_r1 <= btn_start;
+            btn_start_r2 <= btn_start_r1;
+        end
+    end
+    
+    // 버튼 상승 에지 검출
+    assign btn_start_posedge = btn_start_r1 & ~btn_start_r2;
     
     // 상태 전이 로직
-    always @(posedge clk or negedge reset_n) begin
-        if (!reset_n) begin
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
             state <= IDLE;
         end else begin
             state <= next_state;
@@ -59,77 +73,66 @@ module hcsr04_controller(
     
     // 다음 상태 결정 로직
     always @(*) begin
+        next_state = state;
+        
         case (state)
             IDLE: begin
-                if (tick_10us)
-                    next_state = TRIGGER;
-                else
+                if (btn_start_posedge)
+                    next_state = START;
+            end
+            
+            START: begin
+                if (trigger_counter >= 4'd10) // 10us 트리거 펄스 완료
+                    next_state = WAIT;
+            end
+            
+            WAIT: begin
+                if (wait_counter >= WAIT_500MS) // 0.5초 대기 완료
                     next_state = IDLE;
-            end
-            
-            TRIGGER: begin
-                if (trigger_counter >= 4'd1) // 10us 트리거 펄스 (최소 10us 필요)
-                    next_state = WAIT_ECHO;
-                else
-                    next_state = TRIGGER;
-            end
-            
-            WAIT_ECHO: begin
-                if (echo == 1'b0 && echo_counter > 0) // 에코 펄스 종료
-                    next_state = CALC_DISTANCE;
-                else if (echo_counter > 17'd29000) // 타임아웃 (약 30cm * 100 = 3m)
-                    next_state = IDLE;
-                else
-                    next_state = WAIT_ECHO;
-            end
-            
-            CALC_DISTANCE: begin
-                next_state = IDLE;
             end
             
             default: next_state = IDLE;
         endcase
     end
     
-    // 트리거 카운터 및 출력 로직
-    always @(posedge clk or negedge reset_n) begin
-        if (!reset_n) begin
-            trigger_counter <= 4'd0;
+    // 트리거 신호 및 카운터 관리
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
             trigger <= 1'b0;
-        end else if (state == TRIGGER) begin
-            if (tick_10us) begin
-                trigger_counter <= trigger_counter + 4'd1;
-            end
-            trigger <= 1'b1;
+            trigger_counter <= 4'd0;
+            wait_counter <= 20'd0;
+            tick_start <= 1'b0;
         end else begin
-            trigger_counter <= 4'd0;
-            trigger <= 1'b0;
-        end
-    end
-    
-    // 에코 카운터 로직
-    always @(posedge clk or negedge reset_n) begin
-        if (!reset_n) begin
-            echo_counter <= 17'd0;
-        end else if (state == WAIT_ECHO) begin
-            if (echo) begin
-                if (tick_10us) begin
-                    echo_counter <= echo_counter + 17'd1;
+            // 기본값 설정
+            tick_start <= 1'b0;
+            
+            case (state)
+                IDLE: begin
+                    trigger <= 1'b0;
+                    trigger_counter <= 4'd0;
+                    wait_counter <= 20'd0;
+                    
+                    // 버튼 입력 시 즉시 tick_start 활성화
+                    if (btn_start_posedge) begin
+                        tick_start <= 1'b1;
+                    end
                 end
-            end
-        end else if (state == IDLE) begin
-            echo_counter <= 17'd0;
-        end
-    end
-    
-    // 거리 계산 로직
-    always @(posedge clk or negedge reset_n) begin
-        if (!reset_n) begin
-            distance <= 16'd0;
-        end else if (state == CALC_DISTANCE) begin
-            // 거리(mm) = echo_counter * 1.7
-            // 곱셉과 나눗셈을 적용하여 계산
-            distance <= (echo_counter * 17) / 10;
+                
+                START: begin
+                    trigger <= 1'b1; // 트리거 펄스 활성화
+                    if (tick_1us) begin
+                        trigger_counter <= trigger_counter + 1'b1;
+                    end
+                end
+                
+                WAIT: begin
+                    trigger <= 1'b0; // 트리거 펄스 비활성화
+                    trigger_counter <= 4'd0;
+                    if (tick_1us) begin
+                        wait_counter <= wait_counter + 1'b1;
+                    end
+                end
+            endcase
         end
     end
 
