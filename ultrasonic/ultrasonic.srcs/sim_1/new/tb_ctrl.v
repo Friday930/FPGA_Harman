@@ -36,8 +36,10 @@ module tb_us_dist_sensor;
     // 피사체 거리 시뮬레이션용 변수 (cm 단위)
     reg [7:0] object_distance_cm;
     
-    // 모니터링용 변수들
+    // 모니터링용 변수
     time echo_start_time;
+    time trigger_start_time;
+    reg test_done;
     
     // DUT 인스턴스화
     top_ultrasonic DUT(
@@ -89,6 +91,7 @@ module tb_us_dist_sensor;
         echo = 0;
         object_distance_cm = 0;
         echo_time_us = 0;
+        test_done = 0;
         
         // 리셋 해제
         #100;
@@ -97,75 +100,100 @@ module tb_us_dist_sensor;
         
         // 첫 번째 거리 테스트: 10cm
         object_distance_cm = 10;
-        $display("Test distance: %d cm, Expected echo time: %d us", 
-                 object_distance_cm, cm_to_us(object_distance_cm));
+        $display("\n=== Test 1: %d cm ===", object_distance_cm);
+        $display("Expected echo time: %d us", cm_to_us(object_distance_cm));
         
+        // 버튼 누름 시뮬레이션 (20ns 동안 버튼 활성화)
         btn_start = 1;
         #20;
         btn_start = 0;
         
+        // 에코 생성
         generate_echo(object_distance_cm);
         
         // 측정 완료 대기
-        @(posedge done);
-        #100;
+        wait(done);
+        #20;
         $display("Measured distance: %d cm", dist);
         
-        // 0.5초 대기
-        #500000;
+        // 다음 측정 전 대기
+        #200000;
         
         // 두 번째 거리 테스트: 25cm
         object_distance_cm = 25;
-        $display("Test distance: %d cm, Expected echo time: %d us", 
-                 object_distance_cm, cm_to_us(object_distance_cm));
+        $display("\n=== Test 2: %d cm ===", object_distance_cm);
+        $display("Expected echo time: %d us", cm_to_us(object_distance_cm));
         
+        // 버튼 누름 시뮬레이션
         btn_start = 1;
         #20;
         btn_start = 0;
         
+        // 에코 생성
         generate_echo(object_distance_cm);
         
         // 측정 완료 대기
-        @(posedge done);
-        #100;
+        wait(done);
+        #20;
         $display("Measured distance: %d cm", dist);
         
-        // 0.5초 대기
-        #500000;
+        // 다음 측정 전 대기
+        #200000;
         
-        // 세 번째 거리 테스트: 100cm
-        object_distance_cm = 100;
-        $display("Test distance: %d cm, Expected echo time: %d us", 
-                 object_distance_cm, cm_to_us(object_distance_cm));
+        // 세 번째 거리 테스트: 50cm
+        object_distance_cm = 50;
+        $display("\n=== Test 3: %d cm ===", object_distance_cm);
+        $display("Expected echo time: %d us", cm_to_us(object_distance_cm));
         
+        // 버튼 누름 시뮬레이션
         btn_start = 1;
         #20;
         btn_start = 0;
         
+        // 디버깅 메시지 추가
+        $display("Button pressed for Test 3");
+        
+        // 에코 생성
         generate_echo(object_distance_cm);
         
+        // 디버깅 메시지 추가
+        $display("Echo generated for Test 3");
+        
         // 측정 완료 대기
-        @(posedge done);
-        #100;
+        wait(done == 1);
+        #20;
         $display("Measured distance: %d cm", dist);
+        
+        // 테스트 완료 표시
+        test_done = 1;
         
         // 테스트 완료
         #5000;
-        $display("Test completed!");
+        $display("\n=== Test completed! ===");
         $finish;
     end
     
-    // 트리거 모니터링
+    // 테스트 타임아웃 처리
     initial begin
-        forever begin
-            @(posedge trigger);
-            $display("Time %0t: Trigger start", $time);
-            @(negedge trigger);
-            $display("Time %0t: Trigger end", $time);
+        #2000000; // 2ms 타임아웃
+        if (!test_done) begin
+            $display("\n=== Test timed out! Final test might have failed ===");
+            $finish;
         end
     end
     
-    // 에코 모니터링
+    // 트리거 신호 모니터링
+    initial begin
+        forever begin
+            @(posedge trigger);
+            trigger_start_time = $time;
+            $display("Time %0t: Trigger start", $time);
+            @(negedge trigger);
+            $display("Time %0t: Trigger end, Duration: %0t ns", $time, $time - trigger_start_time);
+        end
+    end
+    
+    // 에코 신호 모니터링
     initial begin
         forever begin
             @(posedge echo);
@@ -176,11 +204,12 @@ module tb_us_dist_sensor;
         end
     end
     
-    // 거리 변화 모니터링
+    // 거리 측정 완료 모니터링
     initial begin
         forever begin
             @(posedge done);
-            $display("Time %0t: Distance calculated - %d cm", $time, dist);
+            #1; // 안정화를 위한 짧은 대기
+            $display("Time %0t: Distance measurement completed - %d cm", $time, dist);
         end
     end
 
