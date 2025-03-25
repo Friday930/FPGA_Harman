@@ -116,6 +116,8 @@ OPTRACE "impl_1" END { }
 }
 
 set_msg_config -id {Common 17-41} -limit 10000000
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 
 OPTRACE "impl_1" START { ROLLUP_1 }
 OPTRACE "Phase: Write Bitstream" START { ROLLUP_AUTO }
@@ -125,6 +127,8 @@ set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
   set_param chipscope.maxJobs 4
+  set_param synth.incrementalSynthesisCache C:/Users/kccistc/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-12912-DESKTOP-7CFQ9ND/incrSyn
+  set_param xicom.use_bs_reader 1
   open_checkpoint prj_uart_stopwatch_routed.dcp
   set_property webtalk.parent_dir C:/FPGA_Harman/pj_uart_stopwatch/pj_uart_stopwatch.cache/wt [current_project]
 set_property TOP prj_uart_stopwatch [current_fileset]
