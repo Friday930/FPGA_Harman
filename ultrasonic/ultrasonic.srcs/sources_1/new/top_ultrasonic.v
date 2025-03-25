@@ -21,6 +21,8 @@
 
 
 module top_ultrasonic(
+    input           clk,
+    input           rst
 
     );
 endmodule
