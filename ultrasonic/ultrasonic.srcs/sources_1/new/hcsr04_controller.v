@@ -30,23 +30,23 @@ module hscr04_controller(
 );
 
     // 상태 정의
-    localparam IDLE = 2'b00;
-    localparam START = 2'b01;
-    localparam WAIT = 2'b10;
+    localparam          IDLE = 2'b00;
+    localparam          START = 2'b01;
+    localparam          WAIT = 2'b10;
     
-    reg [1:0] state;
-    reg [1:0] next_state;
+    reg [1:0]           state;
+    reg [1:0]           next_state;
     
     // 트리거 펄스 카운터 (10us 트리거 펄스 생성)
-    reg [3:0] trigger_counter;
+    reg [3:0]           trigger_counter;
     
     // 500ms 대기 타이머 (0.5초)
-    reg [19:0] wait_counter; // 최대 1,048,575까지 카운트 가능
-    parameter WAIT_500MS = 500000; // 500ms = 500,000us
+    reg [19:0]          wait_counter; // 최대 1,048,575까지 카운트 가능
+    parameter           WAIT_500MS = 500000; // 500ms = 500,000us
     
     // 버튼 에지 검출을 위한 레지스터
-    reg btn_start_r1, btn_start_r2;
-    wire btn_start_posedge;
+    reg                 btn_start_r1, btn_start_r2;
+    wire                btn_start_posedge;
     
     // 버튼 에지 검출 로직
     always @(posedge clk or posedge reset) begin

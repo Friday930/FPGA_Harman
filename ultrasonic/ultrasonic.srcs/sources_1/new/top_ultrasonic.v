@@ -33,6 +33,7 @@ module top_ultrasonic(
     // 내부 신호
     wire                tick_1us;   // 1us 타이머 틱
     wire                tick_start; // FSM 시작 틱
+    wire                w_start;
     
     // 1us 타이머 모듈
     baud_tick_gen U_Tick_Gen(
@@ -46,9 +47,16 @@ module top_ultrasonic(
         .clk            (clk),
         .reset          (reset),
         .tick_1us       (tick_1us),
-        .btn_start      (btn_start),
+        .btn_start      (w_start),
         .trigger        (trigger),
         .tick_start     (tick_start)
+    );
+    
+    btn_debounce U_BTN(
+        .clk            (clk),
+        .reset          (reset),
+        .i_btn          (btn_start), 
+        .o_btn          (w_start)
     );
     
     // 거리 계산 모듈
