@@ -68,12 +68,12 @@ module dht11_controller(
     end
 
     always @(*) begin
-        fsm_state = fsm_next;
-        cnt_reg = cnt_next;
-        out_reg = out_next;
-        en_reg = en_next;
-        led_reg = led_next;
-        data_reg = data_next;
+        fsm_next = fsm_state;
+        cnt_next = cnt_reg;
+        out_next = out_reg;
+        en_next = en_reg;
+        led_next = led_reg;
+        data_next = data_reg;
         case (fsm_state)
             IDLE: begin
                 out_reg = 1;
@@ -105,7 +105,7 @@ module dht11_controller(
             
             SYNC_LOW: begin
                 // output open, High-Z
-                out_next = 0;
+                en_next = 0;
                 if (tick) begin
                     if (cnt_reg == SYNC_CNT - 1) begin
                         fsm_next = SYNC_HIGH;
@@ -116,7 +116,7 @@ module dht11_controller(
             end
 
             SYNC_HIGH: begin
-                out_next = 0;
+                en_next = 0;
                 if (tick) begin
                     if (cnt_reg == SYNC_CNT - 1) begin
                         fsm_next = DATA_IDLE;
@@ -126,7 +126,7 @@ module dht11_controller(
             end
 
             DATA_IDLE: begin
-                out_next = 0;
+                en_next = 0;
                 if (tick) begin
                     if (cnt_reg == DATA_SYNC - 1) begin
                         fsm_next = DATA;
@@ -137,6 +137,7 @@ module dht11_controller(
 
             // 데이터 판별 부분 -> DATA_0이 40보다 작으면 0, 크면 1
             DATA: begin
+                en_next = 0;
                 if (tick) begin
                     if (cnt_reg <= 40) begin
                         // data_next [bit_count_reg] = 0; -> software적임
@@ -150,7 +151,7 @@ module dht11_controller(
             end
 
             STOP: begin
-                en_next = 0;
+                en_next = 1;
                 if (tick) begin
                     if (cnt_reg == TIME_OUT) begin
                         fsm_next = IDLE;
