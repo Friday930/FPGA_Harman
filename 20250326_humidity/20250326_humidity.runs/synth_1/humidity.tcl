@@ -70,9 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param synth.incrementalSynthesisCache C:/Users/kccistc/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-1776-DESKTOP-7CFQ9ND/incrSyn
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
+set_param chipscope.maxJobs 4
+set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -90,6 +89,7 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
+  C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/btn_debounce.v
   C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/dht11_controller.v
   C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/fnd.v
   C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/humidity.v

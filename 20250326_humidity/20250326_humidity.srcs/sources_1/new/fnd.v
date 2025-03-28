@@ -23,13 +23,14 @@
 module fnd(
     input           clk,
     input           reset,
-    input   [15:0]  data,
+    input   [31:0]  data,
     output  [7:0]   fnd_font,
     output  [3:0]   fnd_comm
 );
     wire    [3:0]   w_digit_1, w_digit_10, w_digit_100, w_digit_1000;
-    wire    [3:0]   w_seg_sel;
+    wire    [2:0]   w_seg_sel;
     wire            w_clk_100Hz;
+    wire    [3:0]   w_bcd;
     parameter       VDD = 4'hf, VSS = 0;
 
 
@@ -108,7 +109,7 @@ module bcdtoseg (
 endmodule
 
 module digit_splitter(
-    input   [15:0]      data,
+    input   [31:0]      data,
     output  [3:0]       digit_1, digit_10, digit_100, digit_1000
 );
     

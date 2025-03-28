@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Fri Mar 28 10:28:28 2025
+| Date         : Fri Mar 28 14:56:08 2025
 | Host         : DESKTOP-7CFQ9ND running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file humidity_control_sets_placed.rpt
 | Design       : humidity
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |     6 |
-|    Minimum number of control sets                        |     6 |
+| Total control sets                                       |     7 |
+|    Minimum number of control sets                        |     7 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    16 |
+| Unused register locations in slices containing registers |    13 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,11 +39,11 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |     6 |
+| Total control sets |     7 |
 | >= 0 to < 4        |     1 |
 | >= 4 to < 6        |     0 |
 | >= 6 to < 8        |     1 |
-| >= 8 to < 10       |     0 |
+| >= 8 to < 10       |     1 |
 | >= 10 to < 12      |     1 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
@@ -59,10 +59,10 @@ Table of Contents
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |               0 |            0 |
-| No           | No                    | Yes                    |              39 |           14 |
+| No           | No                    | Yes                    |              66 |           25 |
 | No           | Yes                   | No                     |               0 |            0 |
 | Yes          | No                    | No                     |               0 |            0 |
-| Yes          | No                    | Yes                    |              73 |           23 |
+| Yes          | No                    | Yes                    |              89 |           28 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
@@ -73,12 +73,13 @@ Table of Contents
 +--------------------------+---------------------------------------------------+------------------+------------------+----------------+--------------+
 |       Clock Signal       |                   Enable Signal                   | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
 +--------------------------+---------------------------------------------------+------------------+------------------+----------------+--------------+
-|  U_FND/U_Clk_Divider/CLK |                                                   | rst_IBUF         |                1 |              3 |         3.00 |
+|  U_FND/U_Clk_Divider/CLK |                                                   | rst_IBUF         |                2 |              3 |         1.50 |
 |  clk_IBUF_BUFG           | U_DHT11/U_Tick/FSM_sequential_fsm_state_reg[1][0] | rst_IBUF         |                2 |              6 |         3.00 |
-|  clk_IBUF_BUFG           | U_DHT11/U_Tick/tick_10us_reg_0[0]                 | rst_IBUF         |                5 |             11 |         2.20 |
-|  clk_IBUF_BUFG           | U_DHT11/data_valid_next                           | rst_IBUF         |                5 |             16 |         3.20 |
-|  clk_IBUF_BUFG           |                                                   | rst_IBUF         |               13 |             36 |         2.77 |
-|  clk_IBUF_BUFG           | U_DHT11/U_Tick/E[0]                               | rst_IBUF         |               11 |             40 |         3.64 |
+|  U_BTN/r_1kHz            |                                                   | rst_IBUF         |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG           | U_DHT11/U_Tick/E[0]                               | rst_IBUF         |                5 |             11 |         2.20 |
+|  clk_IBUF_BUFG           | U_DHT11/data_valid_reg                            | rst_IBUF         |               10 |             32 |         3.20 |
+|  clk_IBUF_BUFG           | U_DHT11/U_Tick/bit_cnt_reg_reg[5][0]              | rst_IBUF         |               11 |             40 |         3.64 |
+|  clk_IBUF_BUFG           |                                                   | rst_IBUF         |               20 |             55 |         2.75 |
 +--------------------------+---------------------------------------------------+------------------+------------------+----------------+--------------+
 
 
