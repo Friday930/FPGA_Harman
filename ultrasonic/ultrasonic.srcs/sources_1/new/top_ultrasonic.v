@@ -22,41 +22,33 @@
 
 module top_ultrasonic(
     input               clk,        // 시스템 클럭
-    input               reset,      // 리셋 신호 (활성 높음)
+    input               reset,      // 리셋 신호
     input               btn_start,  // 측정 시작 버튼
-    input               echo,       // HC-SR04 에코 입력
-    output              trigger,    // HC-SR04 트리거 출력
-    output [15:0]       dist,       // 계산된 거리 (cm 단위)
-    output              done        // 측정 완료 신호
+    input               echo,       // HC-SR04 에코 핀 입력
+    output              trigger,    // HC-SR04 트리거 핀 출력
+    output [15:0]       dist,       // 측정된 거리 (cm)
+    output              data_valid  // 데이터 유효 신호
 );
-
     // 내부 신호
-    wire                tick_1us;   // 1us 타이머 틱
-    wire                tick_start; // FSM 시작 틱
-    wire                w_start;
+    wire                tick_1us;   // 1us 틱
+    wire                tick_start; // 거리 측정 시작 신호
+    wire                done;       // 측정 완료 신호
     
     // 1us 타이머 모듈
-    baud_tick_gen U_Tick_Gen(
+    tick_gen U_Tick_Gen(
         .clk            (clk),
         .reset          (reset),
         .tick_1us       (tick_1us)
     );
     
     // 초음파 센서 컨트롤러 모듈
-    hscr04_controller U_Controller(
-        .clk            (clk),
-        .reset          (reset),
-        .tick_1us       (tick_1us),
-        .btn_start      (w_start),
-        .trigger        (trigger),
-        .tick_start     (tick_start)
-    );
-    
-    btn_debounce U_BTN(
-        .clk            (clk),
-        .reset          (reset),
-        .i_btn          (btn_start), 
-        .o_btn          (w_start)
+    hscr04_controller U_CTRL(
+        .clk            (clk),        
+        .reset          (reset),      
+        .tick_1us       (tick_1us),   
+        .btn_start      (btn_start),  
+        .trigger        (trigger),    
+        .tick_start     (tick_start)  
     );
     
     // 거리 계산 모듈
@@ -67,7 +59,7 @@ module top_ultrasonic(
         .echo           (echo),
         .tick_start     (tick_start),
         .dist           (dist),
-        .done           (done)
+        .done           (data_valid)
     );
 
 endmodule

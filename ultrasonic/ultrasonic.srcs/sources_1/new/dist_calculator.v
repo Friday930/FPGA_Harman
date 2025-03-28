@@ -29,7 +29,6 @@ module dist_calculator(
     output reg [15:0]   dist,       // 계산된 거리 (cm 단위)
     output reg          done        // 측정 완료 신호
 );
-
     // 상태 정의
     localparam IDLE = 2'b00;
     localparam HIGH_LEVEL_COUNT = 2'b01;
@@ -41,6 +40,27 @@ module dist_calculator(
     
     // 에코 펄스 카운터
     reg [19:0] echo_time_counter; // 최대 1,048,575us까지 카운트 가능
+    
+    // 에코 타임아웃 (38ms = 최대 약 6.5m)
+    parameter ECHO_TIMEOUT = 38000;
+    
+    // 에코 신호 샘플링을 위한 레지스터
+    reg echo_reg1, echo_reg2;
+    wire echo_rising, echo_falling;
+    
+    // 에코 신호 에지 감지
+    always @(posedge clk) begin
+        if (reset) begin
+            echo_reg1 <= 1'b0;
+            echo_reg2 <= 1'b0;
+        end else begin
+            echo_reg1 <= echo;
+            echo_reg2 <= echo_reg1;
+        end
+    end
+    
+    assign echo_rising = echo_reg1 & ~echo_reg2;   // 상승 에지
+    assign echo_falling = ~echo_reg1 & echo_reg2;  // 하강 에지
     
     // 상태 전이 로직
     always @(posedge clk or posedge reset) begin
@@ -62,7 +82,7 @@ module dist_calculator(
             end
             
             HIGH_LEVEL_COUNT: begin
-                if (echo == 1'b0 && echo_time_counter > 0) // 에코 펄스 종료
+                if ((echo_falling && echo_time_counter > 0) || echo_time_counter >= ECHO_TIMEOUT)
                     next_state = DIST_CALC;
             end
             
@@ -92,23 +112,23 @@ module dist_calculator(
                 end
                 
                 HIGH_LEVEL_COUNT: begin
-                    if (echo && tick_1us) begin
+                    if (echo_reg1 && tick_1us) begin
                         echo_time_counter <= echo_time_counter + 1'b1;
                     end
                 end
                 
                 DIST_CALC: begin
-                    // 거리 계산: 시간(us) / 58 = 거리(cm)
-                    // 음속: 약 340m/s = 34000cm/s
-                    // 왕복 시간을 고려하여 2로 나눈 후, 음속으로 거리 계산
-                    // dist = echo_time_counter / 58
-                    
-                    // 나눗셈을 쉬프트 연산으로 근사
-                    // 58 ≈ 64 - 4 - 2 = 2^6 - 2^2 - 2^1
-                    // dist ≈ echo_time_counter / 64 * 64/58
-                    // 64/58 ≈ 1.103 ≈ 1 + 1/10 = 11/10
-                    
-                    dist <= (echo_time_counter >> 6) * 11 / 10;
+                // 거리 계산: 시간(us) / 58 = 거리(cm)
+                // 데이터시트 권장 계산법 사용
+                if (echo_time_counter >= ECHO_TIMEOUT) begin
+                    dist <= 16'd9999;  // 범위 초과 표시
+                end else begin
+                    // 정확한 나눗셈 사용
+                    dist <= (echo_time_counter * 100) / (58 * 120);
+                     
+                    // 또는 나눗셈을 근사값으로 최적화할 경우:
+                    // dist <= (echo_time_counter * 17) / 1000;  // 0.017 * echo_time_counter
+                    end
                 end
                 
                 DONE_STATE: begin
@@ -117,5 +137,4 @@ module dist_calculator(
             endcase
         end
     end
-
 endmodule

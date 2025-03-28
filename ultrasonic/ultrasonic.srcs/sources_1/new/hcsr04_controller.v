@@ -28,7 +28,6 @@ module hscr04_controller(
     output reg          trigger,    // HC-SR04 트리거 핀
     output reg          tick_start  // 거리 측정 시작 신호
 );
-
     // 상태 정의
     localparam          IDLE = 2'b00;
     localparam          START = 2'b01;
@@ -135,5 +134,35 @@ module hscr04_controller(
             endcase
         end
     end
-
 endmodule
+
+// // 1us 틱 생성기
+// module tick_gen(
+//     input               clk,        // 시스템 클럭 (예: 100MHz)
+//     input               reset,      // 리셋 신호 (활성 높음)
+//     output reg          tick_1us    // 1us 마다 발생하는 틱
+// );
+
+//     // 클럭 주파수에 따른 카운터 값 설정
+//     // 예: 100MHz 클럭에서 1us를 위한 카운트 값 = 100MHz * 0.000001s = 100
+//     parameter COUNT_MAX = 100;
+    
+//     // 카운터 레지스터
+//     reg [6:0] counter; // 최대 127까지 카운트 가능
+    
+//     // 카운터 로직
+//     always @(posedge clk or posedge reset) begin
+//         if (reset) begin
+//             counter <= 7'd0;
+//             tick_1us <= 1'b0;
+//         end else begin
+//             if (counter >= COUNT_MAX - 1) begin
+//                 counter <= 7'd0;
+//                 tick_1us <= 1'b1;  // 1us 마다 틱 발생
+//             end else begin
+//                 counter <= counter + 1'b1;
+//                 tick_1us <= 1'b0;  // 틱은 1클럭 주기만 유지
+//             end
+//         end
+//     end
+// endmodule

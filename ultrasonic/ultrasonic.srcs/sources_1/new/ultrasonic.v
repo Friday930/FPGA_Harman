@@ -24,30 +24,40 @@ module ultrasonic(
     input               clk,
     input               rst,
     input               btn_start,
+    input               echo,       // 초음파 센서 에코 핀 추가
     input               rx,
-    input               tx,
+    output              tx,
+    output              trigger,    // 트리거 핀 출력 추가
     output  [7:0]       fnd_font,
     output  [3:0]       fnd_comm
     );
 
     wire    [15:0]      dist;
-    wire                echo, trigger, done;
+    wire                done;
+    wire                w_start;
 
-    // uart_fifo U_UART_FIFO(
-    //     .clk            (clk),
-    //     .rst            (rst),
-    //     .rx             (rx),
-    //     .tx             (tx)
-    // );
+    uart_fifo U_UART_FIFO(
+        .clk            (clk),
+        .rst            (rst),
+        .rx             (rx),
+        .tx             (tx)
+    );
 
-    top_ultrasonic U_top_Ultrasonic(
-        .clk            (clk),    
+    btn_debounce U_BTN(
+        .clk            (clk),
         .reset          (rst),
-        .btn_start      (btn_start),  
-        .echo           (echo),   
-        .trigger        (trigger),    
-        .dist           (dist),
-        .done           (done)
+        .i_btn          (btn_start), 
+        .o_btn          (w_start)
+    );
+
+    top_ultrasonic U_UltraSonic(
+        .clk            (clk),        
+        .reset          (rst),      
+        .btn_start      (w_start),  
+        .echo           (echo),       // 외부에서 들어오는 echo 신호와 연결
+        .trigger        (trigger),    // 외부로 나가는 trigger 신호와 연결
+        .dist           (dist),       
+        .data_valid     (done)  
     );
 
     fnd_controller U_FND_Ctrl_US(

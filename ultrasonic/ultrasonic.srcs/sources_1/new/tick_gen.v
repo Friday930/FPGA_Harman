@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module baud_tick_gen(
+module tick_gen(
     input               clk,        // 시스템 클럭 (예: 50MHz)
     input               reset,      // 리셋 신호 (활성 높음)
     output reg          tick_1us    // 1us 마다 발생하는 틱
