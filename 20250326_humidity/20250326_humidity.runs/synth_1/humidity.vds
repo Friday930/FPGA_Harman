@@ -1,0 +1,297 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Fri Mar 28 10:27:34 2025
+# Process ID: 9624
+# Current directory: C:/FPGA_Harman/20250326_humidity/20250326_humidity.runs/synth_1
+# Command line: vivado.exe -log humidity.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source humidity.tcl
+# Log file: C:/FPGA_Harman/20250326_humidity/20250326_humidity.runs/synth_1/humidity.vds
+# Journal file: C:/FPGA_Harman/20250326_humidity/20250326_humidity.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source humidity.tcl -notrace
+Command: synth_design -top humidity -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 24008
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1104.734 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'humidity' [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/humidity.v:23]
+INFO: [Synth 8-6157] synthesizing module 'fnd' [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/fnd.v:23]
+	Parameter VDD bound to: 4'b1111 
+	Parameter VSS bound to: 0 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'clk_divider' [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/fnd.v:142]
+	Parameter FCOUNT bound to: 250000 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'clk_divider' (1#1) [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/fnd.v:142]
+INFO: [Synth 8-6157] synthesizing module 'counter_8' [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/fnd.v:167]
+INFO: [Synth 8-6155] done synthesizing module 'counter_8' (2#1) [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/fnd.v:167]
+WARNING: [Synth 8-689] width (4) of port connection 'o_sel' does not match port width (3) of module 'counter_8' [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/fnd.v:45]
+INFO: [Synth 8-6157] synthesizing module 'decoder_3x8' [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/fnd.v:185]
+INFO: [Synth 8-226] default block is never used [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/fnd.v:192]
+INFO: [Synth 8-6155] done synthesizing module 'decoder_3x8' (3#1) [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/fnd.v:185]
+WARNING: [Synth 8-689] width (4) of port connection 'seg_sel' does not match port width (3) of module 'decoder_3x8' [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/fnd.v:49]
+INFO: [Synth 8-6157] synthesizing module 'digit_splitter' [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/fnd.v:110]
+INFO: [Synth 8-6155] done synthesizing module 'digit_splitter' (4#1) [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/fnd.v:110]
+INFO: [Synth 8-6157] synthesizing module 'mux_8x1' [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/fnd.v:122]
+INFO: [Synth 8-226] default block is never used [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/fnd.v:128]
+INFO: [Synth 8-6155] done synthesizing module 'mux_8x1' (5#1) [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/fnd.v:122]
+WARNING: [Synth 8-689] width (4) of port connection 'sel' does not match port width (3) of module 'mux_8x1' [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/fnd.v:62]
+WARNING: [Synth 8-689] width (1) of port connection 'y' does not match port width (4) of module 'mux_8x1' [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/fnd.v:71]
+INFO: [Synth 8-6157] synthesizing module 'bcdtoseg' [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/fnd.v:82]
+INFO: [Synth 8-226] default block is never used [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/fnd.v:88]
+INFO: [Synth 8-6155] done synthesizing module 'bcdtoseg' (6#1) [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/fnd.v:82]
+INFO: [Synth 8-6155] done synthesizing module 'fnd' (7#1) [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/fnd.v:23]
+WARNING: [Synth 8-689] width (32) of port connection 'data' does not match port width (16) of module 'fnd' [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/humidity.v:41]
+INFO: [Synth 8-6157] synthesizing module 'dht11_controller' [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/dht11_controller.v:23]
+	Parameter CNT bound to: 1800 - type: integer 
+	Parameter WAIT_CNT bound to: 3 - type: integer 
+	Parameter TIME_OUT bound to: 2000 - type: integer 
+	Parameter STOP_CNT bound to: 5 - type: integer 
+	Parameter BIT_THRESHOLD bound to: 3 - type: integer 
+	Parameter IDLE bound to: 0 - type: integer 
+	Parameter START bound to: 1 - type: integer 
+	Parameter WAIT bound to: 2 - type: integer 
+	Parameter SYNC_LOW bound to: 3 - type: integer 
+	Parameter SYNC_HIGH bound to: 4 - type: integer 
+	Parameter DATA_LOW bound to: 5 - type: integer 
+	Parameter DATA_HIGH bound to: 6 - type: integer 
+	Parameter STOP bound to: 7 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'tick_gen' [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/dht11_controller.v:262]
+	Parameter COUNT_MAX bound to: 1000 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'tick_gen' (8#1) [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/dht11_controller.v:262]
+INFO: [Synth 8-6155] done synthesizing module 'dht11_controller' (9#1) [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/dht11_controller.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'humidity' (10#1) [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/sources_1/new/humidity.v:23]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1104.734 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1104.734 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1104.734 ; gain = 0.000
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1104.734 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc]
+Finished Parsing XDC File [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/FPGA_Harman/20250326_humidity/20250326_humidity.srcs/constrs_1/imports/FPGA_Harman/Basys-3-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/humidity_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/humidity_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1190.715 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1190.715 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1190.715 ; gain = 85.980
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1190.715 ; gain = 85.980
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1190.715 ; gain = 85.980
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'fsm_state_reg' in module 'dht11_controller'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                              000 |                              000
+                   START |                              001 |                              001
+                    WAIT |                              010 |                              010
+                SYNC_LOW |                              011 |                              011
+               SYNC_HIGH |                              100 |                              100
+                DATA_LOW |                              101 |                              101
+               DATA_HIGH |                              110 |                              110
+                    STOP |                              111 |                              111
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'fsm_state_reg' using encoding 'sequential' in module 'dht11_controller'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1190.715 ; gain = 85.980
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   18 Bit       Adders := 1     
+	   2 Input   11 Bit       Adders := 1     
+	   2 Input   10 Bit       Adders := 1     
+	   4 Input    8 Bit       Adders := 1     
+	   2 Input    6 Bit       Adders := 1     
+	   2 Input    3 Bit       Adders := 1     
++---Registers : 
+	               40 Bit    Registers := 1     
+	               18 Bit    Registers := 1     
+	               16 Bit    Registers := 2     
+	               11 Bit    Registers := 1     
+	               10 Bit    Registers := 1     
+	                6 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 5     
++---Muxes : 
+	   2 Input   18 Bit        Muxes := 1     
+	   2 Input   11 Bit        Muxes := 2     
+	   8 Input   11 Bit        Muxes := 1     
+	   2 Input   10 Bit        Muxes := 1     
+	   8 Input    6 Bit        Muxes := 1     
+	   8 Input    4 Bit        Muxes := 1     
+	   8 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 5     
+	   2 Input    1 Bit        Muxes := 9     
+	   8 Input    1 Bit        Muxes := 7     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1190.715 ; gain = 85.980
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1190.715 ; gain = 85.980
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1196.531 ; gain = 91.797
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1197.094 ; gain = 92.359
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1201.887 ; gain = 97.152
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1201.887 ; gain = 97.152
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1201.887 ; gain = 97.152
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1201.887 ; gain = 97.152
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1201.887 ; gain = 97.152
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1201.887 ; gain = 97.152
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    40|
+|3     |LUT1   |    10|
+|4     |LUT2   |   101|
+|5     |LUT3   |    44|
+|6     |LUT4   |    59|
+|7     |LUT5   |    57|
+|8     |LUT6   |   106|
+|9     |MUXF7  |     4|
+|10    |FDCE   |   111|
+|11    |FDPE   |     1|
+|12    |IBUF   |     3|
+|13    |IOBUF  |     1|
+|14    |OBUF   |    12|
++------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1201.887 ; gain = 97.152
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:17 . Memory (MB): peak = 1201.887 ; gain = 11.172
+Synthesis Optimization Complete : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1201.887 ; gain = 97.152
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 1213.934 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 45 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1217.191 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
+
+INFO: [Common 17-83] Releasing license: Synthesis
+40 Infos, 5 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 1217.191 ; gain = 112.457
+INFO: [Common 17-1381] The checkpoint 'C:/FPGA_Harman/20250326_humidity/20250326_humidity.runs/synth_1/humidity.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file humidity_utilization_synth.rpt -pb humidity_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Mar 28 10:28:00 2025...
