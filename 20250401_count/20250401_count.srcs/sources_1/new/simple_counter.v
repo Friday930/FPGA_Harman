@@ -21,11 +21,11 @@
 
 module simple_counter(
     input wire clk,           // 클럭 입력
-    input wire reset,         // 리셋 입력 (활성 하이)
-    input wire mode,          // 모드 선택 (0: 업 카운터, 1: 다운 카운터)
+    input wire reset,         // 리셋 입력
+    input wire mode,          // 모드 선택 -> 스위치 (0: 업 카운터, 1: 다운 카운터)
     output reg [6:0] seg,     // 7-세그먼트 LED 출력 (a~g)
     output wire dp,           // 소수점 출력 (항상 꺼짐)
-    output reg [3:0] an       // 애노드 선택 (활성 로우)
+    output reg [3:0] an       // segment 자리
 );
     // 각 자리 값 (BCD)
     reg [3:0] digit0;  // 일의 자리
@@ -36,20 +36,20 @@ module simple_counter(
     // 현재 표시할 자릿수
     reg [1:0] digit_sel;
     
-    // 클럭 분주기 (카운팅용)
+    // clock divider (카운팅용)
     reg [26:0] clk_div;
     
-    // 디스플레이 스캐닝용 카운터
+    // segment 해상도 카운터
     reg [16:0] scan_counter;
     
-    // 소수점은 항상 꺼짐 (활성 로우에서 1은 꺼짐)
+    // 소수점은 항상 꺼짐
     assign dp = 1'b1;
     
     // 카운팅 속도 조절 (약 1Hz)
     wire count_tick;
-    assign count_tick = (clk_div == 27'd10000000);  // 100MHz 기준 1Hz
+    assign count_tick = (clk_div == 27'd10000000);  // 100MHz 기준 10Hz
     
-    // 스캐닝 속도 조절 (약 1KHz)
+    // segment 해상도 조절 (약 1KHz)
     wire scan_tick;
     assign scan_tick = (scan_counter == 17'd100000);  // 100MHz 기준 1KHz
     
@@ -65,7 +65,7 @@ module simple_counter(
         end
     end
     
-    // 스캐닝용 카운터
+    // 해상도용 카운터
     always @(posedge clk or posedge reset) begin
         if (reset) begin
             scan_counter <= 17'd0;
@@ -155,7 +155,7 @@ module simple_counter(
         endcase
     end
     
-    // 애노드 선택 (활성 로우)
+    // segment 위치 (0인 부분이 켜짐)
     always @* begin
         case (digit_sel)
             2'b00: an = 4'b1110;  // 오른쪽 첫 번째
@@ -166,7 +166,7 @@ module simple_counter(
         endcase
     end
     
-    // 7-세그먼트 디코더 (공통 애노드 방식, 활성 로우)
+    // segment 디코더
     always @* begin
         case (bcd)
             4'd0: seg = 7'b1000000;  // 0
