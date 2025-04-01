@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Tue Apr  1 11:46:19 2025
+# Process ID: 11836
+# Current directory: C:/FPGA_Harman/20250401_count/20250401_count.runs/synth_1
+# Command line: vivado.exe -log simple_counter.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source simple_counter.tcl
+# Log file: C:/FPGA_Harman/20250401_count/20250401_count.runs/synth_1/simple_counter.vds
+# Journal file: C:/FPGA_Harman/20250401_count/20250401_count.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source simple_counter.tcl -notrace

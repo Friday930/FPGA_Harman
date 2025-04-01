@@ -61,14 +61,14 @@ module tb_stopwatch();
         run = 1;
 
 
-        // wait (hour == 23); // 2sec 대기
+        wait (hour == 23); // 2sec 대기
 
-        // // wait (hour == 1); // 2sec 대기
-        // #10;
-        // run = 0; // stop
-        // repeat(4) @(posedge clk) // 4번 반복, clk posedge 이벤트 
-        // clear = 1;
-        // #100;
+        // wait (hour == 1); // 2sec 대기
+        #10;
+        run = 0; // stop
+        repeat(4) @(posedge clk) // 4번 반복, clk posedge 이벤트 
+        clear = 1;
+        #100;
     $stop;
     end
 
