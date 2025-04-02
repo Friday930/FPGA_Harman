@@ -99,7 +99,7 @@ module tb_uart_fifo;
         end
     endtask
     
-    // 테스트 시나리오
+    // 테스트 시나리
     initial begin
         // 초기화
         clk = 0;
