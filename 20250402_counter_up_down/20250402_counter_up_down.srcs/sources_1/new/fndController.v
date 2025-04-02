@@ -4,6 +4,8 @@ module fndController (
     input         clk,
     input         reset,
     input  [13:0] fndData,
+    input   [3:0]   fndDot,
+
     output [ 3:0] fndCom,
     output [ 7:0] fndFont
 );
@@ -51,6 +53,24 @@ module fndController (
         .bcd(digit),
         .seg(fndFont)
     );
+
+endmodule
+
+module mux_4x1_1bit (
+    input   [1:0]   sel,
+    input   [3:0]   x,
+    output reg      y
+);
+
+    always @(*) begin
+        case (sel)
+            2'b00: y = x[0]; 
+            2'b01: y = x[1]; 
+            2'b10: y = x[2]; 
+            2'b11: y = x[3]; 
+            default: y = 1'b1;
+        endcase
+    end
 
 endmodule
 
