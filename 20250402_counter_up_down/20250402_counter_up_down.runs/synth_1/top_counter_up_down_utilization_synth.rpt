@@ -1,8 +1,8 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Wed Apr  2 16:45:50 2025
-| Host         : DESKTOP-7CFQ9ND running 64-bit major release  (build 9200)
+| Date         : Wed Apr  2 22:04:41 2025
+| Host         : DESKTOP-2CUDO2B running 64-bit major release  (build 9200)
 | Command      : report_utilization -file top_counter_up_down_utilization_synth.rpt -pb top_counter_up_down_utilization_synth.pb
 | Design       : top_counter_up_down
 | Device       : 7a35tcpg236-1
@@ -30,11 +30,11 @@ Table of Contents
 +-------------------------+------+-------+-----------+-------+
 |        Site Type        | Used | Fixed | Available | Util% |
 +-------------------------+------+-------+-----------+-------+
-| Slice LUTs*             |  316 |     0 |     20800 |  1.52 |
-|   LUT as Logic          |  316 |     0 |     20800 |  1.52 |
+| Slice LUTs*             |  317 |     0 |     20800 |  1.52 |
+|   LUT as Logic          |  317 |     0 |     20800 |  1.52 |
 |   LUT as Memory         |    0 |     0 |      9600 |  0.00 |
-| Slice Registers         |  106 |     0 |     41600 |  0.25 |
-|   Register as Flip Flop |  106 |     0 |     41600 |  0.25 |
+| Slice Registers         |  108 |     0 |     41600 |  0.26 |
+|   Register as Flip Flop |  108 |     0 |     41600 |  0.26 |
 |   Register as Latch     |    0 |     0 |     41600 |  0.00 |
 | F7 Muxes                |    0 |     0 |     16300 |  0.00 |
 | F8 Muxes                |    0 |     0 |      8150 |  0.00 |
@@ -55,7 +55,7 @@ Table of Contents
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
 | 1     |          Yes |           - |          Set |
-| 105   |          Yes |           - |        Reset |
+| 107   |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
 | 0     |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
@@ -149,12 +149,12 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT6     |  117 |                 LUT |
-| FDCE     |  105 |        Flop & Latch |
+| LUT6     |  116 |                 LUT |
+| FDCE     |  107 |        Flop & Latch |
 | LUT2     |   93 |                 LUT |
 | LUT5     |   73 |                 LUT |
-| LUT4     |   57 |                 LUT |
-| LUT3     |   50 |                 LUT |
+| LUT4     |   59 |                 LUT |
+| LUT3     |   52 |                 LUT |
 | CARRY4   |   44 |          CarryLogic |
 | LUT1     |   17 |                 LUT |
 | OBUF     |   12 |                  IO |

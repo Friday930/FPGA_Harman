@@ -4,10 +4,12 @@ module UART(
     input           clk,
     input           reset,
     input           rx,
+    input           start,
     output          rx_done,
     output          run,
     output          clear,
-    output          mode
+    output          mode,
+    output          tx
     );
 
     wire            tick;
@@ -17,6 +19,16 @@ module UART(
         .clk(clk),
         .reset(reset),
         .baud_tick(tick)
+    );
+
+    UART_tx U_UART_TX(
+        .clk(clk),
+        .reset(reset),
+        .tick(tick),
+        .start(start),
+        .data_in(rx_data),
+        .o_tx(tx),
+        .o_tx_done(tx_done)
     );
 
     UART_rx U_UART_RX(
@@ -41,6 +53,119 @@ module UART(
         .c(clear),
         .m(mode)
     );
+
+endmodule
+
+module UART_tx (
+    input               clk,
+    input               reset,
+    input               tick,
+    input               start,
+    input               [7:0] data_in, 
+    output              o_tx,
+    output              o_tx_done
+);
+
+    // fsm state
+    parameter           IDLE = 0, SEND = 1, START = 2, DATA = 3, STOP = 4;
+
+    reg                 [3:0] state, next;
+    reg                 tx_reg, tx_next;
+    reg                 tx_done_reg;
+    reg                 tx_done_next;
+    reg                 [2:0] bit_count_reg;
+    reg                 [2:0] bit_count_next;
+    reg                 [3:0] tick_count_reg;
+    reg                 [3:0] tick_count_next;
+
+    reg                 [7:0] temp_data_reg, temp_data_next; // tx data in buffer
+
+    assign              o_tx = tx_reg;
+    assign              o_tx_done = tx_done_reg;
+
+    always @(posedge clk, posedge reset) begin
+        if (reset) begin
+            state <= 0;
+            tx_reg <= 1'b1; // UART tx line을 초기에 항상 1로 만들기 위함
+            tx_done_reg <= 0;
+            bit_count_reg <= 0;
+            tick_count_reg <= 0;
+            temp_data_reg <= 0;
+        end else begin
+            state <= next;
+            tx_reg <= tx_next;
+            tx_done_reg <= tx_done_next;
+            bit_count_reg <= bit_count_next;
+            tick_count_reg <= tick_count_next;
+            temp_data_reg <= temp_data_next;
+        end
+    end
+
+    // next
+    always @(*) begin
+        next = state;
+        tx_next = tx_reg;
+        tx_done_next = tx_done_reg;
+        bit_count_next = bit_count_reg;
+        tick_count_next = tick_count_reg;
+        temp_data_next = temp_data_reg;
+        case (state)
+            IDLE: begin
+                // tx_done_next = 1'b1; // high
+                tx_next = 1'b1;
+                tx_done_next = 1'b0;
+                tick_count_next = 4'h0;
+                if (start) begin
+                    next = START;
+                    // start trigger 순간 data를 buffering 하기 위함
+                    temp_data_next = data_in;
+                end
+            end
+
+            START: begin
+                tx_done_next = 1'b1;
+                tx_next = 1'b0; // 출력을 0으로 유지
+                if (tick == 1'b1) begin
+                    if (tick_count_reg == 15) begin
+                        next = DATA;
+                        bit_count_next = 0; // bit_count 초기화 (안하면 DATA bit_count에 잘못된 값 들어갈 가능성 O)
+                        tick_count_next = 0;
+                    end else begin
+                        tick_count_next = tick_count_reg + 1;
+                    end
+                end
+            end
+
+            DATA: begin
+                // tx_next = data_in[bit_count_reg]; // UART LSB first
+                tx_next = temp_data_reg[bit_count_reg];
+                if (tick) begin
+                    if (tick_count_reg == 15) begin
+                        tick_count_next = 0; // 다음 상태 가기 전 초기화
+                        if (bit_count_reg == 7) begin
+                            next = STOP; 
+                        end else begin
+                            next = DATA;
+                            bit_count_next = bit_count_reg + 1; //bit count 증가
+                        end
+                    end else begin
+                        tick_count_next = tick_count_reg + 1;
+                    end
+                end
+            end
+
+            STOP: begin
+                tx_next = 1'b1;
+                if (tick == 1'b1) begin
+                    if (tick_count_reg == 15) begin
+                        next = IDLE;
+                    end else begin
+                        tick_count_next = tick_count_reg + 1;
+                    end
+                end
+            end
+        endcase
+    end
 
 endmodule
 

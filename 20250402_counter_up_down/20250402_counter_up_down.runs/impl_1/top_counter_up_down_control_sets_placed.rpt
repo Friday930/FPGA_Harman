@@ -1,8 +1,8 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Wed Apr  2 16:46:18 2025
-| Host         : DESKTOP-7CFQ9ND running 64-bit major release  (build 9200)
+| Date         : Wed Apr  2 22:05:06 2025
+| Host         : DESKTOP-2CUDO2B running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_counter_up_down_control_sets_placed.rpt
 | Design       : top_counter_up_down
 | Device       : xc7a35t
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |    12 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    62 |
+| Unused register locations in slices containing registers |    68 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -59,7 +59,7 @@ Table of Contents
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |               0 |            0 |
-| No           | No                    | Yes                    |              72 |           28 |
+| No           | No                    | Yes                    |              74 |           21 |
 | No           | Yes                   | No                     |               0 |            0 |
 | Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |              34 |           17 |
@@ -73,18 +73,18 @@ Table of Contents
 +----------------+----------------------------------+------------------+------------------+----------------+--------------+
 |  Clock Signal  |           Enable Signal          | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
 +----------------+----------------------------------+------------------+------------------+----------------+--------------+
-|  clk_IBUF_BUFG | U_UART/U_UART_RX/rx_data_next[0] | reset_IBUF       |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | U_UART/U_UART_RX/rx_data_next[5] | reset_IBUF       |                1 |              1 |         1.00 |
 |  clk_IBUF_BUFG | U_UART/U_UART_RX/rx_data_next[4] | reset_IBUF       |                1 |              1 |         1.00 |
-|  clk_IBUF_BUFG | U_UART/U_UART_RX/rx_data_next[1] | reset_IBUF       |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | U_UART/U_UART_RX/rx_data_next[0] | reset_IBUF       |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | U_UART/U_UART_RX/rx_data_next[2] | reset_IBUF       |                1 |              1 |         1.00 |
 |  clk_IBUF_BUFG | U_UART/U_UART_RX/rx_data_next[3] | reset_IBUF       |                1 |              1 |         1.00 |
 |  clk_IBUF_BUFG | U_UART/U_UART_RX/rx_data_next[6] | reset_IBUF       |                1 |              1 |         1.00 |
-|  clk_IBUF_BUFG | U_UART/U_UART_RX/rx_data_next[5] | reset_IBUF       |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | U_UART/U_UART_RX/rx_data_next[1] | reset_IBUF       |                1 |              1 |         1.00 |
 |  clk_IBUF_BUFG | U_UART/U_UART_RX/rx_data_next[7] | reset_IBUF       |                1 |              1 |         1.00 |
-|  clk_IBUF_BUFG | U_UART/U_UART_RX/rx_data_next[2] | reset_IBUF       |                1 |              1 |         1.00 |
 |  clk_IBUF_BUFG | U_UART/U_UART_RX/tick_count_next | reset_IBUF       |                2 |              5 |         2.50 |
 |  clk_IBUF_BUFG | U_UART/U_UART_RX/E[0]            | reset_IBUF       |                2 |              7 |         3.50 |
 |  clk_IBUF_BUFG | U_CU/E[0]                        | reset_IBUF       |                5 |             14 |         2.80 |
-|  clk_IBUF_BUFG |                                  | reset_IBUF       |               28 |             72 |         2.57 |
+|  clk_IBUF_BUFG |                                  | reset_IBUF       |               21 |             74 |         3.52 |
 +----------------+----------------------------------+------------------+------------------+----------------+--------------+
 
 
