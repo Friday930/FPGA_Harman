@@ -3,15 +3,17 @@
 module top_counter_up_down (
     input           clk,
     input           reset,
-    input           mode,
-    input           run_stop,
-    input           clear,
+    input           rx,
+    // input           mode,
+    // input           run_stop,
+    // input           clear,
     output  [3:0]   fndCom,
     output  [7:0]   fndFont
 );
     wire    [13:0]  fndData;
     wire    [3:0]   fndDot;
     wire            w_run, w_clear;
+    wire            run_stop, clear, mode;
 
     counter_up_down U_Counter (
         .clk        (clk),
@@ -32,10 +34,19 @@ module top_counter_up_down (
         .fndFont    (fndFont)
     );
 
+    UART U_UART(
+        .clk(clk),
+        .reset(reset),
+        .rx(rx),
+        .rx_done(rx_done),
+        .run(run_stop),
+        .clear(clear),
+        .mode(mode)
+    );
+
     control_unit U_CU(
         .clk        (clk),
         .reset      (reset),
-        .sw0        (mode),
         .sw1        (run_stop),
         .sw2        (clear),
         .run_stop   (w_run),
@@ -145,7 +156,7 @@ module counter (
     assign count = counter;
 
     always @(posedge clk, posedge reset) begin
-        if (reset | clear == 1) begin
+        if (reset | clear) begin
             counter <= 0;
         end else begin
             if (mode == 1'b0) begin

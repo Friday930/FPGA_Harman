@@ -3,11 +3,10 @@
 module control_unit(
     input           clk,
     input           reset,
-    input           sw0,
     input           sw1,
     input           sw2,
-    output       run_stop,
-    output       clear
+    output          run_stop,
+    output          clear
     );
 
     parameter       STOP = 0, RUN = 1, CLEAR = 2;
