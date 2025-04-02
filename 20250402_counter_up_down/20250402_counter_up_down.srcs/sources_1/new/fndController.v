@@ -1,58 +1,66 @@
 `timescale 1ns / 1ps
 
 module fndController (
-    input         clk,
-    input         reset,
-    input  [13:0] fndData,
-    input   [3:0]   fndDot,
-
-    output [ 3:0] fndCom,
-    output [ 7:0] fndFont
+    input               clk,
+    input               reset,
+    input  [13:0]       fndData,
+    input   [3:0]       fndDot,
+    output [ 3:0]       fndCom,
+    output [ 7:0]       fndFont
 );
 
-    wire tick;
-    wire [1:0] digit_sel;
-    wire [3:0] digit_1, digit_10, digit_100, digit_1000, digit;
+    wire                tick, fndDp;
+    wire [1:0]          digit_sel;
+    wire [3:0]          digit_1, digit_10, digit_100, digit_1000, digit;
+    wire [7:0]          fndSegData;
 
     clk_div_1khz U_Clk_Div_1Khz (
-        .clk  (clk),
-        .reset(reset),
-        .tick (tick)
+        .clk            (clk),
+        .reset          (reset),
+        .tick           (tick)  
     );
 
     counter_2bit U_Conter_2big (
-        .clk  (clk),
-        .reset(reset),
-        .tick (tick),
-        .count(digit_sel)
+        .clk            (clk),
+        .reset          (reset),
+        .tick           (tick),
+        .count          (digit_sel)
     );
 
     decoder_2x4 U_Dec_2x4 (
-        .x(digit_sel),
-        .y(fndCom)
+        .x              (digit_sel),
+        .y              (fndCom)
     );
 
     digitSplitter U_Digit_Splitter (
-        .fndData(fndData),
-        .digit_1(digit_1),
-        .digit_10(digit_10),
-        .digit_100(digit_100),
-        .digit_1000(digit_1000)
+        .fndData        (fndData),
+        .digit_1        (digit_1),
+        .digit_10       (digit_10),
+        .digit_100      (digit_100),
+        .digit_1000     (digit_1000)
     );
 
     mux_4x1 U_Mux_4x1 (
-        .sel(digit_sel),
-        .x0 (digit_1),
-        .x1 (digit_10),
-        .x2 (digit_100),
-        .x3 (digit_1000),
-        .y  (digit)
+        .sel            (digit_sel),
+        .x0             (digit_1),
+        .x1             (digit_10),
+        .x2             (digit_100),
+        .x3             (digit_1000),
+        .y              (digit)
     );
 
     BCDtoSEG_decoder U_BCDtoSEG (
-        .bcd(digit),
-        .seg(fndFont)
+        .bcd            (digit),
+        .seg            (fndSegData)
     );
+
+    mux_4x1_1bit U_Mux_4x1_1bit(
+        .sel            (digit_sel),
+        .x              (fndDot),
+        .y              (fndDp)
+    );
+
+    assign              fndFont = {fndDp, fndSegData[6:0]};
 
 endmodule
 
