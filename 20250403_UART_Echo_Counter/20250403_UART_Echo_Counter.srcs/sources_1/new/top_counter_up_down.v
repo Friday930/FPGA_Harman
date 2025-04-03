@@ -172,9 +172,6 @@ module control_unit (
     end
 endmodule
 
-
-
-
 module comp_dot (
     input  [13:0] count,
     output [ 3:0] dot_data

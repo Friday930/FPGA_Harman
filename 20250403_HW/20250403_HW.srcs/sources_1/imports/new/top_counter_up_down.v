@@ -46,6 +46,15 @@ module top_counter_up_down (
         .mode       (mode)
     );
 
+    stopwatch_cu U_Stopwatch_CU(
+        .clk(),
+        .reset(),
+        .run(),
+        .clear(),
+        .run_inst(),
+        .clear_inst()
+    );
+
     counter_up_down U_Counter (
         .clk     (clk),
         .reset   (reset),
@@ -172,7 +181,51 @@ module control_unit (
     end
 endmodule
 
+module stopwatch_cu (
+    input                       clk,
+    input                       reset,
+    input                       run,
+    input                       clear,
+    output                      run_inst,
+    output                      clear_inst
+);
 
+    parameter                   STOP = 0, RUN = 1, CLEAR = 2;
+    reg [1:0]                   state, next;
+    reg                         run_reg, clear_reg;
+
+    always @(posedge clk, posedge reset) begin
+        if (reset) begin
+            state <= 0;
+        end else begin
+            state <= next;
+        end
+    end
+
+    always @(*) begin
+        next = state;
+        case (state)
+            STOP: begin
+                if (run == 1) begin
+                    next = RUN;
+                end else if (clear == 1) begin
+                    next = CLEAR;
+                end
+            end
+            RUN: begin
+                if (run == 1) begin
+                    next = STOP;
+                end
+            end 
+            CLEAR: begin
+                if (clear == 1) begin
+                    next = STOP;
+                end
+            end
+        endcase
+    end
+    
+endmodule
 
 
 module comp_dot (
