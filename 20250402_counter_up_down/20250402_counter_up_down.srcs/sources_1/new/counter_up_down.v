@@ -4,6 +4,8 @@ module top_counter_up_down (
     input           clk,
     input           reset,
     input           rx,
+    input           start,
+    output          tx,
     // input           mode,
     // input           run_stop,
     // input           clear,
@@ -41,7 +43,9 @@ module top_counter_up_down (
         .rx_done(rx_done),
         .run(run_stop),
         .clear(clear),
-        .mode(mode)
+        .start(start),
+        .mode(mode),
+        .tx(tx)
     );
 
     control_unit U_CU(
@@ -50,7 +54,8 @@ module top_counter_up_down (
         .sw1        (run_stop),
         .sw2        (clear),
         .run_stop   (w_run),
-        .clear      (w_clear)
+        .clear      (w_clear),
+        .echo       (start)
     );
 
     
