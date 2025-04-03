@@ -3,7 +3,15 @@
 <!--The data in this file is primarily intended for consumption by Xilinx tools.
 The structure and the elements are likely to change over the next few releases.
 This means code written to parse this file will need to be revisited each subsequent release.-->
+<<<<<<< HEAD
 <application name="pa" timeStamp="Wed Apr  2 22:36:14 2025">
+=======
+<<<<<<< HEAD
+<application name="pa" timeStamp="Thu Apr  3 09:27:36 2025">
+=======
+<application name="pa" timeStamp="Wed Apr  2 22:03:59 2025">
+>>>>>>> 44afc3a845f607b68f25ec4780b6a8a0cf18abd9
+>>>>>>> 1cfe3bedfb42526162ee223964dffeb5846c665e
 <section name="Project Information" visible="false">
 <property name="ProjectID" value="fc8b3358590545dd882b1de99b99ce09" type="ProjectID"/>
 <property name="ProjectIteration" value="34" type="ProjectIteration"/>
@@ -18,9 +26,14 @@ This means code written to parse this file will need to be revisited each subseq
 </item>
 <item name="Java Command Handlers">
 <property name="AddSources" value="6" type="JavaHandler"/>
+<<<<<<< HEAD
+<property name="AutoConnectTarget" value="2" type="JavaHandler"/>
+<property name="ExitApp" value="4" type="JavaHandler"/>
+=======
 <property name="AutoConnectTarget" value="3" type="JavaHandler"/>
 <property name="CloseProject" value="1" type="JavaHandler"/>
 <property name="ExitApp" value="2" type="JavaHandler"/>
+>>>>>>> 44afc3a845f607b68f25ec4780b6a8a0cf18abd9
 <property name="FlipToViewTaskRTLAnalysis" value="8" type="JavaHandler"/>
 <property name="LaunchProgramFpga" value="28" type="JavaHandler"/>
 <property name="OpenHardwareManager" value="19" type="JavaHandler"/>
@@ -33,24 +46,42 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="SetTopNode" value="2" type="JavaHandler"/>
 <property name="ShowView" value="18" type="JavaHandler"/>
 <property name="ViewTaskProgramandDebug" value="1" type="JavaHandler"/>
+<<<<<<< HEAD
+<property name="ViewTaskProjectManager" value="7" type="JavaHandler"/>
+<property name="ViewTaskRTLAnalysis" value="3" type="JavaHandler"/>
+=======
 <property name="ViewTaskProjectManager" value="6" type="JavaHandler"/>
 <property name="ViewTaskRTLAnalysis" value="4" type="JavaHandler"/>
+>>>>>>> 44afc3a845f607b68f25ec4780b6a8a0cf18abd9
 </item>
 <item name="Gui Handlers">
 <property name="AddSrcWizard_SPECIFY_HDL_NETLIST_BLOCK_DESIGN" value="1" type="GuiHandlerData"/>
 <property name="AddSrcWizard_SPECIFY_OR_CREATE_CONSTRAINT_FILES" value="1" type="GuiHandlerData"/>
 <property name="BaseDialog_CANCEL" value="12" type="GuiHandlerData"/>
+<<<<<<< HEAD
 <property name="BaseDialog_OK" value="81" type="GuiHandlerData"/>
+=======
+<<<<<<< HEAD
+<property name="BaseDialog_OK" value="75" type="GuiHandlerData"/>
+=======
+<property name="BaseDialog_OK" value="79" type="GuiHandlerData"/>
+>>>>>>> 1cfe3bedfb42526162ee223964dffeb5846c665e
 <property name="BaseDialog_YES" value="2" type="GuiHandlerData"/>
+>>>>>>> 44afc3a845f607b68f25ec4780b6a8a0cf18abd9
 <property name="CmdMsgDialog_MESSAGES" value="1" type="GuiHandlerData"/>
 <property name="CmdMsgDialog_OK" value="1" type="GuiHandlerData"/>
 <property name="CmdMsgDialog_OPEN_MESSAGES_VIEW" value="13" type="GuiHandlerData"/>
 <property name="ConstraintsChooserPanel_ADD_FILES" value="1" type="GuiHandlerData"/>
 <property name="CreateSrcFileDialog_FILE_NAME" value="7" type="GuiHandlerData"/>
 <property name="DefineModulesDialog_NEW_SOURCE_FILES" value="1" type="GuiHandlerData"/>
+<<<<<<< HEAD
+<property name="FileSetPanel_FILE_SET_PANEL_TREE" value="32" type="GuiHandlerData"/>
+<property name="FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE" value="78" type="GuiHandlerData"/>
+=======
 <property name="FileSetPanel_FILE_SET_PANEL_TREE" value="18" type="GuiHandlerData"/>
 <property name="FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE" value="84" type="GuiHandlerData"/>
 <property name="GettingStartedView_OPEN_PROJECT" value="1" type="GuiHandlerData"/>
+>>>>>>> 44afc3a845f607b68f25ec4780b6a8a0cf18abd9
 <property name="MainMenuMgr_EDIT" value="2" type="GuiHandlerData"/>
 <property name="MainMenuMgr_FILE" value="6" type="GuiHandlerData"/>
 <property name="MainMenuMgr_OPEN_RECENT_PROJECT" value="1" type="GuiHandlerData"/>
@@ -74,15 +105,26 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="SignalTablePanel_SIGNAL_TABLE" value="15" type="GuiHandlerData"/>
 <property name="SrcChooserPanel_CREATE_FILE" value="6" type="GuiHandlerData"/>
 <property name="SrcMenu_IP_HIERARCHY" value="2" type="GuiHandlerData"/>
-<property name="SyntheticaGettingStartedView_RECENT_PROJECTS" value="1" type="GuiHandlerData"/>
+<property name="SyntheticaGettingStartedView_RECENT_PROJECTS" value="3" type="GuiHandlerData"/>
 <property name="SyntheticaStateMonitor_CANCEL" value="3" type="GuiHandlerData"/>
 <property name="TaskBanner_CLOSE" value="6" type="GuiHandlerData"/>
 </item>
+<<<<<<< HEAD
 <item name="Other">
 <property name="GuiMode" value="8" type="GuiMode"/>
 <property name="BatchMode" value="0" type="BatchMode"/>
 <property name="TclMode" value="7" type="TclMode"/>
 </item>
+=======
+<<<<<<< HEAD
+<item name="Other">
+<property name="GuiMode" value="61" type="GuiMode"/>
+<property name="BatchMode" value="0" type="BatchMode"/>
+<property name="TclMode" value="49" type="TclMode"/>
+</item>
+=======
+>>>>>>> 44afc3a845f607b68f25ec4780b6a8a0cf18abd9
+>>>>>>> 1cfe3bedfb42526162ee223964dffeb5846c665e
 </section>
 </application>
 </document>
