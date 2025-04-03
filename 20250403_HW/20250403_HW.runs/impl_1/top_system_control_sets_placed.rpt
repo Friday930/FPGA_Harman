@@ -1,8 +1,8 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Fri Apr  4 00:17:06 2025
-| Host         : DESKTOP-2CUDO2B running 64-bit major release  (build 9200)
+| Date         : Fri Apr  4 08:52:20 2025
+| Host         : DESKTOP-7CFQ9ND running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_system_control_sets_placed.rpt
 | Design       : top_system
 | Device       : xc7a35t
@@ -62,7 +62,7 @@ Table of Contents
 | No           | No                    | Yes                    |             159 |           52 |
 | No           | Yes                   | No                     |               0 |            0 |
 | Yes          | No                    | No                     |               0 |            0 |
-| Yes          | No                    | Yes                    |             108 |           30 |
+| Yes          | No                    | Yes                    |             108 |           35 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
@@ -73,21 +73,21 @@ Table of Contents
 +-------------------------------------+------------------------------------------------------+------------------+------------------+----------------+--------------+
 |             Clock Signal            |                     Enable Signal                    | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
 +-------------------------------------+------------------------------------------------------+------------------+------------------+----------------+--------------+
-|  clk_IBUF_BUFG                      | U_UART/U_Transmitter/tick_counter_next               | reset_IBUF       |                1 |              4 |         4.00 |
-|  clk_IBUF_BUFG                      | U_UART/U_Receiver/tick_counter_reg[3]_i_1_n_0        | reset_IBUF       |                2 |              4 |         2.00 |
 |  clk_IBUF_BUFG                      | U_ControlUnit_Stopwatch/E[0]                         | reset_IBUF       |                1 |              4 |         4.00 |
 |  clk_IBUF_BUFG                      | U_ControlUnit_Stopwatch/tick_in_prev_reg_0[0]        | reset_IBUF       |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG                      | U_UART/U_Receiver/tick_counter_reg[3]_i_1_n_0        | reset_IBUF       |                2 |              4 |         2.00 |
+|  clk_IBUF_BUFG                      | U_UART/U_Transmitter/tick_counter_next               | reset_IBUF       |                1 |              4 |         4.00 |
 |  clk_IBUF_BUFG                      | U_ControlUnit_Stopwatch/tick_in_prev_reg[0]          | reset_IBUF       |                2 |              6 |         3.00 |
-|  clk_IBUF_BUFG                      | U_UART/U_Transmitter/temp_data_next_0                | reset_IBUF       |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                      | U_UART/U_Transmitter/temp_data_next_0                | reset_IBUF       |                4 |              8 |         2.00 |
 |  U_Clear_Debounce/r_1kHz_reg_n_0    |                                                      | reset_IBUF       |                3 |              8 |         2.67 |
-|  U_Mode_Sel_Debounce/r_1kHz_reg_n_0 |                                                      | reset_IBUF       |                3 |              8 |         2.67 |
+|  U_Mode_Sel_Debounce/r_1kHz_reg_n_0 |                                                      | reset_IBUF       |                2 |              8 |         4.00 |
 |  U_Run_Debounce/r_1kHz_reg_n_0      |                                                      | reset_IBUF       |                2 |              8 |         4.00 |
-|  U_UpDown_Debounce/r_1kHz_reg_n_0   |                                                      | reset_IBUF       |                1 |              8 |         8.00 |
+|  U_UpDown_Debounce/r_1kHz_reg_n_0   |                                                      | reset_IBUF       |                3 |              8 |         2.67 |
 |  clk_IBUF_BUFG                      | U_UART/U_Receiver/bit_counter_reg[2]_i_1_n_0         | reset_IBUF       |                3 |             11 |         3.67 |
-|  clk_IBUF_BUFG                      | U_ControlUnit_Normal/FSM_onehot_state_reg[1]_0[0]    | reset_IBUF       |                5 |             14 |         2.80 |
-|  clk_IBUF_BUFG                      | U_ControlUnit_Normal/E[0]                            | reset_IBUF       |                5 |             24 |         4.80 |
-|  clk_IBUF_BUFG                      | U_ControlUnit_Stopwatch/FSM_onehot_state_reg[1]_1[0] | reset_IBUF       |                7 |             29 |         4.14 |
-|  clk_IBUF_BUFG                      |                                                      | reset_IBUF       |               43 |            127 |         2.95 |
+|  clk_IBUF_BUFG                      | U_ControlUnit_Normal/FSM_onehot_state_reg[1]_0[0]    | reset_IBUF       |                7 |             14 |         2.00 |
+|  clk_IBUF_BUFG                      | U_ControlUnit_Normal/E[0]                            | reset_IBUF       |                6 |             24 |         4.00 |
+|  clk_IBUF_BUFG                      | U_ControlUnit_Stopwatch/FSM_onehot_state_reg[1]_1[0] | reset_IBUF       |                8 |             29 |         3.63 |
+|  clk_IBUF_BUFG                      |                                                      | reset_IBUF       |               42 |            127 |         3.02 |
 +-------------------------------------+------------------------------------------------------+------------------+------------------+----------------+--------------+
 
 
