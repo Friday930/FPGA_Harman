@@ -1,351 +1,5 @@
 `timescale 1ns / 1ps
 
-// module top_counter_up_down (
-//     input        clk,
-//     input        reset,
-
-//     input           rx,
-//     output          tx,
-//     output [3:0] fndCom,
-//     output [7:0] fndFont
-// );  
-//     wire [13:0] fndData;
-//     wire [ 3:0] fndDot;
-//     wire en, clear, mode;
-//     wire [7:0]       rx_data;
-//     wire        rx_done;
-//     wire        tx_busy;
-//     wire        tx_done;
-//     wire    [7:0]   tx_data;
-
-
-//     uart U_UART(
-//         .clk        (clk),
-//         .reset      (reset),
-//         .tx_data    (tx_data),
-//         .tx_start   (tx_start),
-//         .rx         (rx),
-//         .rx_data    (rx_data),
-//         .rx_done    (rx_done),
-//         .tx_busy    (tx_busy),
-//         .tx_done    (tx_done),
-//         .tx         (tx)
-//     );
-
-//     control_unit U_ControlUnit (
-//         .clk        (clk),
-//         .reset      (reset),
-//         .tx_data    (tx_data),
-//         .tx_start   (tx_start),
-//         .rx_data    (rx_data),
-//         .rx_done    (rx_done),
-//         .tx_busy    (tx_busy),
-//         .tx_done    (tx_done),
-//         .en         (en),
-//         .clear      (clear),
-//         .mode       (mode)
-//     );
-
-//     stopwatch_cu U_Stopwatch_CU(
-//         .clk(),
-//         .reset(),
-//         .run(),
-//         .clear(),
-//         .run_inst(),
-//         .clear_inst()
-//     );
-
-//     counter_up_down U_Counter (
-//         .clk     (clk),
-//         .reset   (reset),
-//         .en      (en),
-//         .clear   (clear),
-//         .mode    (mode),
-//         .count   (fndData),
-//         .dot_data(fndDot)
-//     );
-
-//     fndController U_FndController (
-//         .clk    (clk),
-//         .reset  (reset),
-//         .fndData(fndData),
-//         .fndDot (fndDot),
-//         .fndCom (fndCom),
-//         .fndFont(fndFont)
-//     );
-// endmodule
-
-// module control_unit (
-//     input      clk,
-//     input      reset,
-//     output reg en,
-//     output reg clear,
-//     output reg mode,
-//     output reg [7:0] tx_data,
-//     output reg         tx_start,
-//     input       tx_busy,
-//     input       tx_done,
-//     input   [7:0]   rx_data,
-//     input           rx_done
-
-// );
-//     localparam STOP = 0, RUN = 1, CLEAR = 2;
-//     localparam  UP = 0, DOWN = 1;
-//     localparam  IDLE = 0, ECHO = 1;
-
-//     reg [1:0] state, state_next;
-//     reg         mode_state, mode_next;
-//     reg         echo_state, echo_next;
-
-//     always @(posedge clk, posedge reset) begin
-//         if (reset) begin
-//             state <= STOP;
-//             mode_state <= UP;
-//             echo_state <= IDLE;
-//         end else begin
-//             state <= state_next;
-//             mode_state <= mode_next;
-//             echo_state <= echo_next;
-//         end
-//     end
-
-//     always @(*) begin
-//         echo_next = echo_state;
-//         tx_start = 0;
-//         tx_data = 0;
-//         case (echo_state)
-//             IDLE: begin
-//                 tx_data = 0;
-//                 tx_start = 0;
-//                if (rx_done == 1) begin
-//                     echo_next = ECHO;
-//                end 
-//             end 
-//             ECHO: begin
-//                 if (tx_done) begin
-//                     echo_next = IDLE;
-//                 end else begin
-//                     tx_data = rx_data;
-//                     tx_start = 1;    
-//                 end
-//             end 
-//         endcase
-//     end
-
-//     always @(*) begin
-//         mode_next = mode_state;
-//         mode = 0;
-//         case (mode_state)
-//             UP: begin
-//                 mode = 0;
-//                 if (rx_done) begin
-//                     if (rx_data == 8'h4d || rx_data == 8'h6d) mode_next = DOWN;
-//                 end
-//             end
-//             DOWN: begin
-//                 mode = 1;
-//                 if (rx_done) begin
-//                     if (rx_data == 8'h4d || rx_data == 8'h6d) mode_next = UP;
-//                 end
-//             end
-//         endcase
-//     end
-
-//     always @(*) begin
-//         state_next = state;
-//         en         = 1'b0;
-//         clear      = 1'b0;
-
-//         case (state)
-//             STOP: begin
-//                 en = 1'b0;
-//                 clear = 1'b0;
-//                 if (rx_done) begin
-//                     if (rx_data == 8'h52 || rx_data == 8'h72) state_next = RUN;
-//                     else if (rx_data == 8'h43 || rx_data == 8'h63) state_next = CLEAR;
-//                 end
-//             end
-//             RUN: begin
-//                 en = 1'b1;
-//                 clear = 1'b0;
-//                 if (rx_done) begin
-//                     if (rx_data == 8'h53 || rx_data == 8'h73) state_next = STOP;
-//                 end
-//             end
-//             CLEAR: begin
-//                 en = 1'b0;
-//                 clear = 1'b1;
-//                 state_next = STOP;
-//             end
-//         endcase
-//     end
-// endmodule
-
-// // module stopwatch_cu (
-// //     input                       clk,
-// //     input                       reset,
-// //     input                       run,
-// //     input                       clear,
-// //     output                      run_inst,
-// //     output                      clear_inst
-// // );
-
-// //     parameter                   STOP = 0, RUN = 1, CLEAR = 2;
-// //     reg [1:0]                   state, next;
-// //     reg                         run_reg, clear_reg;
-
-// //     always @(posedge clk, posedge reset) begin
-// //         if (reset) begin
-// //             state <= 0;
-// //         end else begin
-// //             state <= next;
-// //         end
-// //     end
-
-// //     always @(*) begin
-// //         next = state;
-// //         case (state)
-// //             STOP: begin
-// //                 if (run == 1) begin
-// //                     next = RUN;
-// //                 end else if (clear == 1) begin
-// //                     next = CLEAR;
-// //                 end
-// //             end
-// //             RUN: begin
-// //                 if (run == 1) begin
-// //                     next = STOP;
-// //                 end
-// //             end 
-// //             CLEAR: begin
-// //                 if (clear == 1) begin
-// //                     next = STOP;
-// //                 end
-// //             end
-// //         endcase
-// //     end
-    
-// // endmodule
-
-
-// module comp_dot (
-//     input  [13:0] count,
-//     output [ 3:0] dot_data
-// );
-//     assign dot_data = ((count % 10) < 5) ? 4'b1101 : 4'b1111;
-// endmodule
-
-// module counter_up_down (
-//     input         clk,
-//     input         reset,
-//     input         en,
-//     input         clear,
-//     input         mode,
-//     output [13:0] count,
-//     output [ 3:0] dot_data
-// );
-//     wire tick;
-
-//     clk_div_10hz U_Clk_Div_10Hz (
-//         .clk  (clk),
-//         .reset(reset),
-//         .tick (tick),
-//         .en   (en),
-//         .clear(clear)
-//     );
-
-//     counter U_Counter_Up_Down (
-//         .clk  (clk),
-//         .reset(reset),
-//         .tick (tick),
-//         .mode (mode),
-//         .en   (en),
-//         .clear(clear),
-//         .count(count)
-//     );
-
-//     comp_dot U_Comp_Dot (
-//         .count(count),
-//         .dot_data(dot_data)
-//     );
-// endmodule
-
-
-// module counter (
-//     input         clk,
-//     input         reset,
-//     input         tick,
-//     input         mode,
-//     input         en,
-//     input         clear,
-//     output [13:0] count
-// );
-//     reg [$clog2(10000)-1:0] counter;
-
-//     assign count = counter;
-
-//     always @(posedge clk, posedge reset) begin
-//         if (reset) begin
-//             counter <= 0;
-//         end else begin
-//             if (clear) begin
-//                 counter <= 0;
-//             end else begin
-//                 if (en) begin
-//                     if (mode == 1'b0) begin
-//                         if (tick) begin
-//                             if (counter == 9999) begin
-//                                 counter <= 0;
-//                             end else begin
-//                                 counter <= counter + 1;
-//                             end
-//                         end
-//                     end else begin
-//                         if (tick) begin
-//                             if (counter == 0) begin
-//                                 counter <= 9999;
-//                             end else begin
-//                                 counter <= counter - 1;
-//                             end
-//                         end
-//                     end
-//                 end
-//             end
-//         end
-//     end
-// endmodule
-
-// module clk_div_10hz (
-//     input  wire clk,
-//     input  wire reset,
-//     input  wire en,
-//     input  wire clear,
-//     output reg  tick
-// );
-//     reg [$clog2(10_000_000)-1:0] div_counter;
-
-//     always @(posedge clk, posedge reset) begin
-//         if (reset) begin
-//             div_counter <= 0;
-//             tick <= 1'b0;
-//         end else begin
-//             if (en) begin
-//                 if (div_counter == 10_000_000 - 1) begin
-//                     div_counter <= 0;
-//                     tick <= 1'b1;
-//                 end else begin
-//                     div_counter <= div_counter + 1;
-//                     tick <= 1'b0;
-//                 end
-//             end
-//             if (clear) begin
-//                 div_counter <= 0;
-//                 tick <= 1'b0;
-//             end
-//         end
-//     end
-// endmodule
-
 //--------------------------------------------
 // 최상위 모듈
 //--------------------------------------------
@@ -354,9 +8,9 @@ module top_system (
     input        reset,
     input        rx,
     input        mode_sel_btn,  // 모드 선택 버튼 입력
-    input        run_btn,
-    input        clear_btn,
-    input        up_down_btn,
+    input        run_btn,       // Run/Stop 버튼
+    input        clear_btn,     // Clear 버튼
+    input        up_down_btn,   // Up/Down 버튼
     output       tx,
     output [3:0] fndCom,
     output [7:0] fndFont
@@ -375,6 +29,10 @@ module top_system (
     wire run_debounced;
     wire clear_debounced;
     wire up_down_debounced;
+    
+    // 버튼 상태 저장 (run 버튼용 토글 상태)
+    reg run_state_normal;  // 일반 카운터 모드의 런 상태
+    reg run_state_stopwatch;  // 스톱워치 모드의 런 상태
     
     // 디바운스 모듈 인스턴스들
     btn_debounce U_Mode_Sel_Debounce (
@@ -414,6 +72,28 @@ module top_system (
         end
     end
     
+    // Run 버튼 토글 로직 - 일반 카운터 모드
+    always @(posedge clk, posedge reset) begin
+        if (reset) begin
+            run_state_normal <= 0;
+        end else if (clear_debounced && !mode_sel) begin
+            run_state_normal <= 0;  // Clear 버튼 누르면 Run 상태 리셋
+        end else if (run_debounced && !mode_sel) begin
+            run_state_normal <= ~run_state_normal;  // Run 버튼 누를 때마다 상태 토글
+        end
+    end
+    
+    // Run 버튼 토글 로직 - 스톱워치 모드
+    always @(posedge clk, posedge reset) begin
+        if (reset) begin
+            run_state_stopwatch <= 0;
+        end else if (clear_debounced && mode_sel) begin
+            run_state_stopwatch <= 0;  // Clear 버튼 누르면 Run 상태 리셋
+        end else if (run_debounced && mode_sel) begin
+            run_state_stopwatch <= ~run_state_stopwatch;  // Run 버튼 누를 때마다 상태 토글
+        end
+    end
+    
     // 일반 카운터 모드용 신호
     wire [13:0] count_normal;
     wire [3:0] dot_normal;
@@ -425,19 +105,6 @@ module top_system (
     wire [13:0] count_stopwatch;
     wire [3:0] dot_stopwatch;
     wire en_stopwatch, clear_stopwatch, mode_stopwatch;
-    
-    // 스톱워치 내부 카운터들
-    wire [3:0] msec_counter;  // 0.1초 카운터 (0-9)
-    wire [5:0] sec_counter;   // 초 카운터 (0-59)
-    wire [3:0] min_counter;   // 분 카운터 (0-9)
-    
-    // 초 단위를 10의 자리와 1의 자리로 분리
-    wire [3:0] sec_tens = sec_counter / 10;  // 초의 십의 자리
-    wire [3:0] sec_ones = sec_counter % 10;  // 초의 일의 자리
-    
-    // 스톱워치 데이터 포맷 변환 (분:초.1/10초 형식)
-    assign count_stopwatch = {2'b00, min_counter, sec_tens, sec_ones, msec_counter};
-    assign dot_stopwatch = 4'b0101; // 점 표시 위치: 두 번째와 네 번째 자리에 점(8.88.8)
     
     // 최종 출력 신호 (MUX로 선택)
     wire [13:0] final_count;
@@ -480,9 +147,9 @@ module top_system (
     counter_up_down U_Counter_Normal (
         .clk        (clk),
         .reset      (reset),
-        .en         (en_normal || (run_debounced && !mode_sel)),  // 카운터 모드일 때 버튼 동작
-        .clear      (clear_normal || (clear_debounced && !mode_sel)),  // 카운터 모드일 때 버튼 동작
-        .mode       (mode_normal || (up_down_debounced && !mode_sel)), // 업/다운 버튼 지원
+        .en         (en_normal || (run_state_normal && !mode_sel)),  // 버튼 상태 사용
+        .clear      (clear_normal || (clear_debounced && !mode_sel)),
+        .mode       (mode_normal || (up_down_debounced && !mode_sel)),
         .count      (count_normal),
         .dot_data   (dot_normal)
     );
@@ -498,62 +165,19 @@ module top_system (
         .mode       (mode_stopwatch)
     );
     
-    // 클럭 분주기 (10Hz - 스톱워치용)
-    wire tick_10hz;
-    wire tick_1hz;
-    wire tick_1min;
-    
-    clk_divider #(
-        .COUNT(10_000_000)  // 100MHz를 10Hz로 분주
-    ) U_Clk_Div_10Hz (
-        .clk(clk),
-        .reset(reset),
-        .en(en_stopwatch || (run_debounced && mode_sel)),
-        .clear(clear_stopwatch || (clear_debounced && mode_sel)),
-        .tick(tick_10hz)
+    // 스톱워치 모드 (기존 카운터 활용)
+    counter_up_down U_Counter_Stopwatch (
+        .clk        (clk),
+        .reset      (reset),
+        .en         (en_stopwatch || (run_state_stopwatch && mode_sel)),  // 버튼 상태 사용
+        .clear      (clear_stopwatch || (clear_debounced && mode_sel)),
+        .mode       (1'b0),  // 항상 업 카운트 모드
+        .count      (count_stopwatch),
+        .dot_data   ()  // 스톱워치는 도트 패턴 하드 코딩
     );
     
-    // 스톱워치 모드의 0.1초 카운터 (0-9)
-    cascaded_counter #(
-        .MAX_COUNT(10),
-        .WIDTH(4)
-    ) U_Msec_Counter (
-        .clk(clk),
-        .reset(reset),
-        .en(en_stopwatch || (run_debounced && mode_sel)),  // 스톱워치 모드일 때 버튼 동작
-        .clear(clear_stopwatch || (clear_debounced && mode_sel)),  // 스톱워치 모드일 때 버튼 동작
-        .tick_in(tick_10hz),  // 10Hz 틱 입력 (0.1초마다)
-        .count(msec_counter),
-        .tick_out(tick_1hz)  // 1Hz 틱 출력 (1초마다)
-    );
-    
-    // 스톱워치 모드의 초 카운터 (0-59)
-    cascaded_counter #(
-        .MAX_COUNT(60),
-        .WIDTH(6)
-    ) U_Sec_Counter (
-        .clk(clk),
-        .reset(reset),
-        .en(en_stopwatch || (run_debounced && mode_sel)),
-        .clear(clear_stopwatch || (clear_debounced && mode_sel)),
-        .tick_in(tick_1hz),  // 1Hz 틱 입력 (1초마다)
-        .count(sec_counter),
-        .tick_out(tick_1min)  // 1/60Hz 틱 출력 (1분마다)
-    );
-    
-    // 스톱워치 모드의 분 카운터 (0-9)
-    cascaded_counter #(
-        .MAX_COUNT(10),
-        .WIDTH(4)
-    ) U_Min_Counter (
-        .clk(clk),
-        .reset(reset),
-        .en(en_stopwatch || (run_debounced && mode_sel)),
-        .clear(clear_stopwatch || (clear_debounced && mode_sel)),
-        .tick_in(tick_1min),  // 1/60Hz 틱 입력 (1분마다)
-        .count(min_counter),
-        .tick_out()  // 출력 틱 사용 안 함
-    );
+    // 스톱워치 도트 패턴 설정 (8.88.8 형식)
+    assign dot_stopwatch = 4'b0101;
     
     // FND 컨트롤러 (공통)
     fndController U_FndController (
@@ -564,88 +188,6 @@ module top_system (
         .fndCom     (fndCom),
         .fndFont    (fndFont)
     );
-endmodule
-
-//--------------------------------------------
-// 계층적 카운터 모듈 (스톱워치용)
-//--------------------------------------------
-module cascaded_counter #(
-    parameter MAX_COUNT = 10,
-    parameter WIDTH = 4
-)(
-    input                  clk,
-    input                  reset,
-    input                  en,
-    input                  clear,
-    input                  tick_in,
-    output reg [WIDTH-1:0] count,
-    output reg             tick_out
-);
-    reg tick_in_prev;  // 이전 틱 상태 저장
-    
-    always @(posedge clk, posedge reset) begin
-        if (reset) begin
-            count <= 0;
-            tick_out <= 0;
-            tick_in_prev <= 0;
-        end else if (clear) begin
-            count <= 0;
-            tick_out <= 0;
-            tick_in_prev <= 0;
-        end else if (en) begin
-            // 틱의 상승 에지 감지
-            tick_in_prev <= tick_in;
-            
-            if (tick_in && !tick_in_prev) begin  // 상승 에지 감지
-                if (count >= MAX_COUNT-1) begin
-                    count <= 0;
-                    tick_out <= 1;
-                end else begin
-                    count <= count + 1;
-                    tick_out <= 0;
-                end
-            end else begin
-                tick_out <= 0;  // 캐리는 1 클럭 사이클만 유지
-            end
-        end
-    end
-endmodule
-
-//--------------------------------------------
-// 범용 클럭 분주기
-//--------------------------------------------
-module clk_divider #(
-    parameter COUNT = 10_000_000  // 기본값: 100MHz를 10Hz로 분주
-)(
-    input  wire clk,
-    input  wire reset,
-    input  wire en,
-    input  wire clear,
-    output reg  tick
-);
-    reg [$clog2(COUNT)-1:0] counter;
-
-    always @(posedge clk, posedge reset) begin
-        if (reset) begin
-            counter <= 0;
-            tick <= 0;
-        end else if (clear) begin
-            counter <= 0;
-            tick <= 0;
-        end else if (en) begin
-            if (counter >= COUNT - 1) begin
-                counter <= 0;
-                tick <= 1;
-            end else begin
-                counter <= counter + 1;
-                if (counter == 5) begin  // 짧은 펄스 생성 (숫자는 조정 가능)
-                    tick <= 0;
-                end
-            end
-        end else begin
-            tick <= 0;
-        end
-    end
 endmodule
 
 //--------------------------------------------
