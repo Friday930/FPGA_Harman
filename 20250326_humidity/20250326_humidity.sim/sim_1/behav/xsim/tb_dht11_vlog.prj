@@ -1,0 +1,10 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../20250326_humidity.srcs/sources_1/new/dht11_controller.v" \
+"../../../../20250326_humidity.srcs/sim_1/new/tb_dht11.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

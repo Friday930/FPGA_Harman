@@ -1,0 +1,13 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../ultrasonic.srcs/sources_1/new/dist_calculator.v" \
+"../../../../ultrasonic.srcs/sources_1/new/hcsr04_controller.v" \
+"../../../../ultrasonic.srcs/sources_1/new/tick_gen.v" \
+"../../../../ultrasonic.srcs/sources_1/new/top_ultrasonic.v" \
+"../../../../ultrasonic.srcs/sim_1/new/tb_ctrl.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

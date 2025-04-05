@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1742633906">
   <File Type="PA-TCL" Name="uart_fifo.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="uart_fifo_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="uart_fifo_reports.tcl"/>
   <File Type="RDS-RDS" Name="uart_fifo.vds"/>
-  <File Type="RDS-UTIL" Name="uart_fifo_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="uart_fifo_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="uart_fifo.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="uart_fifo_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="uart_fifo_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/imports/Source/memory/fifo.v">

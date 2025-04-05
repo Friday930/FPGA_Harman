@@ -1,8 +1,8 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date             : Sun Mar 23 02:00:18 2025
-| Host             : DESKTOP-2CUDO2B running 64-bit major release  (build 9200)
+| Date             : Mon Mar 31 08:57:35 2025
+| Host             : DESKTOP-7CFQ9ND running 64-bit major release  (build 9200)
 | Command          : report_power -file prj_uart_stopwatch_power_routed.rpt -pb prj_uart_stopwatch_power_summary_routed.pb -rpx prj_uart_stopwatch_power_routed.rpx
 | Design           : prj_uart_stopwatch
 | Device           : xc7a35tcpg236-1
@@ -53,14 +53,14 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |     0.002 |        3 |       --- |             --- |
-| Slice Logic              |     0.001 |      665 |       --- |             --- |
-|   LUT as Logic           |     0.001 |      291 |     20800 |            1.40 |
-|   Register               |    <0.001 |      227 |     41600 |            0.55 |
+| Slice Logic              |     0.001 |      661 |       --- |             --- |
+|   LUT as Logic           |     0.001 |      289 |     20800 |            1.39 |
+|   Register               |    <0.001 |      224 |     41600 |            0.54 |
 |   CARRY4                 |    <0.001 |       18 |      8150 |            0.22 |
 |   F7/F8 Muxes            |    <0.001 |        1 |     32600 |           <0.01 |
 |   LUT as Distributed RAM |    <0.001 |       24 |      9600 |            0.25 |
 |   Others                 |     0.000 |       20 |       --- |             --- |
-| Signals                  |     0.001 |      517 |       --- |             --- |
+| Signals                  |     0.001 |      512 |       --- |             --- |
 | I/O                      |     0.030 |       22 |       106 |           20.75 |
 | Static Power             |     0.072 |          |           |                 |
 | Total                    |     0.106 |          |           |                 |
@@ -73,7 +73,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.014 |       0.005 |      0.010 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.014 |       0.004 |      0.010 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.014 |       0.001 |      0.013 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.009 |       0.008 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -143,7 +143,7 @@ Table of Contents
 | Name                | Power (W) |
 +---------------------+-----------+
 | prj_uart_stopwatch  |     0.034 |
-|   U_Stopwatch_watch |     0.003 |
+|   U_Stopwatch_watch |     0.002 |
 |   U_UART_FIFO       |     0.002 |
 +---------------------+-----------+
 
