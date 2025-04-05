@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Fri Apr  4 00:16:47 2025
+# Process ID: 2368
+# Current directory: D:/FPGA_Harman/20250403_HW/20250403_HW.runs/impl_1
+# Command line: vivado.exe -log top_system.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source top_system.tcl -notrace
+# Log file: D:/FPGA_Harman/20250403_HW/20250403_HW.runs/impl_1/top_system.vdi
+# Journal file: D:/FPGA_Harman/20250403_HW/20250403_HW.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source top_system.tcl -notrace
