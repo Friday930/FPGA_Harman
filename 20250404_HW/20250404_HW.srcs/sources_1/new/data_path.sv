@@ -17,7 +17,6 @@ module data_path(
 
 
     mux_2x1 U_MUX_2x1(
-        // .zero                       (),
         .ASrcMuxSel                 (ASrcMuxSel),
         .adder_res                  (sum),
         .d                          (d)           
@@ -76,7 +75,6 @@ module counter (
 endmodule
 
 module mux_2x1 (
-    // input                           zero,
     input                           ASrcMuxSel,
     input   [$clog2(55)-1:0]        adder_res,
     output  [$clog2(55)-1:0]        d           
@@ -117,7 +115,7 @@ module adder (
     output  [$clog2(55)-1:0]        sum
 );
 
-    assign                          sum = q + count;
+    assign  sum = q + count;
     
 endmodule
 
