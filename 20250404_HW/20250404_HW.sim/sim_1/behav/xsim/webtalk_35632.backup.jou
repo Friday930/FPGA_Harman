@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sat Apr  5 19:00:40 2025
+# Process ID: 35632
+# Current directory: C:/Vivado_Workspace/FPGA_Harman/20250404_HW/20250404_HW.sim/sim_1/behav/xsim
+# Command line: wbtcv.exe -mode batch -source C:/Vivado_Workspace/FPGA_Harman/20250404_HW/20250404_HW.sim/sim_1/behav/xsim/xsim.dir/tb_dedicated_Processor_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: C:/Vivado_Workspace/FPGA_Harman/20250404_HW/20250404_HW.sim/sim_1/behav/xsim/webtalk.log
+# Journal file: C:/Vivado_Workspace/FPGA_Harman/20250404_HW/20250404_HW.sim/sim_1/behav/xsim\webtalk.jou
+#-----------------------------------------------------------
+source C:/Vivado_Workspace/FPGA_Harman/20250404_HW/20250404_HW.sim/sim_1/behav/xsim/xsim.dir/tb_dedicated_Processor_behav/webtalk/xsim_webtalk.tcl -notrace
