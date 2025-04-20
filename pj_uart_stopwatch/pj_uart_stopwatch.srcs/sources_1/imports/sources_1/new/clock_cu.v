@@ -123,7 +123,7 @@ module clock_divider #(
     output reg o_minute_tick,  // 1분 펄스
     output reg o_hour_tick     // 1시간 펄스
 );
-    // 1ms에 필요한 클럭 사이클 수
+    // 1ms에 필요한 클럭 사이클 수 
     localparam integer MSEC_COUNT_MAX = CLOCK_FREQ / 1000;
     // 1초에 필요한 클럭 사이클 수
     localparam integer SEC_COUNT_MAX  = CLOCK_FREQ;
