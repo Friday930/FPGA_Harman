@@ -105,7 +105,7 @@ module Comparator (
     output                          ALt10
 );
 
-    assign                          ALt10 = count < 10;
+    assign                          ALt10 = count < 12;
     
 endmodule
 
@@ -122,9 +122,14 @@ endmodule
 module outbuf (
     input   [$clog2(55)-1:0]        q,
     input                           outbuf,
-    output  [$clog2(55)-1:0]        result
+    output  reg [$clog2(55)-1:0]    result
 );
 
     assign                          result = (outbuf) ? q : 0;
-    
+    // always_latch begin
+    //     if (outbuf) begin
+    //         result <= q;
+    //     end
+    // end
+
 endmodule
